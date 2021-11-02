@@ -3,6 +3,9 @@ project(VKTest VERSION 1.0.0)
 
 
 add_definitions(-D_CRT_SECURE_NO_WARNINGS)
+add_definitions(-Wno-nullability-completeness)
+add_definitions(-Wno-deprecated)
+
 add_compile_definitions(SHADER_PATH="${PROJECT_SOURCE_DIR}/src/shaders" TEXTURE_PATH="${PROJECT_SOURCE_DIR}/src/textures" MODEL_PATH="${PROJECT_SOURCE_DIR}/src/models")
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
