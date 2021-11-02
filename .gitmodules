@@ -13,3 +13,9 @@
 [submodule "lib/tinygltf"]
 	path = lib/tinygltf
 	url = https://github.com/syoyo/tinygltf
+[submodule "lib/VulkanMemoryAllocator"]
+	path = lib/VulkanMemoryAllocator
+	url = https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator
+[submodule "lib/stb"]
+	path = lib/stb
+	url = https://github.com/nothings/stb
