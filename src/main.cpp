@@ -19,7 +19,7 @@
 #include <tiny_gltf.h>
 #include <vulkan/vulkan.hpp>
 #include <fstream>
-#include "DebugUtilsMessenger.h"
+#include "Utils.h"
 
 const uint32_t WIDTH = 800;
 const uint32_t HEIGHT = 600;
