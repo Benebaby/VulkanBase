@@ -8,7 +8,6 @@
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #define VMA_IMPLEMENTATION
 
-
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 #include <iostream>
