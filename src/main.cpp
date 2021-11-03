@@ -81,12 +81,15 @@ private:
     std::vector<vk::Fence> inFlightFences;
     std::vector<vk::Fence> imagesInFlight;
     size_t currentFrame = 0;
+    bool framebufferResized = false;
 
     void initWindow(){
         glfwInit();
         glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
-        glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
+        glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
         window = glfwCreateWindow(WIDTH, HEIGHT, "VulkanMacTest", nullptr, nullptr);
+        glfwSetWindowUserPointer(window, this);
+        glfwSetFramebufferSizeCallback(window, framebufferResizeCallback);
     }
 
     void initVulkan(){
@@ -459,10 +462,12 @@ private:
         vk::Result result1 = device.waitForFences(inFlightFences[currentFrame], VK_TRUE, UINT64_MAX);
         uint32_t imageIndex;
         vk::Result result = device.acquireNextImageKHR(swapChain, UINT64_MAX, imageAvailableSemaphores[currentFrame], VK_NULL_HANDLE, &imageIndex);
-        switch (result){
-            case vk::Result::eSuccess: break;
-            default: throw std::runtime_error("failed to aquire Next Swapchainimage!");
-        }
+        if(result == vk::Result::eErrorOutOfDateKHR){
+            recreateSwapChain();
+            return;
+        }else if(result != vk::Result::eSuccess && result != vk::Result::eSuboptimalKHR)
+            throw std::runtime_error("failed to acquire swap chain image!");
+
         if ((VkFence) imagesInFlight[imageIndex] != VK_NULL_HANDLE)
             vk::Result result2 = device.waitForFences(imagesInFlight[imageIndex], VK_TRUE, UINT64_MAX);
         imagesInFlight[imageIndex] = inFlightFences[currentFrame];
@@ -477,11 +482,11 @@ private:
         std::vector<vk::SwapchainKHR> swapChains = {swapChain};
         vk::PresentInfoKHR presentInfo(signalSemaphores, swapChains, imageIndex);
         result = presentQueue.presentKHR(presentInfo);
-        switch (result){
-            case vk::Result::eSuccess: break;
-            case vk::Result::eSuboptimalKHR: throw std::runtime_error("vk::Queue::presentKHR returned vk::Result::eSuboptimalKHR !");
-            default: throw std::runtime_error("queue Present  failed!");
-        }
+        if(result == vk::Result::eErrorOutOfDateKHR || result == vk::Result::eSuboptimalKHR || framebufferResized){
+            framebufferResized = false;
+            recreateSwapChain();
+        }else if(result != vk::Result::eSuccess)
+            throw std::runtime_error("queue Present failed!");
         currentFrame = (currentFrame + 1) % MAX_FRAMES_IN_FLIGHT;
     }
 
@@ -502,16 +507,11 @@ private:
         device.waitIdle();
     }
 
-    void cleanup(){
-        for (size_t i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
-            device.destroySemaphore(imageAvailableSemaphores[i]);
-            device.destroySemaphore(renderFinishedSemaphores[i]);
-            device.destroyFence(inFlightFences[i]);
-        }
-        device.destroyCommandPool(commandPool);
+    void cleanupSwapchain(){
         for (auto framebuffer : swapChainFramebuffers) {
             device.destroyFramebuffer(framebuffer);
         }
+        device.freeCommandBuffers(commandPool, commandBuffers);
         device.destroyPipeline(graphicsPipeline);
         device.destroyPipelineLayout(pipelineLayout);
         device.destroyRenderPass(renderPass);
@@ -519,6 +519,16 @@ private:
             device.destroyImageView(imageView);
         }
         device.destroySwapchainKHR(swapChain);
+    }
+
+    void cleanup(){
+        cleanupSwapchain();
+        for (size_t i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
+            device.destroySemaphore(imageAvailableSemaphores[i]);
+            device.destroySemaphore(renderFinishedSemaphores[i]);
+            device.destroyFence(inFlightFences[i]);
+        }
+        device.destroyCommandPool(commandPool);
         vmaDestroyAllocator(allocator);
         device.destroy();
         if (enableValidation) {
@@ -528,6 +538,27 @@ private:
         instance.destroy();
         glfwDestroyWindow(window);
         glfwTerminate();
+    }
+
+    void recreateSwapChain() {
+        int width = 0, height = 0;
+        glfwGetFramebufferSize(window, &width, &height);
+        while (width == 0 || height == 0) {
+            glfwGetFramebufferSize(window, &width, &height);
+            glfwWaitEvents();
+        }
+        device.waitIdle();
+
+        cleanupSwapchain();
+
+        createSwapChain();
+        createImageViews();
+        createRenderPass();
+        createGraphicsPipeline();
+        createFramebuffers();
+        createCommandBuffers();
+
+        imagesInFlight.resize(swapChainImages.size(), VK_NULL_HANDLE);
     }
 
     static std::vector<char> readFile(const std::string& filename) {
@@ -546,6 +577,11 @@ private:
         file.close();
 
         return buffer;
+    }
+
+    static void framebufferResizeCallback(GLFWwindow* window, int width, int height) {
+        auto app = reinterpret_cast<VulkanMacTest*>(glfwGetWindowUserPointer(window));
+        app->framebufferResized = true;
     }
 };
 
