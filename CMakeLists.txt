@@ -46,10 +46,6 @@ target_link_libraries(VKTest glm)
 add_subdirectory(${PROJECT_SOURCE_DIR}/lib/VulkanMemoryAllocator)
 target_link_libraries(VKTest VulkanMemoryAllocator)
 
-#add glslang
-add_subdirectory(${PROJECT_SOURCE_DIR}/lib/glslang)
-target_link_libraries(VKTest glslang SPIRV)
-
 #add tinygltf
 add_subdirectory(${PROJECT_SOURCE_DIR}/lib/tinygltf)
 target_link_libraries(VKTest tinygltf)
