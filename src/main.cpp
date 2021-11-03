@@ -561,26 +561,20 @@ private:
         imagesInFlight.resize(swapChainImages.size(), VK_NULL_HANDLE);
     }
 
-    static std::vector<char> readFile(const std::string& filename) {
-        std::ifstream file(SHADER_PATH+filename, std::ios::ate | std::ios::binary);
-
-        if (!file.is_open()) {
-            throw std::runtime_error("failed to open file!");
-        }
-
-        size_t fileSize = (size_t) file.tellg();
+    static std::vector<char> readFile(const std::string &filename){
+        std::ifstream file(SHADER_PATH + filename, std::ios::ate | std::ios::binary);
+        if (!file.is_open())
+                throw std::runtime_error("failed to open file!");
+        size_t fileSize = (size_t)file.tellg();
         std::vector<char> buffer(fileSize);
-
         file.seekg(0);
         file.read(buffer.data(), fileSize);
-
         file.close();
-
         return buffer;
     }
 
-    static void framebufferResizeCallback(GLFWwindow* window, int width, int height) {
-        auto app = reinterpret_cast<VulkanMacTest*>(glfwGetWindowUserPointer(window));
+    static void framebufferResizeCallback(GLFWwindow *window, int width, int height){
+        auto app = reinterpret_cast<VulkanMacTest *>(glfwGetWindowUserPointer(window));
         app->framebufferResized = true;
     }
 };
