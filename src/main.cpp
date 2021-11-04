@@ -18,6 +18,7 @@
 #include <tiny_gltf.h>
 #include <vulkan/vulkan.hpp>
 #include <fstream>
+#include "SpirvHelper.h"
 #include "Utils.h"
 
 const uint32_t WIDTH = 800;

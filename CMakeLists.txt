@@ -57,3 +57,8 @@ target_link_libraries(${CMAKE_PROJECT_NAME} tinygltf)
 include_directories(${PROJECT_SOURCE_DIR}/lib/imgui)
 include_directories(${PROJECT_SOURCE_DIR}/lib/stb)
 
+#add glslang
+add_subdirectory(${PROJECT_SOURCE_DIR}/lib/glslang)
+target_link_libraries(${CMAKE_PROJECT_NAME} glslang SPIRV)
+
+
