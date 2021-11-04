@@ -40,7 +40,7 @@ struct SwapChainSupportDetails {
     std::vector<vk::PresentModeKHR> presentModes;
 };
 
-class VulkanMacTest {
+class VulkanBase {
 public:
     void run() {
         initWindow();
@@ -87,7 +87,7 @@ private:
         glfwInit();
         glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
         glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
-        window = glfwCreateWindow(WIDTH, HEIGHT, "VulkanMacTest", nullptr, nullptr);
+        window = glfwCreateWindow(WIDTH, HEIGHT, "VulkanBase", nullptr, nullptr);
         glfwSetWindowUserPointer(window, this);
         glfwSetFramebufferSizeCallback(window, framebufferResizeCallback);
     }
@@ -118,7 +118,7 @@ private:
         const char** glfwExtensions = glfwGetRequiredInstanceExtensions(&glfwExtensionCount);
         std::vector<const char*> extensions(glfwExtensions, glfwExtensions + glfwExtensionCount);
 
-        vk::ApplicationInfo applicationInfo("VulkanMacTest", VK_MAKE_VERSION(0, 0 ,1), "VulkanEngine", 1, VK_API_VERSION_1_1);
+        vk::ApplicationInfo applicationInfo("VulkanBase", VK_MAKE_VERSION(0, 0 ,1), "VulkanEngine", 1, VK_API_VERSION_1_1);
 
         if(enableValidation){
             extensions.push_back(VK_EXT_DEBUG_UTILS_EXTENSION_NAME);
@@ -239,7 +239,7 @@ private:
         //MacOS portability extension
         std::vector<vk::ExtensionProperties> extensionProperties =  physicalDevice.enumerateDeviceExtensionProperties();
         for(auto extensionProperty : extensionProperties){
-            if(std::string(extensionProperty.extensionName) == VK_KHR_PORTABILITY_SUBSET_EXTENSION_NAME)
+            if(std::string(extensionProperty.extensionName.data()) == std::string(VK_KHR_PORTABILITY_SUBSET_EXTENSION_NAME))
                 deviceExtensions.push_back(VK_KHR_PORTABILITY_SUBSET_EXTENSION_NAME);
         }
 
@@ -381,7 +381,7 @@ private:
         vk::PipelineShaderStageCreateInfo vertShaderStageInfo({}, vk::ShaderStageFlagBits::eVertex, vertShaderModule, "main");
         vk::PipelineShaderStageCreateInfo fragShaderStageInfo({}, vk::ShaderStageFlagBits::eFragment, fragShaderModule, "main");
 
-        std::vector<const vk::PipelineShaderStageCreateInfo> shaderStages = {vertShaderStageInfo, fragShaderStageInfo};
+        std::vector<vk::PipelineShaderStageCreateInfo> shaderStages = {vertShaderStageInfo, fragShaderStageInfo};
 
         vk::PipelineVertexInputStateCreateInfo vertexInputInfo({}, {}, {});
         vk::PipelineInputAssemblyStateCreateInfo inputAssembly({}, vk::PrimitiveTopology::eTriangleList, VK_FALSE);
@@ -499,7 +499,7 @@ private:
             fps++;
             if((glfwGetTime() - time) >= 1.0){
                 time = glfwGetTime();
-                std::string title = "\t\t\tVulkanMacTest\t\t\tFPS:"+std::to_string(fps);
+                std::string title = "VulkanBase  FPS:"+std::to_string(fps);
                 glfwSetWindowTitle(window, title.c_str());
                 fps = 0;
             }
@@ -574,13 +574,13 @@ private:
     }
 
     static void framebufferResizeCallback(GLFWwindow *window, int width, int height){
-        auto app = reinterpret_cast<VulkanMacTest *>(glfwGetWindowUserPointer(window));
+        auto app = reinterpret_cast<VulkanBase *>(glfwGetWindowUserPointer(window));
         app->framebufferResized = true;
     }
 };
 
 int main() {
-    VulkanMacTest app;
+    VulkanBase app;
     try {
         app.run();
     } catch (const std::exception& e) {

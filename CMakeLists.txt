@@ -1,10 +1,13 @@
 cmake_minimum_required(VERSION 3.7)
-project(VKTest VERSION 1.0.0)
+project(VulkanBase VERSION 1.0.0)
 
 
 add_definitions(-D_CRT_SECURE_NO_WARNINGS)
-add_definitions(-Wno-nullability-completeness)
-add_definitions(-Wno-deprecated)
+IF(APPLE)
+    add_definitions(-Wno-nullability-completeness)
+    add_definitions(-Wno-deprecated)
+ENDIF()
+
 
 add_compile_definitions(SHADER_PATH="${PROJECT_SOURCE_DIR}/src/shaders" TEXTURE_PATH="${PROJECT_SOURCE_DIR}/src/textures" MODEL_PATH="${PROJECT_SOURCE_DIR}/src/models")
 set(CMAKE_CXX_STANDARD 17)
@@ -19,13 +22,13 @@ file(GLOB SOURCES
     src/*.cpp
 )
 
-add_executable(VKTest ${SOURCES})
+add_executable(${CMAKE_PROJECT_NAME} ${SOURCES})
 
 #add vulkan
 find_package(Vulkan)
 IF (Vulkan_FOUND)
-    target_link_libraries(VKTest ${Vulkan_LIBRARIES})
-    target_include_directories(VKTest PUBLIC ${Vulkan_INCLUDE_DIR})
+    target_link_libraries(${CMAKE_PROJECT_NAME} ${Vulkan_LIBRARIES})
+    target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC ${Vulkan_INCLUDE_DIR})
 ELSE()
     message(ERROR "Vulkan SDK has to be installed")
 ENDIF()
@@ -36,19 +39,19 @@ set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 add_subdirectory(${PROJECT_SOURCE_DIR}/lib/glfw)
-target_link_libraries(VKTest glfw)
+target_link_libraries(${CMAKE_PROJECT_NAME} glfw)
 
 #add glm
 add_subdirectory(${PROJECT_SOURCE_DIR}/lib/glm)
-target_link_libraries(VKTest glm)
+target_link_libraries(${CMAKE_PROJECT_NAME} glm)
 
 #add vma
 add_subdirectory(${PROJECT_SOURCE_DIR}/lib/VulkanMemoryAllocator)
-target_link_libraries(VKTest VulkanMemoryAllocator)
+target_link_libraries(${CMAKE_PROJECT_NAME} VulkanMemoryAllocator)
 
 #add tinygltf
 add_subdirectory(${PROJECT_SOURCE_DIR}/lib/tinygltf)
-target_link_libraries(VKTest tinygltf)
+target_link_libraries(${CMAKE_PROJECT_NAME} tinygltf)
 
 #add imgui, stb
 include_directories(${PROJECT_SOURCE_DIR}/lib/imgui)
