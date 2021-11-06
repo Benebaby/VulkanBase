@@ -53,7 +53,7 @@ private:
     GLFWwindow* window;
     VmaAllocator allocator;
     vk::Instance instance;
-    bool enableValidation = true;
+    bool enableValidation = false;
     vk::DebugUtilsMessengerEXT debugMessenger;
     vk::DebugUtilsMessageSeverityFlagsEXT messageSeverityFlags = vk::DebugUtilsMessageSeverityFlagBitsEXT::eWarning | vk::DebugUtilsMessageSeverityFlagBitsEXT::eError;
     vk::DebugUtilsMessageTypeFlagsEXT messageTypeFlags = vk::DebugUtilsMessageTypeFlagBitsEXT::eGeneral | vk::DebugUtilsMessageTypeFlagBitsEXT::ePerformance | vk::DebugUtilsMessageTypeFlagBitsEXT::eValidation;
@@ -358,8 +358,8 @@ private:
         }
     }
 
-    vk::ShaderModule createShaderModule(const std::vector<char>& code) {
-        vk::ShaderModuleCreateInfo createInfo({}, code.size(), reinterpret_cast<const uint32_t*>(code.data()));
+    vk::ShaderModule createShaderModule(const std::vector<uint32_t> code) {
+        vk::ShaderModuleCreateInfo createInfo({}, code);
         vk::ShaderModule shaderModule = device.createShaderModule(createInfo);
         return shaderModule;
     }
@@ -373,11 +373,16 @@ private:
     }
 
     void createGraphicsPipeline(){
-        auto vertShaderCode = readFile("/vert.spv");
-        auto fragShaderCode = readFile("/frag.spv");
-
-        vk::ShaderModule vertShaderModule = createShaderModule(vertShaderCode);
-        vk::ShaderModule fragShaderModule = createShaderModule(fragShaderCode);
+        glslang::InitializeProcess();
+        std::string vertShaderCodeGLSL = loadShaderSource("/shader.vert");
+        std::string fragShaderCodeGLSL = loadShaderSource("/shader.frag");
+        std::vector<uint32_t> vertShaderCodeSPIRV;
+        std::vector<uint32_t> fragShaderCodeSPIRV;
+        SpirvHelper::GLSLtoSPV(vk::ShaderStageFlagBits::eVertex, vertShaderCodeGLSL.c_str(), vertShaderCodeSPIRV);
+        SpirvHelper::GLSLtoSPV(vk::ShaderStageFlagBits::eFragment, fragShaderCodeGLSL.c_str(), fragShaderCodeSPIRV);
+        vk::ShaderModule vertShaderModule = createShaderModule(vertShaderCodeSPIRV);
+        vk::ShaderModule fragShaderModule = createShaderModule(fragShaderCodeSPIRV);
+        glslang::FinalizeProcess();
 
         vk::PipelineShaderStageCreateInfo vertShaderStageInfo({}, vk::ShaderStageFlagBits::eVertex, vertShaderModule, "main");
         vk::PipelineShaderStageCreateInfo fragShaderStageInfo({}, vk::ShaderStageFlagBits::eFragment, fragShaderModule, "main");
@@ -562,16 +567,13 @@ private:
         imagesInFlight.resize(swapChainImages.size(), VK_NULL_HANDLE);
     }
 
-    static std::vector<char> readFile(const std::string &filename){
-        std::ifstream file(SHADER_PATH + filename, std::ios::ate | std::ios::binary);
-        if (!file.is_open())
-                throw std::runtime_error("failed to open file!");
-        size_t fileSize = (size_t)file.tellg();
-        std::vector<char> buffer(fileSize);
-        file.seekg(0);
-        file.read(buffer.data(), fileSize);
-        file.close();
-        return buffer;
+    std::string loadShaderSource(const std::string &filename) {
+        std::ifstream input_file(SHADER_PATH + filename);
+        if (!input_file.is_open()) {
+            std::cerr << "Could not open the file - '" << filename << "'" << std::endl;
+            exit(EXIT_FAILURE);
+        }
+        return std::string((std::istreambuf_iterator<char>(input_file)), std::istreambuf_iterator<char>());
     }
 
     static void framebufferResizeCallback(GLFWwindow *window, int width, int height){
