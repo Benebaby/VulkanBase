@@ -1,12 +1,16 @@
 #include <vulkan/vulkan.hpp>
 #include <glslang/SPIRV/GlslangToSpv.h>
+#include <iostream>
+#include <sstream>
+#include <fstream>
 
 class SpirvHelper
 {
+private: 
+	static void InitResources(TBuiltInResource &Resources);
+	static EShLanguage FindLanguage(const vk::ShaderStageFlagBits shader_type);
 public:
 	static void Init();
 	static void Finalize();
-	static void InitResources(TBuiltInResource &Resources);
-	static EShLanguage FindLanguage(const vk::ShaderStageFlagBits shader_type);
-	static bool GLSLtoSPV(const vk::ShaderStageFlagBits shader_type, const char *pshader, std::vector<unsigned int> &spirv);
+	static bool GLSLtoSPV(const vk::ShaderStageFlagBits shader_type, const std::string &filename, std::vector<unsigned int> &spirv);
 };

@@ -131,7 +131,14 @@ EShLanguage SpirvHelper::FindLanguage(const vk::ShaderStageFlagBits shader_type)
     }
 }
 
-bool SpirvHelper::GLSLtoSPV(const vk::ShaderStageFlagBits shader_type, const char *pshader, std::vector<unsigned int> &spirv) {
+bool SpirvHelper::GLSLtoSPV(const vk::ShaderStageFlagBits shader_type, const std::string &filename, std::vector<unsigned int> &spirv) {
+    std::ifstream input_file(SHADER_PATH + filename);
+    if (!input_file.is_open()) {
+        std::cerr << "Could not open the file - '" << filename << "'" << std::endl;
+        exit(EXIT_FAILURE);
+    }
+    std::string shaderCodeGlsl =  std::string((std::istreambuf_iterator<char>(input_file)), std::istreambuf_iterator<char>());
+    const char *pshader = shaderCodeGlsl.c_str();
     EShLanguage stage = SpirvHelper::FindLanguage(shader_type);
     glslang::TShader shader(stage);
     glslang::TProgram program;

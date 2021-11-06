@@ -11,13 +11,12 @@
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 #include <iostream>
-#include <sstream>
 #include <optional>
 #include <set>
 #include <vk_mem_alloc.h>
 #include <tiny_gltf.h>
 #include <vulkan/vulkan.hpp>
-#include <fstream>
+#include <array>
 #include "SpirvHelper.h"
 #include "Utils.h"
 
@@ -39,6 +38,30 @@ struct SwapChainSupportDetails {
     vk::SurfaceCapabilitiesKHR capabilities;
     std::vector<vk::SurfaceFormatKHR> formats;
     std::vector<vk::PresentModeKHR> presentModes;
+};
+
+struct Vertex {
+    glm::vec2 pos;
+    glm::vec3 color;
+    static std::vector<vk::VertexInputBindingDescription> getBindingDescription() {
+        std::vector<vk::VertexInputBindingDescription> bindingDescriptions = {
+            vk::VertexInputBindingDescription(0, sizeof(Vertex), vk::VertexInputRate::eVertex)
+        };
+        return bindingDescriptions;
+    }
+    static std::vector<vk::VertexInputAttributeDescription> getAttributeDescriptions() {
+        std::vector<vk::VertexInputAttributeDescription> attributeDescriptions{
+            vk::VertexInputAttributeDescription(0, 0, vk::Format::eR32G32Sfloat, offsetof(Vertex, pos)),
+            vk::VertexInputAttributeDescription(1, 0, vk::Format::eR32G32B32Sfloat, offsetof(Vertex, color))
+        };
+        return attributeDescriptions;
+    }
+};
+
+const std::vector<Vertex> vertices = {
+    {{0.0f, -0.5f}, {1.0f, 0.0f, 0.0f}},
+    {{0.5f, 0.5f}, {0.0f, 1.0f, 0.0f}},
+    {{-0.5f, 0.5f}, {0.0f, 0.0f, 1.0f}}
 };
 
 class VulkanBase {
@@ -75,6 +98,8 @@ private:
     vk::Pipeline graphicsPipeline;
 
     vk::CommandPool commandPool; 
+    vk::Buffer vertexBuffer;
+    vk::DeviceMemory vertexBufferMemory;
     std::vector<vk::CommandBuffer> commandBuffers;
 
     std::vector<vk::Semaphore> imageAvailableSemaphores;
@@ -107,6 +132,7 @@ private:
         createGraphicsPipeline();
         createFramebuffers();
         createCommandPool();
+        createVertexBuffer();
         createCommandBuffers();
         createSyncObjects();
     }
@@ -374,12 +400,10 @@ private:
 
     void createGraphicsPipeline(){
         glslang::InitializeProcess();
-        std::string vertShaderCodeGLSL = loadShaderSource("/shader.vert");
-        std::string fragShaderCodeGLSL = loadShaderSource("/shader.frag");
         std::vector<uint32_t> vertShaderCodeSPIRV;
         std::vector<uint32_t> fragShaderCodeSPIRV;
-        SpirvHelper::GLSLtoSPV(vk::ShaderStageFlagBits::eVertex, vertShaderCodeGLSL.c_str(), vertShaderCodeSPIRV);
-        SpirvHelper::GLSLtoSPV(vk::ShaderStageFlagBits::eFragment, fragShaderCodeGLSL.c_str(), fragShaderCodeSPIRV);
+        SpirvHelper::GLSLtoSPV(vk::ShaderStageFlagBits::eVertex, "/shader.vert", vertShaderCodeSPIRV);
+        SpirvHelper::GLSLtoSPV(vk::ShaderStageFlagBits::eFragment, "/shader.frag", fragShaderCodeSPIRV);
         vk::ShaderModule vertShaderModule = createShaderModule(vertShaderCodeSPIRV);
         vk::ShaderModule fragShaderModule = createShaderModule(fragShaderCodeSPIRV);
         glslang::FinalizeProcess();
@@ -389,7 +413,10 @@ private:
 
         std::vector<vk::PipelineShaderStageCreateInfo> shaderStages = {vertShaderStageInfo, fragShaderStageInfo};
 
-        vk::PipelineVertexInputStateCreateInfo vertexInputInfo({}, {}, {});
+        auto bindingDescription = Vertex::getBindingDescription();
+        auto attributeDescriptions = Vertex::getAttributeDescriptions();
+
+        vk::PipelineVertexInputStateCreateInfo vertexInputInfo({}, bindingDescription, attributeDescriptions);
         vk::PipelineInputAssemblyStateCreateInfo inputAssembly({}, vk::PrimitiveTopology::eTriangleList, VK_FALSE);
         vk::Viewport viewport(0.0f, 0.0f, (float) swapChainExtent.width, (float) swapChainExtent.height, 0.0f, 1.0f);
         vk::Rect2D scissor(vk::Offset2D(0, 0),swapChainExtent);
@@ -430,6 +457,38 @@ private:
         commandPool = device.createCommandPool(poolInfo);
     }
 
+    void createVertexBuffer(){
+        vk::BufferCreateInfo bufferInfo({}, sizeof(vertices[0]) * vertices.size(), vk::BufferUsageFlagBits::eVertexBuffer, vk::SharingMode::eExclusive);
+        vertexBuffer = device.createBuffer(bufferInfo);
+        
+        vk::MemoryRequirements memRequirements;
+        memRequirements = device.getBufferMemoryRequirements(vertexBuffer);
+
+        vk::MemoryAllocateInfo allocInfo(memRequirements.size, findMemoryType(memRequirements.memoryTypeBits, vk::MemoryPropertyFlagBits::eHostVisible | vk::MemoryPropertyFlagBits::eHostCoherent));
+        
+        vertexBufferMemory = device.allocateMemory(allocInfo);
+
+        device.bindBufferMemory(vertexBuffer, vertexBufferMemory, 0);
+
+        void* data;
+        data = device.mapMemory(vertexBufferMemory, 0, bufferInfo.size, {});
+            memcpy(data, vertices.data(), (size_t) bufferInfo.size);
+        device.unmapMemory(vertexBufferMemory);
+    }
+
+    uint32_t findMemoryType(uint32_t typeFilter, vk::MemoryPropertyFlags properties) {
+        vk::PhysicalDeviceMemoryProperties memProperties;
+        memProperties = physicalDevice.getMemoryProperties();
+
+        for (uint32_t i = 0; i < memProperties.memoryTypeCount; i++) {
+            if ((typeFilter & (1 << i)) && (memProperties.memoryTypes[i].propertyFlags & properties) == properties) {
+                return i;
+            }
+        }
+
+        throw std::runtime_error("failed to find suitable memory type!");
+    }
+
     void createCommandBuffers(){
         commandBuffers.resize(swapChainFramebuffers.size());
         vk::CommandBufferAllocateInfo allocInfo(commandPool, vk::CommandBufferLevel::ePrimary, (uint32_t) commandBuffers.size());
@@ -443,7 +502,10 @@ private:
 
             commandBuffers[i].beginRenderPass(renderPassInfo, vk::SubpassContents::eInline);
                 commandBuffers[i].bindPipeline(vk::PipelineBindPoint::eGraphics, graphicsPipeline);
-                commandBuffers[i].draw(3, 1, 0, 0);
+                std::vector<vk::Buffer> vertexBuffers = {vertexBuffer};
+                std::vector<vk::DeviceSize> offsets = {0};
+                commandBuffers[i].bindVertexBuffers(0, vertexBuffers, offsets);
+                commandBuffers[i].draw(static_cast<uint32_t>(vertices.size()), 1, 0, 0);
             commandBuffers[i].endRenderPass();
 
             commandBuffers[i].end();
@@ -529,6 +591,7 @@ private:
 
     void cleanup(){
         cleanupSwapchain();
+        device.destroyBuffer(vertexBuffer);
         for (size_t i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
             device.destroySemaphore(imageAvailableSemaphores[i]);
             device.destroySemaphore(renderFinishedSemaphores[i]);
@@ -565,15 +628,6 @@ private:
         createCommandBuffers();
 
         imagesInFlight.resize(swapChainImages.size(), VK_NULL_HANDLE);
-    }
-
-    std::string loadShaderSource(const std::string &filename) {
-        std::ifstream input_file(SHADER_PATH + filename);
-        if (!input_file.is_open()) {
-            std::cerr << "Could not open the file - '" << filename << "'" << std::endl;
-            exit(EXIT_FAILURE);
-        }
-        return std::string((std::istreambuf_iterator<char>(input_file)), std::istreambuf_iterator<char>());
     }
 
     static void framebufferResizeCallback(GLFWwindow *window, int width, int height){
