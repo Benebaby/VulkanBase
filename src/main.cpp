@@ -333,7 +333,7 @@ private:
                 return availablePresentMode;
             }
         }
-        return vk::PresentModeKHR::eImmediate;
+        return vk::PresentModeKHR::eFifo;
     }
 
     vk::Extent2D chooseSwapExtent(const vk::SurfaceCapabilitiesKHR& capabilities) {
