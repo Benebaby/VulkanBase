@@ -574,7 +574,7 @@ private:
         uniformBufferAllocations.resize(swapChainImages.size());
 
         for (size_t i = 0; i < swapChainImages.size(); i++) {
-            createBuffer(uniformBuffers[i], uniformBufferAllocations[i], bufferSize, vk::BufferUsageFlagBits::eUniformBuffer, VMA_MEMORY_USAGE_CPU_ONLY);
+            createBuffer(uniformBuffers[i], uniformBufferAllocations[i], bufferSize, vk::BufferUsageFlagBits::eUniformBuffer, VMA_MEMORY_USAGE_CPU_TO_GPU);
         }
     }
 
@@ -663,6 +663,8 @@ private:
         vmaMapMemory(allocator, uniformBufferAllocations[currentImage], &mappedData);
             memcpy(mappedData, &ubo, (size_t) sizeof(ubo));
         vmaUnmapMemory(allocator, uniformBufferAllocations[currentImage]);
+
+        vmaFlushAllocation(allocator, uniformBufferAllocations[currentImage], 0, VK_WHOLE_SIZE);
     }
 
     void drawFrame(){
