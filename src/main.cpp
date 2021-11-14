@@ -112,6 +112,9 @@ private:
     vk::RenderPass renderPass;
     vk::PipelineLayout pipelineLayout;
     vk::DescriptorSetLayout descriptorSetLayout;
+
+    vk::ShaderModule vertShaderModule;
+    vk::ShaderModule fragShaderModule;
     vk::Pipeline graphicsPipeline;
 
     vk::CommandPool commandPool; 
@@ -159,6 +162,7 @@ private:
         createImageViews();
         createRenderPass();
         createDescriptorSetLayout();
+        readAndCompileShaders();
         createGraphicsPipeline();
         createFramebuffers();
         createCommandPool();
@@ -449,16 +453,18 @@ private:
         descriptorSetLayout = device.createDescriptorSetLayout(layoutInfo);
     }
 
-    void createGraphicsPipeline(){
+    void readAndCompileShaders() {
         glslang::InitializeProcess();
         std::vector<uint32_t> vertShaderCodeSPIRV;
         std::vector<uint32_t> fragShaderCodeSPIRV;
         SpirvHelper::GLSLtoSPV(vk::ShaderStageFlagBits::eVertex, "/shader.vert", vertShaderCodeSPIRV);
         SpirvHelper::GLSLtoSPV(vk::ShaderStageFlagBits::eFragment, "/shader.frag", fragShaderCodeSPIRV);
-        vk::ShaderModule vertShaderModule = createShaderModule(vertShaderCodeSPIRV);
-        vk::ShaderModule fragShaderModule = createShaderModule(fragShaderCodeSPIRV);
+        vertShaderModule = createShaderModule(vertShaderCodeSPIRV);
+        fragShaderModule = createShaderModule(fragShaderCodeSPIRV);
         glslang::FinalizeProcess();
+    }
 
+    void createGraphicsPipeline(){
         vk::PipelineShaderStageCreateInfo vertShaderStageInfo({}, vk::ShaderStageFlagBits::eVertex, vertShaderModule, "main");
         vk::PipelineShaderStageCreateInfo fragShaderStageInfo({}, vk::ShaderStageFlagBits::eFragment, fragShaderModule, "main");
 
@@ -488,9 +494,6 @@ private:
             case vk::Result::eSuccess: break;
             default: throw std::runtime_error("failed to create graphics Pipeline!");
         }
-
-        device.destroyShaderModule(fragShaderModule);
-        device.destroyShaderModule(vertShaderModule);
     }
     
     void createFramebuffers() {
@@ -880,6 +883,8 @@ private:
 
     void cleanup(){
         cleanupSwapchain();
+        device.destroyShaderModule(fragShaderModule);
+        device.destroyShaderModule(vertShaderModule);
         device.destroySampler(textureSampler);
         device.destroyImageView(textureImageView);
         vmaDestroyImage(allocator, textureImage, textureImageAllocation);
@@ -904,6 +909,7 @@ private:
     }
 
     void recreateSwapChain() {
+        double start = glfwGetTime();
         int width = 0, height = 0;
         glfwGetFramebufferSize(window, &width, &height);
         while (width == 0 || height == 0) {
@@ -925,6 +931,8 @@ private:
         createCommandBuffers();
 
         imagesInFlight.resize(swapChainImages.size(), VK_NULL_HANDLE);
+
+        std::cout << "Shader Recreation: " << (glfwGetTime() - start) << "s" << std::endl;
     }
 
     static void framebufferResizeCallback(GLFWwindow *window, int width, int height){
