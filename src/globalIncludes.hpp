@@ -1,7 +1,5 @@
 #pragma once
 
-#define VMA_IMPLEMENTATION
-
 #ifdef _WIN32
     #include <windows.h>
 #endif

@@ -1,7 +1,4 @@
 #define TINYGLTF_USE_CPP14
-#define TINYGLTF_IMPLEMENTATION
-#define STB_IMAGE_IMPLEMENTATION
-#define STB_IMAGE_WRITE_IMPLEMENTATION
 
 #include "globalDefs.hpp"
 #include "globalIncludes.hpp"
@@ -10,6 +7,8 @@
 
 #include <optional>
 #include <set>
+#include <stb_image.h>
+#include <stb_image_write.h>
 #include <tiny_gltf.h>
 #include <chrono>
 
