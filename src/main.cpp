@@ -1,26 +1,17 @@
-#define GLM_FORCE_RADIANS
-#define GLM_ENABLE_EXPERIMENTAL
-#define VK_ENABLE_BETA_EXTENSIONS
 #define TINYGLTF_USE_CPP14
 #define TINYGLTF_IMPLEMENTATION
 #define STB_IMAGE_IMPLEMENTATION
 #define STB_IMAGE_WRITE_IMPLEMENTATION
-#define VMA_IMPLEMENTATION
 
-#include <vulkan/vulkan.hpp>
-#include <GLFW/glfw3.h>
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <iostream>
-#include <optional>
-#include <set>
-#include <vk_mem_alloc.h>
-#include <tiny_gltf.h>
-#include <array>
-#include <chrono>
-
+#include "globalDefs.hpp"
+#include "globalIncludes.hpp"
 #include "SpirvHelper.h"
 #include "Utils.h"
+
+#include <optional>
+#include <set>
+#include <tiny_gltf.h>
+#include <chrono>
 
 const uint32_t WIDTH = 800;
 const uint32_t HEIGHT = 600;
@@ -188,16 +179,20 @@ private:
 
         vk::ApplicationInfo applicationInfo("VulkanBase", VK_MAKE_VERSION(0, 0 ,1), "VulkanEngine", 1, VK_API_VERSION_1_1);
 
-        if(enableValidation){
-            extensions.push_back(VK_EXT_DEBUG_UTILS_EXTENSION_NAME);
-            vk::StructureChain<vk::InstanceCreateInfo, vk::DebugUtilsMessengerCreateInfoEXT> instanceCreateInfoChain{
-                vk::InstanceCreateInfo(vk::InstanceCreateFlags(), &applicationInfo, validationLayers, extensions),
-                vk::DebugUtilsMessengerCreateInfoEXT({}, messageSeverityFlags, messageTypeFlags, debugCallback)
-            };
-            instance = vk::createInstance(instanceCreateInfoChain.get<vk::InstanceCreateInfo>());
-        }else{
-            vk::InstanceCreateInfo instanceCreateInfo(vk::InstanceCreateFlags(), &applicationInfo, {}, extensions);
-            instance = vk::createInstance(instanceCreateInfo);
+        try {
+            if(enableValidation){
+                extensions.push_back(VK_EXT_DEBUG_UTILS_EXTENSION_NAME);
+                vk::StructureChain<vk::InstanceCreateInfo, vk::DebugUtilsMessengerCreateInfoEXT> instanceCreateInfoChain{
+                    vk::InstanceCreateInfo(vk::InstanceCreateFlags(), &applicationInfo, validationLayers, extensions),
+                    vk::DebugUtilsMessengerCreateInfoEXT({}, messageSeverityFlags, messageTypeFlags, debugCallback)
+                };
+                instance = vk::createInstance(instanceCreateInfoChain.get<vk::InstanceCreateInfo>());
+            }else{
+                vk::InstanceCreateInfo instanceCreateInfo(vk::InstanceCreateFlags(), &applicationInfo, {}, extensions);
+                instance = vk::createInstance(instanceCreateInfo);
+            }
+        }catch(std::exception& e) {
+            std::cerr << "Exception Thrown: " << e.what();
         }
     }
 
@@ -211,7 +206,11 @@ private:
             throw std::runtime_error("GetInstanceProcAddr: Unable to find pfnVkDestroyDebugUtilsMessengerEXT function.");
         }
         vk::DebugUtilsMessengerCreateInfoEXT debugMessengerCreateInfo({}, messageSeverityFlags, messageTypeFlags, debugCallback);
-        debugMessenger = instance.createDebugUtilsMessengerEXT(debugMessengerCreateInfo, nullptr);
+        try{
+            debugMessenger = instance.createDebugUtilsMessengerEXT(debugMessengerCreateInfo, nullptr);
+        }catch(std::exception& e) {
+            std::cerr << "Exception Thrown: " << e.what();
+        }
     }
 
     bool checkValidationLayerSupport() {
@@ -232,11 +231,8 @@ private:
     }
 
     void createSurface() {
-        VkSurfaceKHR surfaceKHR;
-        if (glfwCreateWindowSurface(instance, window, nullptr, &surfaceKHR) != VK_SUCCESS) {
+        if (glfwCreateWindowSurface(instance, window, nullptr, reinterpret_cast<VkSurfaceKHR*>(&surface)) != VK_SUCCESS) {
             throw std::runtime_error("failed to create window surface!");
-        }else{
-            surface = vk::SurfaceKHR(surfaceKHR);
         }
     }
 
@@ -322,7 +318,11 @@ private:
         }else{
             createInfo = vk::DeviceCreateInfo({}, queueCreateInfos, {}, deviceExtensions, &deviceFeatures);
         }
-        device = physicalDevice.createDevice(createInfo);
+        try{
+            device = physicalDevice.createDevice(createInfo);
+        }catch(std::exception& e) {
+            std::cerr << "Exception Thrown: " << e.what();
+        }
         graphicsQueue = device.getQueue(indices.graphicsFamily.value(), 0);
         presentQueue = device.getQueue(indices.presentFamily.value(), 0);
     }
@@ -334,7 +334,8 @@ private:
         allocatorInfo.device = device;
         allocatorInfo.instance = instance;
         
-        vmaCreateAllocator(&allocatorInfo, &allocator);
+        if(vmaCreateAllocator(&allocatorInfo, &allocator) != VK_SUCCESS)
+            throw std::runtime_error("failed to create Allocator");
     }
 
     vk::SurfaceFormatKHR chooseSwapSurfaceFormat(const std::vector<vk::SurfaceFormatKHR>& availableFormats) {
@@ -415,8 +416,11 @@ private:
         createInfo.presentMode = presentMode;
         createInfo.clipped = VK_TRUE;
         createInfo.oldSwapchain = VK_NULL_HANDLE;
-
-        swapChain = device.createSwapchainKHR(createInfo);
+        try{
+            swapChain = device.createSwapchainKHR(createInfo);
+        }catch(std::exception& e) {
+            std::cerr << "Exception Thrown: " << e.what();
+        }
         swapChainImages = device.getSwapchainImagesKHR(swapChain);
         swapChainImageFormat = surfaceFormat.format;
         swapChainExtent = extent;
@@ -431,7 +435,12 @@ private:
 
     vk::ShaderModule createShaderModule(const std::vector<uint32_t> code) {
         vk::ShaderModuleCreateInfo createInfo({}, code);
-        vk::ShaderModule shaderModule = device.createShaderModule(createInfo);
+        vk::ShaderModule shaderModule;
+        try{
+            shaderModule = device.createShaderModule(createInfo);
+        }catch(std::exception& e) {
+            std::cerr << "Exception Thrown: " << e.what();
+        }
         return shaderModule;
     }
 
@@ -440,7 +449,11 @@ private:
         vk::AttachmentReference colorAttachmentRef({}, vk::ImageLayout::eColorAttachmentOptimal);
         vk::SubpassDescription subpass({}, vk::PipelineBindPoint::eGraphics, {}, colorAttachmentRef);
         vk::RenderPassCreateInfo renderPassInfo({}, colorAttachment, subpass);
-        renderPass = device.createRenderPass(renderPassInfo);
+        try{
+            renderPass = device.createRenderPass(renderPassInfo);
+        }catch(std::exception& e) {
+            std::cerr << "Exception Thrown: " << e.what();
+        }
     }
 
     void createDescriptorSetLayout() {
@@ -450,7 +463,11 @@ private:
         std::array<vk::DescriptorSetLayoutBinding, 2> bindings = {uboLayoutBinding, samplerLayoutBinding};
         vk::DescriptorSetLayoutCreateInfo layoutInfo({}, bindings);
 
-        descriptorSetLayout = device.createDescriptorSetLayout(layoutInfo);
+        try{
+            descriptorSetLayout = device.createDescriptorSetLayout(layoutInfo);
+        }catch(std::exception& e) {
+            std::cerr << "Exception Thrown: " << e.what();
+        }
     }
 
     void readAndCompileShaders() {
@@ -459,8 +476,12 @@ private:
         std::vector<uint32_t> fragShaderCodeSPIRV;
         SpirvHelper::GLSLtoSPV(vk::ShaderStageFlagBits::eVertex, "/shader.vert", vertShaderCodeSPIRV);
         SpirvHelper::GLSLtoSPV(vk::ShaderStageFlagBits::eFragment, "/shader.frag", fragShaderCodeSPIRV);
-        vertShaderModule = createShaderModule(vertShaderCodeSPIRV);
-        fragShaderModule = createShaderModule(fragShaderCodeSPIRV);
+        try{
+            vertShaderModule = createShaderModule(vertShaderCodeSPIRV);
+            fragShaderModule = createShaderModule(fragShaderCodeSPIRV);
+        }catch(std::exception& e) {
+            std::cerr << "Exception Thrown: " << e.what();
+        }
         glslang::FinalizeProcess();
     }
 
@@ -484,7 +505,11 @@ private:
         vk::PipelineColorBlendStateCreateInfo colorBlending({},VK_FALSE, vk::LogicOp::eCopy, colorBlendAttachment);
         vk::PipelineLayoutCreateInfo pipelineLayoutInfo({} ,1 , &descriptorSetLayout);
 
-        pipelineLayout = device.createPipelineLayout(pipelineLayoutInfo);
+        try{
+            pipelineLayout = device.createPipelineLayout(pipelineLayoutInfo);
+        }catch(std::exception& e) {
+            std::cerr << "Exception Thrown: " << e.what();
+        }
 
         vk::GraphicsPipelineCreateInfo pipelineInfo({}, shaderStages, &vertexInputInfo, &inputAssembly, {}, &viewportState, &rasterizer, &multisampling, {}, &colorBlending, {}, pipelineLayout, renderPass);
         
@@ -501,14 +526,22 @@ private:
         for (size_t i = 0; i < swapChainImageViews.size(); i++) {
             std::vector<vk::ImageView> attachments = {swapChainImageViews[i]};
             vk::FramebufferCreateInfo framebufferInfo({}, renderPass, attachments, swapChainExtent.width, swapChainExtent.height, 1);
-            swapChainFramebuffers[i] = device.createFramebuffer(framebufferInfo);
+            try{
+                swapChainFramebuffers[i] = device.createFramebuffer(framebufferInfo);
+            }catch(std::exception& e) {
+                std::cerr << "Exception Thrown: " << e.what();
+            }
         }
     }
 
     void createCommandPool() {
         QueueFamilyIndices queueFamilyIndices = findQueueFamilies(physicalDevice);
         vk::CommandPoolCreateInfo poolInfo({}, queueFamilyIndices.graphicsFamily.value());
-        commandPool = device.createCommandPool(poolInfo);
+        try{
+            commandPool = device.createCommandPool(poolInfo);
+        }catch(std::exception& e) {
+            std::cerr << "Exception Thrown: " << e.what();
+        }
     }
 
     void createTextureImage() {
@@ -565,14 +598,21 @@ private:
             vk::BorderColor::eIntOpaqueBlack, 
             VK_FALSE 
         );
-        
-        textureSampler = device.createSampler(samplerInfo);
+        try{
+            textureSampler = device.createSampler(samplerInfo);
+        }catch(std::exception& e) {
+            std::cerr << "Exception Thrown: " << e.what();
+        }
     }
 
     vk::ImageView createImageView(vk::Image image, vk::Format format) {
         vk::ImageViewCreateInfo viewInfo({}, image, vk::ImageViewType::e2D, format, {}, vk::ImageSubresourceRange( vk::ImageAspectFlagBits::eColor, 0, 1, 0, 1));
-
-        vk::ImageView imageView = device.createImageView(viewInfo);
+        vk::ImageView imageView;
+        try{
+            imageView = device.createImageView(viewInfo);
+        }catch(std::exception& e) {
+            std::cerr << "Exception Thrown: " << e.what();
+        }
         return imageView;
     }
 
@@ -580,8 +620,7 @@ private:
         vk::ImageCreateInfo imageInfo({}, vk::ImageType::e2D, format, vk::Extent3D{{width, height}, 1}, 1, 1, vk::SampleCountFlagBits::e1, tiling, imageUsage, vk::SharingMode::eExclusive, {}, {}, vk::ImageLayout::eUndefined);
         VmaAllocationCreateInfo allocInfoImage = {};
         allocInfoImage.usage = memoryUsage;
-        VkResult result = vmaCreateImage(allocator, reinterpret_cast<VkImageCreateInfo*>(&imageInfo), &allocInfoImage, reinterpret_cast<VkImage*>(&image), &imageAllocation, nullptr);
-        if(result != VK_SUCCESS)
+        if(vmaCreateImage(allocator, reinterpret_cast<VkImageCreateInfo*>(&imageInfo), &allocInfoImage, reinterpret_cast<VkImage*>(&image), &imageAllocation, nullptr) != VK_SUCCESS)
             throw std::runtime_error("failed to create image!");
     }
 
@@ -625,15 +664,29 @@ private:
 
     vk::CommandBuffer beginSingleTimeCommands() {
         vk::CommandBufferAllocateInfo allocInfo(commandPool, vk::CommandBufferLevel::ePrimary, 1);
-        vk::CommandBuffer commandBuffer = device.allocateCommandBuffers(allocInfo)[0];
+        vk::CommandBuffer commandBuffer;
+        try{
+            commandBuffer = device.allocateCommandBuffers(allocInfo)[0];
+        }catch(std::exception& e) {
+            std::cerr << "Exception Thrown: " << e.what();
+        }
+
         vk::CommandBufferBeginInfo beginInfo(vk::CommandBufferUsageFlagBits::eOneTimeSubmit);
 
-        commandBuffer.begin(beginInfo);
+        try{
+            commandBuffer.begin(beginInfo);
+        }catch(std::exception& e) {
+            std::cerr << "Exception Thrown: " << e.what();
+        }
         return commandBuffer;
     }
 
     void endSingleTimeCommands(vk::CommandBuffer commandBuffer) {
-        commandBuffer.end();
+        try{
+            commandBuffer.end();
+        }catch(std::exception& e) {
+            std::cerr << "Exception Thrown: " << e.what();
+        }
 
         vk::SubmitInfo submitInfoCopy({}, {}, commandBuffer, {});
         graphicsQueue.submit(submitInfoCopy, {});
@@ -645,27 +698,17 @@ private:
         vk::BufferCreateInfo bufferInfoStaging({}, size, bufferUsage);
         VmaAllocationCreateInfo allocInfoStaging = {};
         allocInfoStaging.usage = memoryUsage;
-        VkResult result = vmaCreateBuffer(allocator, reinterpret_cast<VkBufferCreateInfo*>(&bufferInfoStaging), &allocInfoStaging, reinterpret_cast<VkBuffer*>(&buffer), &allocation, nullptr);
-        if(result != VK_SUCCESS)
+        if(vmaCreateBuffer(allocator, reinterpret_cast<VkBufferCreateInfo*>(&bufferInfoStaging), &allocInfoStaging, reinterpret_cast<VkBuffer*>(&buffer), &allocation, nullptr) != VK_SUCCESS)
             throw std::runtime_error("failed to create buffer!");
     }
 
     void copyBuffer(vk::Buffer srcBuffer, vk::Buffer dstBuffer, vk::DeviceSize size) {
-        //transfer staging buffer data into vertexbuffer
-        vk::CommandBufferAllocateInfo allocInfo(commandPool, vk::CommandBufferLevel::ePrimary, 1);
-        vk::CommandBuffer CommandBuffer = device.allocateCommandBuffers(allocInfo)[0];
-        vk::CommandBufferBeginInfo beginInfo(vk::CommandBufferUsageFlagBits::eOneTimeSubmit);
+        vk::CommandBuffer commandBuffer = beginSingleTimeCommands();
 
-        CommandBuffer.begin(beginInfo);
-            vk::BufferCopy copyRegion(0, 0, size);
-            CommandBuffer.copyBuffer(srcBuffer, dstBuffer, 1, &copyRegion);
-        CommandBuffer.end();
+        vk::BufferCopy copyRegion(0, 0, size);
+        commandBuffer.copyBuffer(srcBuffer, dstBuffer, 1, &copyRegion);
 
-        //submit transfer command buffer
-        vk::SubmitInfo submitInfoCopy({}, {}, CommandBuffer, {});
-        graphicsQueue.submit(submitInfoCopy, {});
-        graphicsQueue.waitIdle();
-        device.freeCommandBuffers(commandPool, 1, &CommandBuffer);
+        endSingleTimeCommands(commandBuffer);
     }
 
     void createVertexBuffer(){
@@ -729,16 +772,22 @@ private:
         std::array<vk::DescriptorPoolSize, 2> poolSizes{poolSizeUbo, poolSizeSampler};
 
         vk::DescriptorPoolCreateInfo poolInfo({}, static_cast<uint32_t>(swapChainImages.size()), poolSizes);
-
-        descriptorPool = device.createDescriptorPool(poolInfo);
+        try{
+            descriptorPool = device.createDescriptorPool(poolInfo);
+        }catch(std::exception& e) {
+            std::cerr << "Exception Thrown: " << e.what();
+        }
     }
 
     void createDescriptorSets() {
         std::vector<vk::DescriptorSetLayout> layouts(swapChainImages.size(), descriptorSetLayout);
         vk::DescriptorSetAllocateInfo allocInfo(descriptorPool, static_cast<uint32_t>(swapChainImages.size()), layouts.data());
         descriptorSets.resize(swapChainImages.size());
-
-        descriptorSets = device.allocateDescriptorSets(allocInfo);
+        try{
+            descriptorSets = device.allocateDescriptorSets(allocInfo);
+        }catch(std::exception& e) {
+            std::cerr << "Exception Thrown: " << e.what();
+        }
 
         for (size_t i = 0; i < swapChainImages.size(); i++) {
 
@@ -756,11 +805,19 @@ private:
     void createCommandBuffers(){
         commandBuffers.resize(swapChainFramebuffers.size());
         vk::CommandBufferAllocateInfo allocInfo(commandPool, vk::CommandBufferLevel::ePrimary, (uint32_t) commandBuffers.size());
-        commandBuffers = device.allocateCommandBuffers(allocInfo);
+        try{
+            commandBuffers = device.allocateCommandBuffers(allocInfo);
+        }catch(std::exception& e) {
+            std::cerr << "Exception Thrown: " << e.what();
+        }
 
         for (size_t i = 0; i < commandBuffers.size(); i++) {
             vk::CommandBufferBeginInfo beginInfo;
-            commandBuffers[i].begin(beginInfo);
+            try{
+                commandBuffers[i].begin(beginInfo);
+            }catch(std::exception& e) {
+                std::cerr << "Exception Thrown: " << e.what();
+            }
             std::vector<vk::ClearValue> clearValues = {vk::ClearColorValue(std::array<float, 4>{0.0f, 0.0f, 0.0f, 1.0f})};
             vk::RenderPassBeginInfo renderPassInfo(renderPass, swapChainFramebuffers[i], vk::Rect2D({0, 0}, swapChainExtent), clearValues);
 
@@ -773,8 +830,11 @@ private:
                 commandBuffers[i].bindDescriptorSets(vk::PipelineBindPoint::eGraphics, pipelineLayout, 0, 1, &descriptorSets[i], 0, nullptr);
                 commandBuffers[i].drawIndexed(static_cast<uint32_t>(indices.size()), 1, 0, 0, 0);
             commandBuffers[i].endRenderPass();
-
-            commandBuffers[i].end();
+            try{
+                commandBuffers[i].end();
+            }catch(std::exception& e) {
+                std::cerr << "Exception Thrown: " << e.what();
+            }
         }
     }
 
@@ -786,9 +846,13 @@ private:
         vk::SemaphoreCreateInfo semaphoreInfo;
         vk::FenceCreateInfo fenceInfo(vk::FenceCreateFlagBits::eSignaled);
         for (size_t i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
-            imageAvailableSemaphores[i] = device.createSemaphore(semaphoreInfo);
-            renderFinishedSemaphores[i] = device.createSemaphore(semaphoreInfo);
-            inFlightFences[i] = device.createFence(fenceInfo);
+            try{
+                imageAvailableSemaphores[i] = device.createSemaphore(semaphoreInfo);
+                renderFinishedSemaphores[i] = device.createSemaphore(semaphoreInfo);
+                inFlightFences[i] = device.createFence(fenceInfo);
+            }catch(std::exception& e) {
+                std::cerr << "Exception Thrown: " << e.what();
+            }
         }
     }
 
@@ -873,11 +937,9 @@ private:
             device.destroyImageView(imageView);
         }
         device.destroySwapchainKHR(swapChain);
-
         for (size_t i = 0; i < swapChainImages.size(); i++) {
             vmaDestroyBuffer(allocator, uniformBuffers[i], uniformBufferAllocations[i]);
         }
-
         device.destroyDescriptorPool(descriptorPool);
     }
 
