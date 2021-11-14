@@ -804,9 +804,8 @@ private:
         void* mappedData;
         vmaMapMemory(allocator, uniformBufferAllocations[currentImage], &mappedData);
             memcpy(mappedData, &ubo, (size_t) sizeof(ubo));
+            vmaFlushAllocation(allocator, uniformBufferAllocations[currentImage], 0, (size_t) sizeof(ubo));
         vmaUnmapMemory(allocator, uniformBufferAllocations[currentImage]);
-
-        vmaFlushAllocation(allocator, uniformBufferAllocations[currentImage], 0, VK_WHOLE_SIZE);
     }
 
     void drawFrame(){
