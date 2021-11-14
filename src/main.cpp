@@ -12,8 +12,8 @@
 #include <tiny_gltf.h>
 #include <chrono>
 
-const uint32_t WIDTH = 800;
-const uint32_t HEIGHT = 600;
+const uint32_t WIDTH = 1600;
+const uint32_t HEIGHT = 900;
 const int MAX_FRAMES_IN_FLIGHT = 2;
 const std::vector<const char*> validationLayers = {"VK_LAYER_KHRONOS_validation"};
 std::vector<const char*> deviceExtensions = {VK_KHR_SWAPCHAIN_EXTENSION_NAME};
@@ -35,6 +35,7 @@ struct SwapChainSupportDetails {
 struct Vertex {
     glm::vec3 pos;
     glm::vec3 color;
+    glm::vec3 normal;
     glm::vec2 texCoord;
 
     static std::array<vk::VertexInputBindingDescription, 1> getBindingDescription() {
@@ -43,31 +44,57 @@ struct Vertex {
         };
         return bindingDescriptions;
     }
-    static std::array<vk::VertexInputAttributeDescription, 3> getAttributeDescriptions() {
-        std::array<vk::VertexInputAttributeDescription, 3> attributeDescriptions{
+    static std::array<vk::VertexInputAttributeDescription, 4> getAttributeDescriptions() {
+        std::array<vk::VertexInputAttributeDescription, 4> attributeDescriptions{
             vk::VertexInputAttributeDescription(0, 0, vk::Format::eR32G32B32Sfloat, offsetof(Vertex, pos)),
             vk::VertexInputAttributeDescription(1, 0, vk::Format::eR32G32B32Sfloat, offsetof(Vertex, color)),
-            vk::VertexInputAttributeDescription(2, 0, vk::Format::eR32G32Sfloat, offsetof(Vertex, texCoord))
+            vk::VertexInputAttributeDescription(2, 0, vk::Format::eR32G32B32Sfloat, offsetof(Vertex, normal)),
+            vk::VertexInputAttributeDescription(3, 0, vk::Format::eR32G32Sfloat, offsetof(Vertex, texCoord))
         };
         return attributeDescriptions;
     }
 };
 
 const std::vector<Vertex> vertices = {
-    {{-0.5f, -0.5f, 0.0f}, {1.0f, 0.0f, 0.0f}, {0.0f, 0.0f}},
-    {{0.5f, -0.5f, 0.0f}, {0.0f, 1.0f, 0.0f}, {1.0f, 0.0f}},
-    {{0.5f, 0.5f, 0.0f}, {0.0f, 0.0f, 1.0f}, {1.0f, 1.0f}},
-    {{-0.5f, 0.5f, 0.0f}, {1.0f, 1.0f, 1.0f}, {0.0f, 1.0f}},
+     //Position            //Color            //Normal              //UV
+    {{-0.5f,  0.5f,  0.5f},{1.0f, 0.0f, 0.0f},{ 0.0f,  0.0f,  1.0f},{0.0f, 0.0f}},
+    {{-0.5f, -0.5f,  0.5f},{0.0f, 1.0f, 0.0f},{ 0.0f,  0.0f,  1.0f},{1.0f, 0.0f}},
+    {{ 0.5f, -0.5f,  0.5f},{0.0f, 0.0f, 1.0f},{ 0.0f,  0.0f,  1.0f},{1.0f, 1.0f}},
+    {{ 0.5f,  0.5f,  0.5f},{1.0f, 1.0f, 1.0f},{ 0.0f,  0.0f,  1.0f},{0.0f, 1.0f}},
 
-    {{-0.5f, -0.5f, -0.5f}, {1.0f, 0.0f, 0.0f}, {0.0f, 0.0f}},
-    {{0.5f, -0.5f, -0.5f}, {0.0f, 1.0f, 0.0f}, {1.0f, 0.0f}},
-    {{0.5f, 0.5f, -0.5f}, {0.0f, 0.0f, 1.0f}, {1.0f, 1.0f}},
-    {{-0.5f, 0.5f, -0.5f}, {1.0f, 1.0f, 1.0f}, {0.0f, 1.0f}}
+    {{-0.5f,  0.5f, -0.5f},{1.0f, 0.0f, 0.0f},{-1.0f,  0.0f,  0.0f},{0.0f, 0.0f}},
+    {{-0.5f, -0.5f, -0.5f},{0.0f, 1.0f, 0.0f},{-1.0f,  0.0f,  0.0f},{1.0f, 0.0f}},
+    {{-0.5f, -0.5f,  0.5f},{0.0f, 0.0f, 1.0f},{-1.0f,  0.0f,  0.0f},{1.0f, 1.0f}},
+    {{-0.5f,  0.5f,  0.5f},{1.0f, 1.0f, 1.0f},{-1.0f,  0.0f,  0.0f},{0.0f, 1.0f}},
+
+    {{ 0.5f,  0.5f,  0.5f},{1.0f, 0.0f, 0.0f},{ 1.0f,  0.0f,  0.0f},{0.0f, 0.0f}},
+    {{ 0.5f, -0.5f,  0.5f},{0.0f, 1.0f, 0.0f},{ 1.0f,  0.0f,  0.0f},{1.0f, 0.0f}},
+    {{ 0.5f, -0.5f, -0.5f},{0.0f, 0.0f, 1.0f},{ 1.0f,  0.0f,  0.0f},{1.0f, 1.0f}},
+    {{ 0.5f,  0.5f, -0.5f},{1.0f, 1.0f, 1.0f},{ 1.0f,  0.0f,  0.0f},{0.0f, 1.0f}},
+
+    {{-0.5f,  0.5f, -0.5f},{1.0f, 0.0f, 0.0f},{ 0.0f,  1.0f,  0.0f},{0.0f, 0.0f}},
+    {{-0.5f,  0.5f,  0.5f},{0.0f, 1.0f, 0.0f},{ 0.0f,  1.0f,  0.0f},{1.0f, 0.0f}},
+    {{ 0.5f,  0.5f,  0.5f},{0.0f, 0.0f, 1.0f},{ 0.0f,  1.0f,  0.0f},{1.0f, 1.0f}},
+    {{ 0.5f,  0.5f, -0.5f},{1.0f, 1.0f, 1.0f},{ 0.0f,  1.0f,  0.0f},{0.0f, 1.0f}},
+
+    {{-0.5f, -0.5f,  0.5f},{1.0f, 0.0f, 0.0f},{ 0.0f, -1.0f,  0.0f},{0.0f, 0.0f}},
+    {{-0.5f, -0.5f, -0.5f},{0.0f, 1.0f, 0.0f},{ 0.0f, -1.0f,  0.0f},{1.0f, 0.0f}},
+    {{ 0.5f, -0.5f, -0.5f},{0.0f, 0.0f, 1.0f},{ 0.0f, -1.0f,  0.0f},{1.0f, 1.0f}},
+    {{ 0.5f, -0.5f,  0.5f},{1.0f, 1.0f, 1.0f},{ 0.0f, -1.0f,  0.0f},{0.0f, 1.0f}},
+
+    {{ 0.5f,  0.5f, -0.5f},{1.0f, 0.0f, 0.0f},{ 0.0f,  0.0f, -1.0f},{0.0f, 0.0f}},
+    {{ 0.5f, -0.5f, -0.5f},{0.0f, 1.0f, 0.0f},{ 0.0f,  0.0f, -1.0f},{1.0f, 0.0f}},
+    {{-0.5f, -0.5f, -0.5f},{0.0f, 0.0f, 1.0f},{ 0.0f,  0.0f, -1.0f},{1.0f, 1.0f}},
+    {{-0.5f,  0.5f, -0.5f},{1.0f, 1.0f, 1.0f},{ 0.0f,  0.0f, -1.0f},{0.0f, 1.0f}}
 };
 
 const std::vector<uint32_t> indices = {
-    0, 1, 2, 2, 3, 0,
-    4, 5, 6, 6, 7, 4
+    0 ,	 1 , 2 ,  0 , 2 , 3 ,
+    4 ,	 5 , 6 ,  4 , 6 , 7 ,
+    8 ,  9 , 10,  8 , 10, 11,
+    12,  13, 14,  12, 14, 15,
+    16,  17, 18,  16, 18, 19,
+    20,  21, 22,  20, 22, 23
 };
 
 struct UniformBufferObject {
