@@ -909,7 +909,6 @@ private:
     }
 
     void recreateSwapChain() {
-        double start = glfwGetTime();
         int width = 0, height = 0;
         glfwGetFramebufferSize(window, &width, &height);
         while (width == 0 || height == 0) {
@@ -931,8 +930,6 @@ private:
         createCommandBuffers();
 
         imagesInFlight.resize(swapChainImages.size(), VK_NULL_HANDLE);
-
-        std::cout << "Shader Recreation: " << (glfwGetTime() - start) << "s" << std::endl;
     }
 
     static void framebufferResizeCallback(GLFWwindow *window, int width, int height){
