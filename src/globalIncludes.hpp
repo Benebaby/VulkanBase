@@ -1,6 +1,10 @@
+#pragma once
 
 #define VMA_IMPLEMENTATION
 
+#ifdef _WIN32
+    #include <windows.h>
+#endif
 #include <vulkan/vulkan.hpp>
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
