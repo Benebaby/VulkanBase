@@ -7,7 +7,7 @@ class Buffer
 {
 private:
     vk::DeviceSize m_size;
-    vk::Buffer m_buffer;
+    vk::Buffer m_handle;
     VmaAllocation m_allocation;
 
     void* m_mappedData = (void*) nullptr;
@@ -24,6 +24,7 @@ public:
 
     void map();
     void unmap();
+    void flush();
 
     void copyFrom(Buffer* src);
     void copyTo(void* data);

@@ -34,9 +34,9 @@ struct SwapChainSupportDetails {
 };
 
 struct Vertex {
-    glm::vec2 pos;
+    glm::vec3 position;
     glm::vec3 color;
-    glm::vec2 texCoord;
+    glm::vec2 uv;
 
     static std::array<vk::VertexInputBindingDescription, 1> getBindingDescription() {
         std::array<vk::VertexInputBindingDescription, 1> bindingDescriptions = {
@@ -46,19 +46,19 @@ struct Vertex {
     }
     static std::array<vk::VertexInputAttributeDescription, 3> getAttributeDescriptions() {
         std::array<vk::VertexInputAttributeDescription, 3> attributeDescriptions{
-            vk::VertexInputAttributeDescription(0, 0, vk::Format::eR32G32Sfloat, offsetof(Vertex, pos)),
+            vk::VertexInputAttributeDescription(0, 0, vk::Format::eR32G32B32Sfloat, offsetof(Vertex, position)),
             vk::VertexInputAttributeDescription(1, 0, vk::Format::eR32G32B32Sfloat, offsetof(Vertex, color)),
-            vk::VertexInputAttributeDescription(2, 0, vk::Format::eR32G32Sfloat, offsetof(Vertex, texCoord))
+            vk::VertexInputAttributeDescription(2, 0, vk::Format::eR32G32Sfloat, offsetof(Vertex, uv))
         };
         return attributeDescriptions;
     }
 };
 
 std::vector<Vertex> vertices = {
-    {{-0.5f, -0.5f}, {1.0f, 0.0f, 0.0f}, {1.0f, 0.0f}},
-    {{0.5f, -0.5f}, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f}},
-    {{0.5f, 0.5f}, {0.0f, 0.0f, 1.0f}, {0.0f, 1.0f}},
-    {{-0.5f, 0.5f}, {1.0f, 1.0f, 1.0f}, {1.0f, 1.0f}}
+    {{-0.5f, -0.5f, 0.0f}, {1.0f, 0.0f, 0.0f}, {1.0f, 0.0f}},
+    {{0.5f, -0.5f, 0.0f}, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f}},
+    {{0.5f, 0.5f, 0.0f}, {0.0f, 0.0f, 1.0f}, {0.0f, 1.0f}},
+    {{-0.5f, 0.5f, 0.0f}, {1.0f, 1.0f, 1.0f}, {1.0f, 1.0f}}
 };
 
 std::vector<uint32_t> indices = {
@@ -560,7 +560,7 @@ private:
         stagingBuffer.unmap();
 
         stbi_image_free(pixels);
-
+        
         createImage(textureImage, textureImageAllocation, vk::ImageUsageFlagBits::eTransferDst | vk::ImageUsageFlagBits::eSampled, VMA_MEMORY_USAGE_GPU_ONLY, texWidth, texHeight, vk::Format::eR8G8B8A8Srgb, vk::ImageTiling::eOptimal);
 
         transitionImageLayout(textureImage, vk::Format::eR8G8B8A8Srgb, vk::ImageLayout::eUndefined, vk::ImageLayout::eTransferDstOptimal);
@@ -823,11 +823,11 @@ private:
         ubo.proj = glm::perspective(glm::radians(45.0f), swapChainExtent.width / (float) swapChainExtent.height, 0.1f, 10.0f);
         ubo.proj[1][1] *= -1;
         
-        void* mappedData;
-        vmaMapMemory(allocator, *uniformBuffers[currentImage]->getAllocation(), &mappedData);
-            memcpy(mappedData, &ubo, (size_t) sizeof(ubo));
-            vmaFlushAllocation(allocator, *uniformBuffers[currentImage]->getAllocation(), 0, (size_t) sizeof(ubo));
-        vmaUnmapMemory(allocator,  *uniformBuffers[currentImage]->getAllocation());
+
+        uniformBuffers[currentImage]->map();
+        uniformBuffers[currentImage]->copyTo(&ubo);
+        uniformBuffers[currentImage]->flush();
+        uniformBuffers[currentImage]->unmap();
     }
 
     void drawFrame(){
@@ -906,10 +906,10 @@ private:
         device.destroyImageView(textureImageView);
         vmaDestroyImage(allocator, textureImage, textureImageAllocation);
         device.destroyDescriptorSetLayout(descriptorSetLayout);
-        //vmaDestroyBuffer(allocator, indexBuffer, indexBufferAllocation);
+        
         delete indexBuffer;
-        //vmaDestroyBuffer(allocator, vertexBuffer, vertexBufferAllocation);
         delete vertexBuffer;
+
         for (size_t i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
             device.destroySemaphore(imageAvailableSemaphores[i]);
             device.destroySemaphore(renderFinishedSemaphores[i]);

@@ -20,7 +20,7 @@ Buffer::Buffer(vk::DeviceSize size, vk::BufferUsageFlags bufferUsage, VmaMemoryU
     vk::BufferCreateInfo bufferInfoStaging({}, m_size, bufferUsage);
     VmaAllocationCreateInfo allocInfoStaging = {};
     allocInfoStaging.usage = memoryUsage;
-    vmaCreateBuffer(*Buffer::allocator, reinterpret_cast<VkBufferCreateInfo*>(&bufferInfoStaging), &allocInfoStaging, reinterpret_cast<VkBuffer*>(&m_buffer), &m_allocation, nullptr);
+    vmaCreateBuffer(*Buffer::allocator, reinterpret_cast<VkBufferCreateInfo*>(&bufferInfoStaging), &allocInfoStaging, reinterpret_cast<VkBuffer*>(&m_handle), &m_allocation, nullptr);
 }
 
 Buffer::Buffer(Buffer* src, vk::BufferUsageFlags bufferUsage, VmaMemoryUsage memoryUsage)
@@ -29,30 +29,40 @@ Buffer::Buffer(Buffer* src, vk::BufferUsageFlags bufferUsage, VmaMemoryUsage mem
     vk::BufferCreateInfo bufferInfoStaging({}, m_size, bufferUsage);
     VmaAllocationCreateInfo allocInfoStaging = {};
     allocInfoStaging.usage = memoryUsage;
-    vmaCreateBuffer(*Buffer::allocator, reinterpret_cast<VkBufferCreateInfo*>(&bufferInfoStaging), &allocInfoStaging, reinterpret_cast<VkBuffer*>(&m_buffer), &m_allocation, nullptr);
+    vmaCreateBuffer(*Buffer::allocator, reinterpret_cast<VkBufferCreateInfo*>(&bufferInfoStaging), &allocInfoStaging, reinterpret_cast<VkBuffer*>(&m_handle), &m_allocation, nullptr);
     copyFrom(src);
 }
 
 Buffer::~Buffer()
 {
-    vmaDestroyBuffer(*Buffer::allocator, m_buffer, m_allocation);
+    vmaDestroyBuffer(*Buffer::allocator, m_handle, m_allocation);
 }
 
-vk::Buffer Buffer::getHandle(){
-    return m_buffer;
+vk::Buffer Buffer::getHandle()
+{
+    return m_handle;
 }
 
-vk::DeviceSize Buffer::getSize(){
+vk::DeviceSize Buffer::getSize()
+{
     return m_size;
 };
 
-void Buffer::map(){
+void Buffer::map()
+{
    vmaMapMemory(*Buffer::allocator, m_allocation, &m_mappedData);
 }
-void Buffer::copyTo(void* data){
+void Buffer::copyTo(void* data)
+{
     memcpy(m_mappedData, data, (size_t) m_size);
 }
-void Buffer::unmap(){
+void Buffer::flush()
+{
+    vmaFlushAllocation(*Buffer::allocator, m_allocation, 0, (size_t) m_size);
+}
+
+void Buffer::unmap()
+{
     vmaUnmapMemory(*Buffer::allocator, m_allocation);
 }
 
@@ -64,7 +74,7 @@ void Buffer::copyFrom(Buffer* src)
 
     CommandBuffer.begin(beginInfo);
     vk::BufferCopy copyRegion(0, 0, src->getSize());
-    CommandBuffer.copyBuffer(src->getHandle(), m_buffer, 1, &copyRegion);
+    CommandBuffer.copyBuffer(src->getHandle(), m_handle, 1, &copyRegion);
     CommandBuffer.end();
 
     vk::SubmitInfo submitInfoCopy({}, {}, CommandBuffer, {});
@@ -73,6 +83,7 @@ void Buffer::copyFrom(Buffer* src)
     Buffer::device->freeCommandBuffers(*Buffer::commandPool, 1, &CommandBuffer);
 }
 
-VmaAllocation* Buffer::getAllocation(){
+VmaAllocation* Buffer::getAllocation()
+{
     return &m_allocation;
 }
