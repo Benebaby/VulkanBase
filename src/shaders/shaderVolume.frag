@@ -36,28 +36,44 @@ Ray calculateRay(vec2 offset) {
 bool intersect(in Ray r, in AABBox box, out float tmin, out float tmax) { 
     float tymin, tymax, tzmin, tzmax, t; 
     vec3 invDir = (1.0 / r.direction);
-    tmin = (box.bounds[(invDir.x < 0)?1:0].x - r.origin.x) * invDir.x; 
-    tmax = (box.bounds[(invDir.x < 0)?0:1].x - r.origin.x) * invDir.x; 
-    tymin = (box.bounds[(invDir.y < 0)?1:0].y - r.origin.y) * invDir.y; 
-    tymax = (box.bounds[(invDir.y < 0)?0:1].y - r.origin.y) * invDir.y; 
+    if(invDir.x < 0){
+        tmin = (box.bounds[1].x - r.origin.x) * invDir.x;
+        tmax = (box.bounds[0].x - r.origin.x) * invDir.x; 
+    }else{
+        tmin = (box.bounds[0].x - r.origin.x) * invDir.x;
+        tmax = (box.bounds[1].x - r.origin.x) * invDir.x; 
+    }
+    if(invDir.y < 0){
+        tymin = (box.bounds[1].y - r.origin.y) * invDir.y; 
+        tymax = (box.bounds[0].y - r.origin.y) * invDir.y; 
+    }else{
+        tymin = (box.bounds[0].y - r.origin.y) * invDir.y; 
+        tymax = (box.bounds[1].y - r.origin.y) * invDir.y;
+    }
     if ((tmin > tymax) || (tymin > tmax)) 
         return false; 
     if (tymin > tmin) 
-    tmin = tymin; 
+        tmin = tymin; 
     if (tymax < tmax) 
-    tmax = tymax; 
-    tzmin = (box.bounds[(invDir.z < 0)?1:0].z - r.origin.z) * invDir.z; 
-    tzmax = (box.bounds[(invDir.z < 0)?0:1].z - r.origin.z) * invDir.z; 
+        tmax = tymax; 
+    if(invDir.z < 0){
+        tzmin = (box.bounds[1].z - r.origin.z) * invDir.z; 
+        tzmax = (box.bounds[0].z - r.origin.z) * invDir.z; 
+    }else{
+        tzmin = (box.bounds[0].z - r.origin.z) * invDir.z; 
+        tzmax = (box.bounds[1].z - r.origin.z) * invDir.z;
+    }
     if ((tmin > tzmax) || (tzmin > tmax)) 
         return false; 
     if (tzmin > tmin) 
-    tmin = tzmin; 
+        tmin = tzmin; 
     if (tzmax < tmax) 
-    tmax = tzmax; 
+        tmax = tzmax; 
     t = tmin; 
     if (t < 0) { 
         t = tmax; 
-        if (t < 0) false; 
+        if (t < 0) 
+            return false; 
     } 
     return true; 
 } 
@@ -67,17 +83,17 @@ void main() {
     AABBox box; 
     box.bounds[0] = vec3(-0.5); 
     box.bounds[1] = vec3(0.5);
-    float tmin;
-    float tmax;
+    float tmin = 0.0;
+    float tmax = 0.0;
     bool intersects = intersect(ray, box, tmin, tmax);
     if(intersects){
         vec3 currentColor = vec3(0.0);
-        for(float t = tmin; t < tmax ; t += 0.001953){
+        for(float t = tmin; t < tmax ; t += 0.000976){
             vec2 uv = (ray.origin + t * ray.direction).xy + vec2(0.5);
-            currentColor += texture(texSampler, uv).rgb * 0.005;
+            currentColor += texture(texSampler, uv).rgb * 0.003;
         }
         outColor = vec4(currentColor, 1.0);
     }else{
-        outColor = vec4(0.0, 0.0, 0.0, 1.0);
+        outColor = vec4(vec3(0.0), 1.0);
     }
 }
