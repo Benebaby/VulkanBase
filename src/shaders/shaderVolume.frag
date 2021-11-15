@@ -88,9 +88,13 @@ void main() {
     bool intersects = intersect(ray, box, tmin, tmax);
     if(intersects){
         vec3 currentColor = vec3(0.0);
-        for(float t = tmin; t < tmax ; t += 0.000976){
+        for(float t = tmin; t < tmax ; t += 0.003906){
             vec2 uv = (ray.origin + t * ray.direction).xy + vec2(0.5);
-            currentColor += texture(texSampler, uv).rgb * 0.003;
+            vec3 textureColor = texture(texSampler, uv).rgb;
+            if(length(textureColor) < 0.05)
+                currentColor += vec3(0.0, 0.05, 0.05) * 0.003906;
+            else
+                currentColor += textureColor * vec3(1.0, 1.0, 1.0) * 0.003906;
         }
         outColor = vec4(currentColor, 1.0);
     }else{
