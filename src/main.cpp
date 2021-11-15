@@ -522,8 +522,8 @@ private:
         glslang::InitializeProcess();
         std::vector<uint32_t> vertShaderCodeSPIRV;
         std::vector<uint32_t> fragShaderCodeSPIRV;
-        SpirvHelper::GLSLtoSPV(vk::ShaderStageFlagBits::eVertex, "/shader.vert", vertShaderCodeSPIRV);
-        SpirvHelper::GLSLtoSPV(vk::ShaderStageFlagBits::eFragment, "/shader.frag", fragShaderCodeSPIRV);
+        SpirvHelper::GLSLtoSPV(vk::ShaderStageFlagBits::eVertex, "/shaderVolume.vert", vertShaderCodeSPIRV);
+        SpirvHelper::GLSLtoSPV(vk::ShaderStageFlagBits::eFragment, "/shaderVolume.frag", fragShaderCodeSPIRV);
         try{
             vertShaderModule = createShaderModule(vertShaderCodeSPIRV);
             fragShaderModule = createShaderModule(fragShaderCodeSPIRV);
