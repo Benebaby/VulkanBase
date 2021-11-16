@@ -12,6 +12,9 @@
 #include <stb_image_write.h>
 #include <tiny_gltf.h>
 #include <chrono>
+#include <imgui.h>
+#include <imgui_impl_vulkan.h>
+#include <imgui_impl_glfw.h>
 
 const uint32_t WIDTH = 1600;
 const uint32_t HEIGHT = 900;
@@ -105,6 +108,12 @@ struct UniformBufferObject {
     glm::vec2 size = glm::vec2((float) WIDTH, (float) HEIGHT);
 };
 
+static void check_vk_result(VkResult err)
+{
+    if (err != VK_SUCCESS)
+         throw std::runtime_error("validation layers requested, but not available!");
+}
+
 class VulkanBase {
 public:
     void run() {
@@ -171,6 +180,14 @@ private:
     size_t currentFrame = 0;
     bool framebufferResized = false;
 
+
+    vk::DescriptorPool descriptorPoolImgui;
+    vk::RenderPass renderPassImgui;
+    vk::CommandPool commandPoolImgui;
+    std::vector<vk::CommandBuffer> commandBuffersImgui;
+    std::vector<vk::Framebuffer> framebuffersImgui;
+
+
     void initWindow(){
         glfwInit();
         glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
@@ -208,6 +225,9 @@ private:
         createDescriptorSets();
         createCommandBuffers();
         createSyncObjects();
+
+        //imgui
+        initImGui();
     }
 
     void createInstance(){
@@ -379,6 +399,147 @@ private:
             throw std::runtime_error("failed to create Allocator");
     }
 
+    void initImGui() {
+        // Setup Dear ImGui context
+        IMGUI_CHECKVERSION();
+        ImGui::CreateContext();
+        ImGuiIO& io = ImGui::GetIO(); (void)io;
+        //io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
+        //io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
+
+        // Setup Dear ImGui style
+        ImGui::StyleColorsDark();
+        //ImGui::StyleColorsClassic();
+        ImGui_ImplGlfw_InitForVulkan(window, true);
+        
+        std::array<vk::DescriptorPoolSize, 11> poolSizes{
+            vk::DescriptorPoolSize{ vk::DescriptorType::eSampler, 1000 },
+            vk::DescriptorPoolSize{ vk::DescriptorType::eCombinedImageSampler, 1000 },
+            vk::DescriptorPoolSize{ vk::DescriptorType::eSampledImage, 1000 },
+            vk::DescriptorPoolSize{ vk::DescriptorType::eStorageImage, 1000 },
+            vk::DescriptorPoolSize{ vk::DescriptorType::eUniformTexelBuffer, 1000 },
+            vk::DescriptorPoolSize{ vk::DescriptorType::eStorageTexelBuffer, 1000 },
+            vk::DescriptorPoolSize{ vk::DescriptorType::eUniformBuffer, 1000 },
+            vk::DescriptorPoolSize{ vk::DescriptorType::eStorageBuffer, 1000 },
+            vk::DescriptorPoolSize{ vk::DescriptorType::eUniformBufferDynamic, 1000 },
+            vk::DescriptorPoolSize{ vk::DescriptorType::eStorageBufferDynamic, 1000 },
+            vk::DescriptorPoolSize{ vk::DescriptorType::eInputAttachment, 1000 }
+        };
+
+        vk::DescriptorPoolCreateInfo descriptorPoolInfo({}, static_cast<uint32_t>(1000 * poolSizes.size()), poolSizes);
+
+        try{
+            descriptorPoolImgui = device.createDescriptorPool(descriptorPoolInfo);
+        }catch(std::exception& e) {
+            std::cerr << "Exception Thrown: " << e.what();
+        }
+
+        vk::AttachmentDescription attachment(
+            {}, 
+            swapChainImageFormat, 
+            vk::SampleCountFlagBits::e1, 
+            vk::AttachmentLoadOp::eLoad, 
+            vk::AttachmentStoreOp::eStore, 
+            vk::AttachmentLoadOp::eDontCare, 
+            vk::AttachmentStoreOp::eDontCare, 
+            vk::ImageLayout::eColorAttachmentOptimal, 
+            vk::ImageLayout::ePresentSrcKHR
+        );
+        vk::AttachmentReference attachmentRef(0, vk::ImageLayout::eColorAttachmentOptimal);
+
+        vk::SubpassDescription subpass({}, vk::PipelineBindPoint::eGraphics, {}, attachmentRef, {}, {});
+
+        vk::SubpassDependency dependency(
+            VK_SUBPASS_EXTERNAL, 
+            0, 
+            vk::PipelineStageFlagBits::eColorAttachmentOutput, 
+            vk::PipelineStageFlagBits::eColorAttachmentOutput, 
+            vk::AccessFlagBits::eNoneKHR, 
+            vk::AccessFlagBits::eColorAttachmentWrite);
+
+        std::array<vk::AttachmentDescription, 1> attachments = {attachment};
+
+        vk::RenderPassCreateInfo renderPassInfo(
+            {}, 
+            attachments, 
+            subpass, 
+            dependency
+        );
+        try{
+            renderPassImgui = device.createRenderPass(renderPassInfo);
+        }catch(std::exception& e) {
+            std::cerr << "Exception Thrown: " << e.what();
+        }
+
+        ImGui_ImplVulkan_InitInfo init_info = {};
+        init_info.Instance = instance;
+        init_info.PhysicalDevice = physicalDevice;
+        init_info.Device = device;
+        init_info.QueueFamily = findQueueFamilies(physicalDevice).graphicsFamily.value();
+        init_info.Queue = graphicsQueue;
+        init_info.PipelineCache = VK_NULL_HANDLE;
+        init_info.DescriptorPool = descriptorPoolImgui;
+        init_info.Allocator = VK_NULL_HANDLE;
+        init_info.MinImageCount = static_cast<uint32_t>(swapChainFramebuffers.size());
+        init_info.ImageCount = static_cast<uint32_t>(swapChainFramebuffers.size());
+        init_info.CheckVkResultFn = check_vk_result;
+        ImGui_ImplVulkan_Init(&init_info, renderPassImgui);
+
+        vk::CommandBuffer command_buffer = beginSingleTimeCommands();
+            ImGui_ImplVulkan_CreateFontsTexture(command_buffer);
+        endSingleTimeCommands(command_buffer);    
+
+        //create command pool
+        QueueFamilyIndices queueFamilyIndices = findQueueFamilies(physicalDevice);
+        vk::CommandPoolCreateInfo commandPoolInfo(vk::CommandPoolCreateFlagBits::eResetCommandBuffer, queueFamilyIndices.graphicsFamily.value());
+        try{
+            commandPoolImgui = device.createCommandPool(commandPoolInfo);
+        }catch(std::exception& e) {
+            std::cerr << "Exception Thrown: " << e.what();
+        }
+
+        //create commandbuffers
+        commandBuffersImgui.resize(swapChainFramebuffers.size());
+        vk::CommandBufferAllocateInfo allocInfo(commandPoolImgui, vk::CommandBufferLevel::ePrimary, (uint32_t) commandBuffersImgui.size());
+        try{
+            commandBuffersImgui = device.allocateCommandBuffers(allocInfo);
+        }catch(std::exception& e) {
+            std::cerr << "Exception Thrown: " << e.what();
+        }
+        //create Framebuffers
+        framebuffersImgui.resize(swapChainImageViews.size());
+        for (size_t i = 0; i < swapChainImageViews.size(); i++) {
+            std::array<vk::ImageView, 1> attachments = {
+                swapChainImageViews[i]
+            };
+            vk::FramebufferCreateInfo framebufferInfo({}, renderPassImgui, attachments, swapChainExtent.width, swapChainExtent.height, 1);
+            try{
+                framebuffersImgui[i] = device.createFramebuffer(framebufferInfo);
+            }catch(std::exception& e) {
+                std::cerr << "Exception Thrown: " << e.what();
+            }
+        }
+        //record Command Buffers
+
+        
+    }
+
+    void recreateImGuiFramebuffer() {
+        //create Framebuffers
+        framebuffersImgui.resize(swapChainImageViews.size());
+        for (size_t i = 0; i < swapChainImageViews.size(); i++) {
+            std::array<vk::ImageView, 1> attachments = {
+                swapChainImageViews[i]
+            };
+            vk::FramebufferCreateInfo framebufferInfo({}, renderPassImgui, attachments, swapChainExtent.width, swapChainExtent.height, 1);
+            try{
+                framebuffersImgui[i] = device.createFramebuffer(framebufferInfo);
+            }catch(std::exception& e) {
+                std::cerr << "Exception Thrown: " << e.what();
+            }
+        }
+    }
+
     vk::SurfaceFormatKHR chooseSwapSurfaceFormat(const std::vector<vk::SurfaceFormatKHR>& availableFormats) {
         for (const auto& availableFormat : availableFormats) {
             if (availableFormat.format == vk::Format::eB8G8R8A8Srgb && availableFormat.colorSpace == vk::ColorSpaceKHR::eSrgbNonlinear) {
@@ -486,14 +647,20 @@ private:
     }
 
     void createRenderPass(){
-        vk::AttachmentDescription colorAttachment({}, swapChainImageFormat, vk::SampleCountFlagBits::e1, vk::AttachmentLoadOp::eClear, vk::AttachmentStoreOp::eStore, vk::AttachmentLoadOp::eDontCare, vk::AttachmentStoreOp::eDontCare, vk::ImageLayout::eUndefined, vk::ImageLayout::ePresentSrcKHR);
+        vk::AttachmentDescription colorAttachment({}, swapChainImageFormat, vk::SampleCountFlagBits::e1, vk::AttachmentLoadOp::eClear, vk::AttachmentStoreOp::eStore, vk::AttachmentLoadOp::eDontCare, vk::AttachmentStoreOp::eDontCare, vk::ImageLayout::eUndefined, vk::ImageLayout::eColorAttachmentOptimal);
         vk::AttachmentReference colorAttachmentRef(0, vk::ImageLayout::eColorAttachmentOptimal);
 
         vk::AttachmentDescription depthAttachment({}, findDepthFormat(), vk::SampleCountFlagBits::e1, vk::AttachmentLoadOp::eClear, vk::AttachmentStoreOp::eDontCare, vk::AttachmentLoadOp::eDontCare, vk::AttachmentStoreOp::eDontCare, vk::ImageLayout::eUndefined, vk::ImageLayout::eDepthStencilAttachmentOptimal);
         vk::AttachmentReference depthAttachmentRef(1, vk::ImageLayout::eDepthStencilAttachmentOptimal);
 
         vk::SubpassDescription subpass({}, vk::PipelineBindPoint::eGraphics, {}, colorAttachmentRef, {}, &depthAttachmentRef);
-        vk::SubpassDependency dependency(VK_SUBPASS_EXTERNAL, 0, vk::PipelineStageFlagBits::eColorAttachmentOutput | vk::PipelineStageFlagBits::eEarlyFragmentTests, vk::PipelineStageFlagBits::eColorAttachmentOutput | vk::PipelineStageFlagBits::eEarlyFragmentTests, vk::AccessFlagBits::eNoneKHR, vk::AccessFlagBits::eColorAttachmentWrite | vk::AccessFlagBits::eDepthStencilAttachmentWrite);
+        vk::SubpassDependency dependency(
+            VK_SUBPASS_EXTERNAL, 
+            0, 
+            vk::PipelineStageFlagBits::eColorAttachmentOutput | vk::PipelineStageFlagBits::eEarlyFragmentTests, 
+            vk::PipelineStageFlagBits::eColorAttachmentOutput | vk::PipelineStageFlagBits::eEarlyFragmentTests, 
+            vk::AccessFlagBits::eNoneKHR, 
+            vk::AccessFlagBits::eColorAttachmentWrite | vk::AccessFlagBits::eDepthStencilAttachmentWrite);
 
         std::array<vk::AttachmentDescription, 2> attachments = {colorAttachment, depthAttachment};
 
@@ -589,7 +756,7 @@ private:
         }
     }
 
-    void createCommandPool() {
+    void createCommandPool(){
         QueueFamilyIndices queueFamilyIndices = findQueueFamilies(physicalDevice);
         vk::CommandPoolCreateInfo poolInfo({}, queueFamilyIndices.graphicsFamily.value());
         try{
@@ -923,7 +1090,11 @@ private:
             return;
         }else if(result != vk::Result::eSuccess && result != vk::Result::eSuboptimalKHR)
             throw std::runtime_error("failed to acquire swap chain image!");
+
+        
         updateUniformBuffer(imageIndex);
+        recordCommandBuffer(imageIndex);
+
 
         if ((VkFence) imagesInFlight[imageIndex] != VK_NULL_HANDLE)
             vk::Result result2 = device.waitForFences(imagesInFlight[imageIndex], VK_TRUE, UINT64_MAX);
@@ -932,7 +1103,9 @@ private:
         std::vector<vk::Semaphore> waitSemaphores = {imageAvailableSemaphores[currentFrame]};
         std::vector<vk::PipelineStageFlags> waitStages = {vk::PipelineStageFlagBits::eColorAttachmentOutput};
         std::vector<vk::Semaphore> signalSemaphores = {renderFinishedSemaphores[currentFrame]};
-        vk::SubmitInfo submitInfo(waitSemaphores, waitStages, commandBuffers[imageIndex], signalSemaphores);
+        std::array<vk::CommandBuffer, 2> submitCommandBuffers = { commandBuffers[imageIndex], commandBuffersImgui[imageIndex]};
+
+        vk::SubmitInfo submitInfo(waitSemaphores, waitStages, submitCommandBuffers, signalSemaphores);
         device.resetFences(inFlightFences[currentFrame]);
         graphicsQueue.submit(submitInfo, inFlightFences[currentFrame]);
 
@@ -947,12 +1120,45 @@ private:
         currentFrame = (currentFrame + 1) % MAX_FRAMES_IN_FLIGHT;
     }
 
+    void recordCommandBuffer(uint32_t imageIndex){
+        vk::CommandBufferBeginInfo beginInfo;
+        try{
+            commandBuffersImgui[imageIndex].begin(beginInfo);
+        }catch(std::exception& e) {
+            std::cerr << "Exception Thrown: " << e.what();
+        }
+        std::array<vk::ClearValue, 1> clearValues{
+            vk::ClearValue(vk::ClearColorValue(std::array<float, 4>{0.0f, 0.0f, 0.0f, 1.0f}))
+        };
+        vk::RenderPassBeginInfo renderPassInfo(renderPassImgui, framebuffersImgui[imageIndex], vk::Rect2D({0, 0}, swapChainExtent), clearValues);
+
+        commandBuffersImgui[imageIndex].beginRenderPass(renderPassInfo, vk::SubpassContents::eInline);
+
+        ImGui_ImplVulkan_RenderDrawData(ImGui::GetDrawData(), commandBuffersImgui[imageIndex]);
+
+        commandBuffersImgui[imageIndex].endRenderPass();
+        try{
+            commandBuffersImgui[imageIndex].end();
+        }catch(std::exception& e) {
+            std::cerr << "Exception Thrown: " << e.what();
+        }
+    }
+
     void mainLoop(){
         double time = glfwGetTime();
         uint32_t fps = 0;
+        bool show_demo_window = true;
         while (!glfwWindowShouldClose(window)) {
             glfwPollEvents();
+
+            ImGui_ImplVulkan_NewFrame();
+            ImGui_ImplGlfw_NewFrame();
+            ImGui::NewFrame();
+            ImGui::ShowDemoWindow(&show_demo_window);
+            ImGui::Render();
+            
             drawFrame();
+
             fps++;
             if((glfwGetTime() - time) >= 1.0){
                 time = glfwGetTime();
@@ -970,6 +1176,11 @@ private:
         for (auto framebuffer : swapChainFramebuffers) {
             device.destroyFramebuffer(framebuffer);
         }
+        //imgui
+        for (auto framebuffer : framebuffersImgui) {
+            device.destroyFramebuffer(framebuffer);
+        }
+        //imgui
         device.freeCommandBuffers(commandPool, commandBuffers);
         device.destroyPipeline(graphicsPipeline);
         device.destroyPipelineLayout(pipelineLayout);
@@ -986,6 +1197,12 @@ private:
 
     void cleanup(){
         cleanupSwapchain();
+        //imgui
+            device.freeCommandBuffers(commandPoolImgui, commandBuffersImgui);
+            device.destroyRenderPass(renderPassImgui);
+            device.destroyDescriptorPool(descriptorPoolImgui);
+        //imgui
+
         device.destroyShaderModule(fragShaderModule);
         device.destroyShaderModule(vertShaderModule);
         device.destroySampler(textureSampler);
@@ -1002,6 +1219,12 @@ private:
             device.destroyFence(inFlightFences[i]);
         }
         device.destroyCommandPool(commandPool);
+        //imgui 
+            device.destroyCommandPool(commandPoolImgui);
+            ImGui_ImplVulkan_Shutdown();
+            ImGui_ImplGlfw_Shutdown();
+            ImGui::DestroyContext();
+        //imgui
         vmaDestroyAllocator(allocator);
         device.destroy();
         if (enableValidation) {
@@ -1020,6 +1243,7 @@ private:
             glfwGetFramebufferSize(window, &width, &height);
             glfwWaitEvents();
         }
+
         device.waitIdle();
 
         cleanupSwapchain();
@@ -1036,6 +1260,8 @@ private:
         createCommandBuffers();
 
         imagesInFlight.resize(swapChainImages.size(), VK_NULL_HANDLE);
+
+        recreateImGuiFramebuffer();
     }
 
     static void framebufferResizeCallback(GLFWwindow *window, int width, int height){

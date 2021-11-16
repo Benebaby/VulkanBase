@@ -19,7 +19,14 @@ ENDIF()
 
 file(GLOB SOURCES
     src/*.h
+    src/*.hpp
     src/*.cpp
+    lib/imgui/*.cpp
+    lib/imgui/*.h
+    lib/imgui/backends/imgui_impl_glfw.h
+    lib/imgui/backends/imgui_impl_glfw.cpp
+    lib/imgui/backends/imgui_impl_vulkan.h
+    lib/imgui/backends/imgui_impl_vulkan.cpp
 )
 
 add_executable(${CMAKE_PROJECT_NAME} ${SOURCES})
@@ -55,6 +62,7 @@ target_link_libraries(${CMAKE_PROJECT_NAME} tinygltf)
 
 #add imgui, stb
 include_directories(${PROJECT_SOURCE_DIR}/lib/imgui)
+include_directories(${PROJECT_SOURCE_DIR}/lib/imgui/backends)
 include_directories(${PROJECT_SOURCE_DIR}/lib/stb)
 
 #add glslang
