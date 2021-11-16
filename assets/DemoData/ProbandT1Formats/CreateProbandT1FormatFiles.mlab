@@ -1,0 +1,1814 @@
+// MDL v1 utf8
+network  {
+  watchlist = ""
+}
+module vtkTIFFWriter {
+  internal  {
+    frame = "-962 -583 246 64"
+    moduleGroupName = "vtk Image Writers"
+    windows  {
+      window _default {
+        geometry = "51 226 562 544"
+        sizeHint = "483 544"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = vtkTIFFWriter_compressed_deflate
+    compression = 3
+    fileDimensionality = 3
+    filePrefix = ""
+    filePattern = %s.%d
+    status = "Connection 0 is open or invalid"
+    unresolvedFileName = $(DemoDataPath)/ProbandT1Formats/ProbandT1.small.vtk.uint16.compressed.deflate.tiff
+  }
+}
+module vtkTIFFWriter {
+  internal  {
+    frame = "-962 -512 119 50"
+    moduleGroupName = "vtk Image Writers"
+    windows  {
+      window _default {
+        geometry = "189 237 562 544"
+        sizeHint = "483 544"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = vtkTIFFWriter
+    compression = 0
+    fileDimensionality = 3
+    filePrefix = ""
+    filePattern = %s.%d
+    status = "Connection 0 is open or invalid"
+    unresolvedFileName = $(DemoDataPath)/ProbandT1Formats/ProbandT1.small.vtk.uint16.tiff
+  }
+}
+module vtkTIFFWriter {
+  internal  {
+    frame = "-959 -647 224 64"
+    moduleGroupName = "vtk Image Writers"
+    windows  {
+      window _default {
+        geometry = "76 253 562 544"
+        sizeHint = "483 544"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = vtkTIFFWriter_compressed_lzw
+    compression = 4
+    fileDimensionality = 3
+    filePrefix = ""
+    filePattern = %s.%d
+    status = "Connection 0 is open or invalid"
+    unresolvedFileName = $(DemoDataPath)/ProbandT1Formats/ProbandT1.small.vtk.uint16.compressed.lzw.tiff
+  }
+}
+module vtkMetaImageWriter {
+  internal  {
+    frame = "-965 -790 159 50"
+    moduleGroupName = "vtk Image Writers"
+    windows  {
+      window _default {
+        geometry = "307 436 817 398"
+        sizeHint = "259 398"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = vtkMetaImageWriter
+    fileName = /Repository/MeVisLab/Resources/DemoData/ProbandT1Formats/ProbandT1.small.vtk.uint16.mhd
+    compression = TRUE
+    fileDimensionality = 3
+    filePrefix = ""
+    filePattern = %s.%d
+    status = "Connection 0 is open or invalid"
+    unresolvedFileName = $(DemoDataPath)/ProbandT1Formats/ProbandT1.small.vtk.uint16.raw
+  }
+}
+module vtkXMLImageDataWriter {
+  internal  {
+    frame = "-954 -942 185 50"
+    moduleGroupName = "vtk Image Writers"
+    windows  {
+      window _default {
+        geometry = "181 159 915 901"
+        sizeHint = "401 901"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = vtkXMLImageDataWriter
+    numberOfPieces = 1
+    writeExtent = "0 -1 0 -1 0 -1 "
+    byteOrder = 1
+    dataMode = 1
+    encodeAppendedData = 1
+    timeStep = 0
+    numberOfTimeSteps = 1
+    timeStepRange = "0 0 "
+    idType = 64
+    compressorType = 0
+    blockSize = 65536
+    status = "Connection 0 is open or invalid"
+    unresolvedFileName = $(DemoDataPath)/ProbandT1Formats/ProbandT1.small.vtk.uint16.xml.vti
+  }
+}
+module vtkXMLImageDataWriter {
+  internal  {
+    frame = "-963 -879 264 64"
+    moduleGroupName = "vtk Image Writers"
+    windows  {
+      window _default {
+        geometry = "181 159 480 901"
+        sizeHint = "401 901"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = vtkXMLImageDataWriter_compressed
+    numberOfPieces = 1
+    writeExtent = "0 -1 0 -1 0 -1 "
+    byteOrder = 1
+    dataMode = 1
+    encodeAppendedData = 1
+    timeStep = 0
+    numberOfTimeSteps = 1
+    timeStepRange = "0 0 "
+    idType = 64
+    compressorType = 0
+    blockSize = 65536
+    status = "Connection 0 is open or invalid"
+    unresolvedFileName = $(DemoDataPath)/ProbandT1Formats/ProbandT1.small.vtk.uint16.compressed.xml.vti
+  }
+}
+module vtkMetaImageWriter {
+  internal  {
+    frame = "-965 -733 238 64"
+    moduleGroupName = "vtk Image Writers"
+    windows  {
+      window _default {
+        geometry = "307 436 866 398"
+        sizeHint = "259 398"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = vtkMetaImageWriter_compressed
+    fileName = /Repository/MeVisLab/Resources/DemoData/ProbandT1Formats/ProbandT1.small.vtk.uint16.compressed.mhd
+    compression = TRUE
+    fileDimensionality = 3
+    filePrefix = ""
+    filePattern = %s.%d
+    status = "Connection 0 is open or invalid"
+    unresolvedFileName = $(DemoDataPath)/ProbandT1Formats/ProbandT1.small.vtk.uint16.compressed.raw
+  }
+}
+module vtkDataSetWriter {
+  internal  {
+    frame = "-964 -432 138 50"
+    moduleGroupName = "vtk Image Writers"
+    windows  {
+      window _default {
+        geometry = "438 205 887 658"
+        sizeHint = "296 658"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = vtkDataSetWriter
+    writeToOutputString = 0
+    header = "vtk output"
+    scalarsName = ""
+    vectorsName = ""
+    tensorsName = ""
+    normalsName = ""
+    tCoordsName = ""
+    globalIdsName = ""
+    pedigreeIdsName = ""
+    lookupTableName = lookup_table
+    fieldDataName = FieldData
+    fileType = 2
+    status = "Connection 0 is open or invalid"
+    unresolvedFileName = $(DemoDataPath)/ProbandT1Formats/ProbandT1.small.vtk.uint16.vtk
+  }
+}
+module MLToVTKImage {
+  internal  {
+    frame = "-887 -280 129 50"
+    moduleGroupName = "vtk Image Writers"
+  }
+  fields  {
+    instanceName = MLToVTKImage
+    numScalarComps = 1
+    updateMode = AutoUpdate
+    applyMode = AutoApply
+    status = ""
+  }
+}
+module vtkMINCImageWriter {
+  internal  {
+    frame = "-961 -368 164 50"
+    moduleGroupName = "vtk Image Writers"
+    windows  {
+      window _default {
+        geometry = "849 361 623 514"
+        sizeHint = "230 514"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = vtkMINCImageWriter
+    rescaleSlope = 0
+    rescaleIntercept = 0
+    strictValidation = 1
+    historyAddition = ""
+    directionCosines = "1 0 0 0
+0 1 0 0
+0 0 1 0
+0 0 0 1"
+    fileDimensionality = 3
+    filePrefix = ""
+    filePattern = %s.%d
+    status = "Connection 0 is open or invalid"
+    unresolvedFileName = $(DemoDataPath)/ProbandT1Formats/ProbandT1.small.vtk.uint16.mnc
+  }
+}
+module itkImageFileWriter {
+  internal  {
+    frame = "-2689 -944 281 64"
+    moduleGroupName = "itkImageFileWriter (Compressed)"
+    windows  {
+      window _default {
+        geometry = "69 57 552 411"
+        sizeHint = "276 411"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = itkImageFileWriter_itk_mhd_compressed
+    useCompression = TRUE
+    correctSubVoxelShift = FALSE
+    forceDirectionCosineWrite = TRUE
+    outputVoxelType = Automatic
+    info = ""
+    unresolvedFileName = $(DemoDataPath)/ProbandT1Formats/ProbandT1.small.itk.uint16.compressed.mhd
+  }
+}
+module itkImageFileWriter {
+  internal  {
+    frame = "-2689 -872 281 64"
+    moduleGroupName = "itkImageFileWriter (Compressed)"
+    windows  {
+      window _default {
+        geometry = "69 57 552 411"
+        sizeHint = "276 411"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = itkImageFileWriter_itk_nrrd_compressed
+    useCompression = TRUE
+    correctSubVoxelShift = FALSE
+    forceDirectionCosineWrite = TRUE
+    outputVoxelType = Automatic
+    info = ""
+    unresolvedFileName = $(DemoDataPath)/ProbandT1Formats/ProbandT1.small.itk.uint16.compressed.nrrd
+  }
+}
+module itkImageFileWriter {
+  internal  {
+    frame = "-2694 -792 291 64"
+    moduleGroupName = "itkImageFileWriter (Compressed)"
+    windows  {
+      window _default {
+        geometry = "69 57 552 411"
+        sizeHint = "276 411"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = itkImageFileWriter_itk_dicom_compressed
+    useCompression = TRUE
+    correctSubVoxelShift = FALSE
+    forceDirectionCosineWrite = TRUE
+    outputVoxelType = Automatic
+    info = ""
+    unresolvedFileName = $(DemoDataPath)/ProbandT1Formats/ProbandT1.small.itk.uint16.compressed.dicom
+  }
+}
+module ImageSave {
+  internal  {
+    frame = "-2026 -559 166 64"
+    moduleGroupName = "ImageSave (Compressed and Uncompressed)"
+    windows  {
+      window _default {
+        geometry = "205 386 436 372"
+        sizeHint = "436 372"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = ImageSave_ml_jpg_2d
+    taskVerboseLogging = FALSE
+    filename = /Repository/MeVisLab/Resources/DemoData/ProbandT1Formats/ProbandT1.small.ml.uint8.slice16.jpg
+    format = JPG
+    comment = MeVisLab
+    allowOverwrite = TRUE
+    autoFilename = FALSE
+    sourceName = ""
+    postfix = .result1
+    dicomNameUsed = TRUE
+    dicomMetaHeader = TRUE
+    dicomDerived = TRUE
+    dicomDerivedImageType = "OTHER\\MEVISLAB"
+    dicomDiscardTags = FrameSpecific
+    dicomStoreTimeInfo = None
+    dicomSetWindow = FALSE
+    dicomWindowCenter = 0
+    dicomWindowWidth = 0
+    dicomIgnoreHalfVoxelShift = FALSE
+    tiffCompression = LZW
+    tiffTileX = 128
+    tiffTileY = 128
+    tiffTileXAuto = TRUE
+    tiffTileYAuto = TRUE
+    saveDicomHeaderOnly = FALSE
+    pngCompression = Default
+    pngInterlaced = FALSE
+    jpegQuality = 100
+    jpegProgressive = FALSE
+  }
+}
+module ImageSave {
+  internal  {
+    frame = "-1854 -559 174 64"
+    moduleGroupName = "ImageSave (Compressed and Uncompressed)"
+    windows  {
+      window _default {
+        geometry = "205 386 436 372"
+        sizeHint = "436 372"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = ImageSave_ml_pnm_2d
+    taskVerboseLogging = FALSE
+    filename = /Repository/MeVisLab/Resources/DemoData/ProbandT1Formats/ProbandT1.small.ml.uint16.slice16.pnm
+    format = PNM
+    comment = MeVisLab
+    allowOverwrite = TRUE
+    autoFilename = FALSE
+    sourceName = ""
+    postfix = .result1
+    dicomNameUsed = TRUE
+    dicomMetaHeader = TRUE
+    dicomDerived = TRUE
+    dicomDerivedImageType = "OTHER\\MEVISLAB"
+    dicomDiscardTags = FrameSpecific
+    dicomStoreTimeInfo = None
+    dicomSetWindow = FALSE
+    dicomWindowCenter = 0
+    dicomWindowWidth = 0
+    dicomIgnoreHalfVoxelShift = FALSE
+    tiffCompression = LZW
+    tiffTileX = 128
+    tiffTileY = 128
+    tiffTileXAuto = TRUE
+    tiffTileYAuto = TRUE
+    saveDicomHeaderOnly = FALSE
+    pngCompression = Default
+    pngInterlaced = FALSE
+    jpegQuality = 75
+    jpegProgressive = FALSE
+  }
+}
+module ImageSave {
+  internal  {
+    frame = "-1852 -487 170 64"
+    moduleGroupName = "ImageSave (Compressed and Uncompressed)"
+    windows  {
+      window _default {
+        geometry = "205 386 881 372"
+        sizeHint = "436 372"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = ImageSave_ml_png_2d
+    taskVerboseLogging = FALSE
+    filename = /Repository/MeVisLab/Resources/DemoData/ProbandT1Formats/ProbandT1.small.ml.uint16.slice16.png
+    format = PNG
+    comment = MeVisLab
+    allowOverwrite = TRUE
+    autoFilename = FALSE
+    sourceName = ""
+    postfix = .result1
+    dicomNameUsed = TRUE
+    dicomMetaHeader = TRUE
+    dicomDerived = TRUE
+    dicomDerivedImageType = "OTHER\\MEVISLAB"
+    dicomDiscardTags = FrameSpecific
+    dicomStoreTimeInfo = None
+    dicomSetWindow = FALSE
+    dicomWindowCenter = 0
+    dicomWindowWidth = 0
+    dicomIgnoreHalfVoxelShift = FALSE
+    tiffCompression = LZW
+    tiffTileX = 128
+    tiffTileY = 128
+    tiffTileXAuto = TRUE
+    tiffTileYAuto = TRUE
+    saveDicomHeaderOnly = FALSE
+    pngCompression = Default
+    pngInterlaced = FALSE
+    jpegQuality = 75
+    jpegProgressive = FALSE
+  }
+}
+module ImageSave {
+  internal  {
+    frame = "-2030 -479 174 64"
+    moduleGroupName = "ImageSave (Compressed and Uncompressed)"
+    windows  {
+      window _default {
+        geometry = "205 386 436 372"
+        sizeHint = "436 372"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = ImageSave_ml_bmp_2d
+    taskVerboseLogging = FALSE
+    filename = /Repository/MeVisLab/Resources/DemoData/ProbandT1Formats/ProbandT1.small.ml.uint8.slice16.bmp
+    format = BMP
+    comment = MeVisLab
+    allowOverwrite = TRUE
+    autoFilename = FALSE
+    sourceName = ""
+    postfix = .result1
+    dicomNameUsed = TRUE
+    dicomMetaHeader = TRUE
+    dicomDerived = TRUE
+    dicomDerivedImageType = "OTHER\\MEVISLAB"
+    dicomDiscardTags = FrameSpecific
+    dicomStoreTimeInfo = None
+    dicomSetWindow = FALSE
+    dicomWindowCenter = 0
+    dicomWindowWidth = 0
+    dicomIgnoreHalfVoxelShift = FALSE
+    tiffCompression = LZW
+    tiffTileX = 128
+    tiffTileY = 128
+    tiffTileXAuto = TRUE
+    tiffTileYAuto = TRUE
+    saveDicomHeaderOnly = FALSE
+    pngCompression = Default
+    pngInterlaced = FALSE
+    jpegQuality = 75
+    jpegProgressive = FALSE
+  }
+}
+module Scale {
+  internal  {
+    frame = "-1898 -396 72 50"
+    moduleGroupName = "ImageSave (Compressed and Uncompressed)"
+    windows  {
+      window _default {
+        geometry = "765 495 254 347"
+        sizeHint = "254 347"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Scale3
+    inputMin = 0
+    inputMax = 1536
+    updateMode = AutoUpdateMinMaxOn
+    useTrueRange = TRUE
+    typeSelect = UInt8
+    outputMin = 0
+    outputMax = 255
+  }
+}
+module SubImage {
+  internal  {
+    frame = "-1888 -324 101 50"
+    moduleGroupName = "ImageSave (Compressed and Uncompressed)"
+    windows  {
+      window _default {
+        geometry = "777 410 388 417"
+        sizeHint = "374 417"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SubImage2
+    boxInput = "0 0 0 0 0 0 -1 -1 -1 -1 -1 -1"
+    autoApplyBox = FALSE
+    correctForNegativeSubImageExtents = TRUE
+    enableBoxClamping = FALSE
+    x = 0
+    sx = 45
+    modifyX = TRUE
+    y = 0
+    sy = 37
+    modifyY = TRUE
+    z = 16
+    sz = 1
+    modifyZ = TRUE
+    c = 0
+    sc = 1
+    modifyC = FALSE
+    t = 0
+    st = 1
+    modifyT = TRUE
+    u = 0
+    su = 1
+    modifyU = FALSE
+    fillValue = 0
+    mode = VoxelStartSize
+    autoApply = TRUE
+  }
+}
+module Scale {
+  internal  {
+    frame = "-2139 -400 72 50"
+    moduleGroupName = "ImageSave (Compressed and Uncompressed)"
+    windows  {
+      window _default {
+        geometry = "765 495 254 347"
+        sizeHint = "254 347"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Scale2
+    inputMin = 0
+    inputMax = 1951
+    updateMode = AutoUpdateMinMaxOn
+    useTrueRange = TRUE
+    typeSelect = Int16
+    outputMin = 0
+    outputMax = 2070
+  }
+}
+module ImageSave {
+  internal  {
+    frame = "-2187 -559 152 64"
+    moduleGroupName = "ImageSave (Compressed and Uncompressed)"
+    windows  {
+      window _default {
+        geometry = "205 386 436 372"
+        sizeHint = "436 372"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = ImageSave_Analyze
+    taskVerboseLogging = FALSE
+    filename = /Repository/MeVisLab/Resources/DemoData/ProbandT1Formats/ProbandT1.small.ml.uint16.hdr
+    format = Analyze
+    comment = MeVisLab
+    allowOverwrite = TRUE
+    autoFilename = FALSE
+    sourceName = ""
+    postfix = .result1
+    dicomNameUsed = TRUE
+    dicomMetaHeader = TRUE
+    dicomDerived = TRUE
+    dicomDerivedImageType = "OTHER\\MEVISLAB"
+    dicomDiscardTags = FrameSpecific
+    dicomStoreTimeInfo = None
+    dicomSetWindow = FALSE
+    dicomWindowCenter = 0
+    dicomWindowWidth = 0
+    dicomIgnoreHalfVoxelShift = FALSE
+    tiffCompression = None
+    tiffTileX = 128
+    tiffTileY = 128
+    tiffTileXAuto = TRUE
+    tiffTileYAuto = TRUE
+    saveDicomHeaderOnly = FALSE
+    pngCompression = Default
+    pngInterlaced = FALSE
+    jpegQuality = 75
+    jpegProgressive = FALSE
+  }
+}
+module ImageSave {
+  internal  {
+    frame = "-2353 -555 150 64"
+    moduleGroupName = "ImageSave (Compressed and Uncompressed)"
+    windows  {
+      window _default {
+        geometry = "205 386 436 372"
+        sizeHint = "436 372"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = ImageSave_DICOM
+    taskVerboseLogging = FALSE
+    filename = /Repository/MeVisLab/Resources/DemoData/ProbandT1Formats/ProbandT1.small.ml.uint16.dcm
+    format = DICOM
+    comment = MeVisLab
+    allowOverwrite = TRUE
+    autoFilename = FALSE
+    sourceName = ""
+    postfix = .result1
+    dicomNameUsed = TRUE
+    dicomMetaHeader = TRUE
+    dicomDerived = TRUE
+    dicomDerivedImageType = "OTHER\\MEVISLAB"
+    dicomDiscardTags = FrameSpecific
+    dicomStoreTimeInfo = None
+    dicomSetWindow = FALSE
+    dicomWindowCenter = 0
+    dicomWindowWidth = 0
+    dicomIgnoreHalfVoxelShift = FALSE
+    tiffCompression = None
+    tiffTileX = 128
+    tiffTileY = 128
+    tiffTileXAuto = TRUE
+    tiffTileYAuto = TRUE
+    saveDicomHeaderOnly = FALSE
+    pngCompression = Default
+    pngInterlaced = FALSE
+    jpegQuality = 75
+    jpegProgressive = FALSE
+  }
+}
+module ImageSave {
+  internal  {
+    frame = "-2351 -483 275 64"
+    moduleGroupName = "ImageSave (Compressed and Uncompressed)"
+    windows  {
+      window _default {
+        geometry = "205 386 436 372"
+        sizeHint = "436 372"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = ImageSave_ml_dcmtiff_lzw_compressed
+    taskVerboseLogging = FALSE
+    filename = /Repository/MeVisLab/Resources/DemoData/ProbandT1Formats/ProbandT1.small.ml.uint16.compressed.dcmtiff.lzw.dcm
+    format = DICOMTIFF
+    comment = MeVisLab
+    allowOverwrite = TRUE
+    autoFilename = FALSE
+    sourceName = ""
+    postfix = .result1
+    dicomNameUsed = TRUE
+    dicomMetaHeader = TRUE
+    dicomDerived = TRUE
+    dicomDerivedImageType = "OTHER\\MEVISLAB"
+    dicomDiscardTags = FrameSpecific
+    dicomStoreTimeInfo = None
+    dicomSetWindow = FALSE
+    dicomWindowCenter = 0
+    dicomWindowWidth = 0
+    dicomIgnoreHalfVoxelShift = FALSE
+    tiffCompression = LZW
+    tiffTileX = 128
+    tiffTileY = 128
+    tiffTileXAuto = TRUE
+    tiffTileYAuto = TRUE
+    saveDicomHeaderOnly = FALSE
+    pngCompression = Default
+    pngInterlaced = FALSE
+    jpegQuality = 75
+    jpegProgressive = FALSE
+  }
+}
+module ImageSave {
+  internal  {
+    frame = "-2346 -411 169 64"
+    moduleGroupName = "ImageSave (Compressed and Uncompressed)"
+    windows  {
+      window _default {
+        geometry = "205 386 436 372"
+        sizeHint = "436 372"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = ImageSave_ml_dcmtiff
+    taskVerboseLogging = FALSE
+    filename = /Repository/MeVisLab/Resources/DemoData/ProbandT1Formats/ProbandT1.small.ml.uint16.dcmtiff.dcm
+    format = DICOMTIFF
+    comment = MeVisLab
+    allowOverwrite = TRUE
+    autoFilename = FALSE
+    sourceName = ""
+    postfix = .result1
+    dicomNameUsed = TRUE
+    dicomMetaHeader = TRUE
+    dicomDerived = TRUE
+    dicomDerivedImageType = "OTHER\\MEVISLAB"
+    dicomDiscardTags = FrameSpecific
+    dicomStoreTimeInfo = None
+    dicomSetWindow = FALSE
+    dicomWindowCenter = 0
+    dicomWindowWidth = 0
+    dicomIgnoreHalfVoxelShift = FALSE
+    tiffCompression = None
+    tiffTileX = 128
+    tiffTileY = 128
+    tiffTileXAuto = TRUE
+    tiffTileYAuto = TRUE
+    saveDicomHeaderOnly = FALSE
+    pngCompression = Default
+    pngInterlaced = FALSE
+    jpegQuality = 75
+    jpegProgressive = FALSE
+  }
+}
+module MLImageFormatSave {
+  internal  {
+    frame = "-1400 -415 242 64"
+    moduleGroupName = "MLImageFormatSave (Compressed and Uncompressed)"
+    windows  {
+      window _default {
+        geometry = "266 392 614 393"
+        sizeHint = "306 393"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = MLImageFormatSave_ml_ctcomp2
+    compression = MLCTComp2
+    dblHintVal0 = 0
+    intHintVal0 = 0
+    strHintVal0 = ""
+    boolHintVal0 = FALSE
+    dblHintVal1 = 0
+    intHintVal1 = 0
+    strHintVal1 = ""
+    boolHintVal1 = FALSE
+    dblHintVal2 = 0
+    intHintVal2 = 0
+    strHintVal2 = ""
+    boolHintVal2 = FALSE
+    dblHintVal3 = 0
+    intHintVal3 = 0
+    strHintVal3 = ""
+    boolHintVal3 = FALSE
+    dblHintVal4 = 0
+    intHintVal4 = 0
+    strHintVal4 = ""
+    boolHintVal4 = FALSE
+    dblHintVal5 = 0
+    intHintVal5 = 0
+    strHintVal5 = ""
+    boolHintVal5 = FALSE
+    dblHintVal6 = 0
+    intHintVal6 = 0
+    strHintVal6 = ""
+    boolHintVal6 = FALSE
+    dblHintVal7 = 0
+    intHintVal7 = 0
+    strHintVal7 = ""
+    boolHintVal7 = FALSE
+    dblHintVal8 = 0
+    intHintVal8 = 0
+    strHintVal8 = ""
+    boolHintVal8 = FALSE
+    dblHintVal9 = 0
+    intHintVal9 = 0
+    strHintVal9 = ""
+    boolHintVal9 = FALSE
+    updateMode = AutoUpdate
+    userTag00 = ""
+    userTag01 = ""
+    userTag02 = ""
+    userTag03 = ""
+    userTag04 = ""
+    userTag05 = ""
+    userTag06 = ""
+    userTag07 = ""
+    userTag08 = ""
+    userTag09 = ""
+    regionOffset = "0 0 0 0 0 0"
+    suppressWorldPos = FALSE
+    fileName = $(DemoDataPath)/ProbandT1Formats/ProbandT1.small.ml.uint16.compressed.ctcomp2
+  }
+}
+module MLImageFormatSave {
+  internal  {
+    frame = "-1625 -415 219 64"
+    moduleGroupName = "MLImageFormatSave (Compressed and Uncompressed)"
+    windows  {
+      window _default {
+        geometry = "266 392 370 393"
+        sizeHint = "306 393"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = MLImageFormatSave_ml_lzma
+    compression = LZMA
+    dblHintVal0 = 5
+    intHintVal0 = 5
+    strHintVal0 = 5
+    boolHintVal0 = TRUE
+    dblHintVal1 = 0
+    intHintVal1 = 0
+    strHintVal1 = ""
+    boolHintVal1 = FALSE
+    dblHintVal2 = 0
+    intHintVal2 = 0
+    strHintVal2 = ""
+    boolHintVal2 = FALSE
+    dblHintVal3 = 0
+    intHintVal3 = 0
+    strHintVal3 = ""
+    boolHintVal3 = FALSE
+    dblHintVal4 = 0
+    intHintVal4 = 0
+    strHintVal4 = ""
+    boolHintVal4 = FALSE
+    dblHintVal5 = 0
+    intHintVal5 = 0
+    strHintVal5 = ""
+    boolHintVal5 = FALSE
+    dblHintVal6 = 0
+    intHintVal6 = 0
+    strHintVal6 = ""
+    boolHintVal6 = FALSE
+    dblHintVal7 = 0
+    intHintVal7 = 0
+    strHintVal7 = ""
+    boolHintVal7 = FALSE
+    dblHintVal8 = 0
+    intHintVal8 = 0
+    strHintVal8 = ""
+    boolHintVal8 = FALSE
+    dblHintVal9 = 0
+    intHintVal9 = 0
+    strHintVal9 = ""
+    boolHintVal9 = FALSE
+    updateMode = AutoUpdate
+    userTag00 = ""
+    userTag01 = ""
+    userTag02 = ""
+    userTag03 = ""
+    userTag04 = ""
+    userTag05 = ""
+    userTag06 = ""
+    userTag07 = ""
+    userTag08 = ""
+    userTag09 = ""
+    regionOffset = "0 0 0 0 0 0"
+    suppressWorldPos = FALSE
+    fileName = $(DemoDataPath)/ProbandT1Formats/ProbandT1.small.ml.uint16.compressed.lzma
+  }
+}
+module MLImageFormatSave {
+  internal  {
+    frame = "-1406 -487 223 64"
+    moduleGroupName = "MLImageFormatSave (Compressed and Uncompressed)"
+    windows  {
+      window _default {
+        geometry = "266 392 497 393"
+        sizeHint = "306 393"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = MLImageFormatSave_ml_bzip2
+    compression = BZip2
+    dblHintVal0 = 0
+    intHintVal0 = 0
+    strHintVal0 = FALSE
+    boolHintVal0 = FALSE
+    dblHintVal1 = 0
+    intHintVal1 = 0
+    strHintVal1 = ""
+    boolHintVal1 = FALSE
+    dblHintVal2 = 0
+    intHintVal2 = 0
+    strHintVal2 = ""
+    boolHintVal2 = FALSE
+    dblHintVal3 = 0
+    intHintVal3 = 0
+    strHintVal3 = ""
+    boolHintVal3 = FALSE
+    dblHintVal4 = 0
+    intHintVal4 = 0
+    strHintVal4 = ""
+    boolHintVal4 = FALSE
+    dblHintVal5 = 0
+    intHintVal5 = 0
+    strHintVal5 = ""
+    boolHintVal5 = FALSE
+    dblHintVal6 = 0
+    intHintVal6 = 0
+    strHintVal6 = ""
+    boolHintVal6 = FALSE
+    dblHintVal7 = 0
+    intHintVal7 = 0
+    strHintVal7 = ""
+    boolHintVal7 = FALSE
+    dblHintVal8 = 0
+    intHintVal8 = 0
+    strHintVal8 = ""
+    boolHintVal8 = FALSE
+    dblHintVal9 = 0
+    intHintVal9 = 0
+    strHintVal9 = ""
+    boolHintVal9 = FALSE
+    updateMode = AutoUpdate
+    userTag00 = ""
+    userTag01 = ""
+    userTag02 = ""
+    userTag03 = ""
+    userTag04 = ""
+    userTag05 = ""
+    userTag06 = ""
+    userTag07 = ""
+    userTag08 = ""
+    userTag09 = ""
+    regionOffset = "0 0 0 0 0 0"
+    suppressWorldPos = FALSE
+    fileName = $(DemoDataPath)/ProbandT1Formats/ProbandT1.small.ml.uint16.compressed.bzip2
+  }
+}
+module MLImageFormatSave {
+  internal  {
+    frame = "-1630 -487 212 64"
+    moduleGroupName = "MLImageFormatSave (Compressed and Uncompressed)"
+    windows  {
+      window _default {
+        geometry = "266 392 370 393"
+        sizeHint = "306 393"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = MLImageFormatSave_ml_zlib
+    compression = ZLIB
+    dblHintVal0 = 0
+    intHintVal0 = 0
+    strHintVal0 = TRUE
+    boolHintVal0 = TRUE
+    dblHintVal1 = 0
+    intHintVal1 = 0
+    strHintVal1 = TRUE
+    boolHintVal1 = TRUE
+    dblHintVal2 = 0
+    intHintVal2 = 0
+    strHintVal2 = ""
+    boolHintVal2 = FALSE
+    dblHintVal3 = 0
+    intHintVal3 = 0
+    strHintVal3 = ""
+    boolHintVal3 = FALSE
+    dblHintVal4 = 0
+    intHintVal4 = 0
+    strHintVal4 = ""
+    boolHintVal4 = FALSE
+    dblHintVal5 = 0
+    intHintVal5 = 0
+    strHintVal5 = ""
+    boolHintVal5 = FALSE
+    dblHintVal6 = 0
+    intHintVal6 = 0
+    strHintVal6 = ""
+    boolHintVal6 = FALSE
+    dblHintVal7 = 0
+    intHintVal7 = 0
+    strHintVal7 = ""
+    boolHintVal7 = FALSE
+    dblHintVal8 = 0
+    intHintVal8 = 0
+    strHintVal8 = ""
+    boolHintVal8 = FALSE
+    dblHintVal9 = 0
+    intHintVal9 = 0
+    strHintVal9 = ""
+    boolHintVal9 = FALSE
+    updateMode = AutoUpdate
+    userTag00 = ""
+    userTag01 = ""
+    userTag02 = ""
+    userTag03 = ""
+    userTag04 = ""
+    userTag05 = ""
+    userTag06 = ""
+    userTag07 = ""
+    userTag08 = ""
+    userTag09 = ""
+    regionOffset = "0 0 0 0 0 0"
+    suppressWorldPos = FALSE
+    fileName = $(DemoDataPath)/ProbandT1Formats/ProbandT1.small.ml.uint16.compressed.zlib
+  }
+}
+module MLImageFormatSave {
+  internal  {
+    frame = "-1405 -559 205 64"
+    moduleGroupName = "MLImageFormatSave (Compressed and Uncompressed)"
+    windows  {
+      window _default {
+        geometry = "266 392 582 393"
+        sizeHint = "306 393"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = MLImageFormatSave_ml_lzf
+    compression = LZF
+    dblHintVal0 = 0
+    intHintVal0 = 0
+    strHintVal0 = FALSE
+    boolHintVal0 = FALSE
+    dblHintVal1 = 0
+    intHintVal1 = 0
+    strHintVal1 = ""
+    boolHintVal1 = FALSE
+    dblHintVal2 = 0
+    intHintVal2 = 0
+    strHintVal2 = ""
+    boolHintVal2 = FALSE
+    dblHintVal3 = 0
+    intHintVal3 = 0
+    strHintVal3 = ""
+    boolHintVal3 = FALSE
+    dblHintVal4 = 0
+    intHintVal4 = 0
+    strHintVal4 = ""
+    boolHintVal4 = FALSE
+    dblHintVal5 = 0
+    intHintVal5 = 0
+    strHintVal5 = ""
+    boolHintVal5 = FALSE
+    dblHintVal6 = 0
+    intHintVal6 = 0
+    strHintVal6 = ""
+    boolHintVal6 = FALSE
+    dblHintVal7 = 0
+    intHintVal7 = 0
+    strHintVal7 = ""
+    boolHintVal7 = FALSE
+    dblHintVal8 = 0
+    intHintVal8 = 0
+    strHintVal8 = ""
+    boolHintVal8 = FALSE
+    dblHintVal9 = 0
+    intHintVal9 = 0
+    strHintVal9 = ""
+    boolHintVal9 = FALSE
+    updateMode = AutoUpdate
+    userTag00 = ""
+    userTag01 = ""
+    userTag02 = ""
+    userTag03 = ""
+    userTag04 = ""
+    userTag05 = ""
+    userTag06 = ""
+    userTag07 = ""
+    userTag08 = ""
+    userTag09 = ""
+    regionOffset = "0 0 0 0 0 0"
+    suppressWorldPos = FALSE
+    fileName = $(DemoDataPath)/ProbandT1Formats/ProbandT1.small.ml.uint16.compressed.lzf
+  }
+}
+module itkImageFileWriter {
+  internal  {
+    frame = "-1936 -943 194 64"
+    moduleGroupName = "itkImageFileWriter (Uncompressed)"
+    windows  {
+      window _default {
+        geometry = "70 57 552 411"
+        sizeHint = "276 411"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = itkImageFileWriter_itk_vtk
+    useCompression = FALSE
+    correctSubVoxelShift = FALSE
+    forceDirectionCosineWrite = TRUE
+    outputVoxelType = Automatic
+    info = ""
+    unresolvedFileName = $(DemoDataPath)/ProbandT1Formats/ProbandT1.small.itk.uint16.vtk
+  }
+}
+module itkImageFileWriter {
+  internal  {
+    frame = "-1700 -943 202 64"
+    moduleGroupName = "itkImageFileWriter (Uncompressed)"
+    windows  {
+      window _default {
+        geometry = "69 57 552 411"
+        sizeHint = "276 411"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = itkImageFileWriter_itk_bmp
+    useCompression = FALSE
+    correctSubVoxelShift = FALSE
+    forceDirectionCosineWrite = TRUE
+    outputVoxelType = Automatic
+    info = ""
+    unresolvedFileName = $(DemoDataPath)/ProbandT1Formats/ProbandT1.small.itk.uint16.slice16.bmp
+  }
+}
+module SubImage {
+  internal  {
+    frame = "-1873 -800 101 50"
+    moduleGroupName = "itkImageFileWriter (Uncompressed)"
+    windows  {
+      window _default {
+        geometry = "777 410 388 417"
+        sizeHint = "374 417"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SubImage1
+    boxInput = "0 0 0 0 0 0 -1 -1 -1 -1 -1 -1"
+    autoApplyBox = FALSE
+    correctForNegativeSubImageExtents = TRUE
+    enableBoxClamping = FALSE
+    x = 0
+    sx = 45
+    modifyX = TRUE
+    y = 0
+    sy = 37
+    modifyY = TRUE
+    z = 16
+    sz = 1
+    modifyZ = TRUE
+    c = 0
+    sc = 1
+    modifyC = FALSE
+    t = 0
+    st = 1
+    modifyT = TRUE
+    u = 0
+    su = 1
+    modifyU = FALSE
+    fillValue = 0
+    mode = VoxelStartSize
+    autoApply = TRUE
+  }
+}
+module SubImage {
+  internal  {
+    frame = "-1525 -792 93 50"
+    moduleGroupName = "itkImageFileWriter (Uncompressed)"
+    windows  {
+      window _default {
+        geometry = "777 410 388 417"
+        sizeHint = "374 417"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SubImage
+    boxInput = "0 0 0 0 0 0 -1 -1 -1 -1 -1 -1"
+    autoApplyBox = FALSE
+    correctForNegativeSubImageExtents = TRUE
+    enableBoxClamping = FALSE
+    x = 0
+    sx = 45
+    modifyX = TRUE
+    y = 0
+    sy = 37
+    modifyY = TRUE
+    z = 16
+    sz = 1
+    modifyZ = TRUE
+    c = 0
+    sc = 1
+    modifyC = FALSE
+    t = 0
+    st = 1
+    modifyT = TRUE
+    u = 0
+    su = 1
+    modifyU = FALSE
+    fillValue = 0
+    mode = VoxelStartSize
+    autoApply = TRUE
+  }
+}
+module itkImageFileWriter {
+  internal  {
+    frame = "-1707 -871 216 64"
+    moduleGroupName = "itkImageFileWriter (Uncompressed)"
+    windows  {
+      window _default {
+        geometry = "69 57 552 411"
+        sizeHint = "276 411"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = itkImageFileWriter_itk_jpg_2d
+    useCompression = FALSE
+    correctSubVoxelShift = FALSE
+    forceDirectionCosineWrite = TRUE
+    outputVoxelType = Automatic
+    info = ""
+    unresolvedFileName = $(DemoDataPath)/ProbandT1Formats/ProbandT1.small.itk.uint16.slice16.jpg
+  }
+}
+module itkImageFileWriter {
+  internal  {
+    frame = "-1933 -871 220 64"
+    moduleGroupName = "itkImageFileWriter (Uncompressed)"
+    windows  {
+      window _default {
+        geometry = "69 57 556 411"
+        sizeHint = "276 411"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = itkImageFileWriter_itk_png_2d
+    useCompression = FALSE
+    correctSubVoxelShift = FALSE
+    forceDirectionCosineWrite = TRUE
+    outputVoxelType = Automatic
+    info = ""
+    unresolvedFileName = $(DemoDataPath)/ProbandT1Formats/ProbandT1.small.itk.uint16.slice16.png
+  }
+}
+module Scale {
+  internal  {
+    frame = "-1163 -864 72 50"
+    moduleGroupName = "itkImageFileWriter (Uncompressed)"
+    windows  {
+      window _default {
+        geometry = "765 495 254 347"
+        sizeHint = "254 347"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Scale1
+    inputMin = 0
+    inputMax = 1951
+    updateMode = AutoUpdateMinMaxOn
+    useTrueRange = TRUE
+    typeSelect = Int16
+    outputMin = 0
+    outputMax = 2070
+  }
+}
+module itkImageFileWriter {
+  internal  {
+    frame = "-1243 -943 233 64"
+    moduleGroupName = "itkImageFileWriter (Uncompressed)"
+    windows  {
+      window _default {
+        geometry = "69 57 552 411"
+        sizeHint = "276 411"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = itkImageFileWriter_int16_itk_spr
+    useCompression = FALSE
+    correctSubVoxelShift = FALSE
+    forceDirectionCosineWrite = TRUE
+    outputVoxelType = Automatic
+    info = ""
+    unresolvedFileName = $(DemoDataPath)/ProbandT1Formats/ProbandT1.small.itk.int16.spr
+  }
+}
+module itkImageFileWriter {
+  internal  {
+    frame = "-2341 -801 193 64"
+    moduleGroupName = "itkImageFileWriter (Uncompressed)"
+    windows  {
+      window _default {
+        geometry = "69 57 552 411"
+        sizeHint = "276 411"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = itkImageFileWriter_itk_tiff
+    useCompression = FALSE
+    correctSubVoxelShift = FALSE
+    forceDirectionCosineWrite = TRUE
+    outputVoxelType = Automatic
+    info = ""
+    unresolvedFileName = $(DemoDataPath)/ProbandT1Formats/ProbandT1.small.itk.uint16.tiff
+  }
+}
+module itkImageFileWriter {
+  internal  {
+    frame = "-2351 -729 212 64"
+    moduleGroupName = "itkImageFileWriter (Uncompressed)"
+    windows  {
+      window _default {
+        geometry = "69 57 552 411"
+        sizeHint = "276 411"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = itkImageFileWriter_itk_dicom
+    useCompression = FALSE
+    correctSubVoxelShift = FALSE
+    forceDirectionCosineWrite = TRUE
+    outputVoxelType = Automatic
+    info = ""
+    unresolvedFileName = $(DemoDataPath)/ProbandT1Formats/ProbandT1.small.itk.uint16.dicom
+  }
+}
+module itkImageFileWriter {
+  internal  {
+    frame = "-2343 -945 197 64"
+    moduleGroupName = "itkImageFileWriter (Uncompressed)"
+    windows  {
+      window _default {
+        geometry = "69 57 552 411"
+        sizeHint = "276 411"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = itkImageFileWriter_itk_hdr
+    useCompression = FALSE
+    correctSubVoxelShift = FALSE
+    forceDirectionCosineWrite = TRUE
+    outputVoxelType = Automatic
+    info = ""
+    unresolvedFileName = $(DemoDataPath)/ProbandT1Formats/ProbandT1.small.itk.uint16.hdr
+  }
+}
+module itkImageFileWriter {
+  internal  {
+    frame = "-1483 -943 232 64"
+    moduleGroupName = "itkImageFileWriter (Uncompressed)"
+    windows  {
+      window _default {
+        geometry = "69 57 552 411"
+        sizeHint = "276 411"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = itkImageFileWriter_uint8_itk_pic
+    useCompression = FALSE
+    correctSubVoxelShift = FALSE
+    forceDirectionCosineWrite = TRUE
+    outputVoxelType = Automatic
+    info = ""
+    unresolvedFileName = $(DemoDataPath)/ProbandT1Formats/ProbandT1.small.itk.uint8.pic
+  }
+}
+module itkImageFileWriter {
+  internal  {
+    frame = "-2140 -871 202 64"
+    moduleGroupName = "itkImageFileWriter (Uncompressed)"
+    windows  {
+      window _default {
+        geometry = "69 57 552 411"
+        sizeHint = "276 411"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = itkImageFileWriter_itk_mhd
+    useCompression = FALSE
+    correctSubVoxelShift = FALSE
+    forceDirectionCosineWrite = TRUE
+    outputVoxelType = Automatic
+    info = ""
+    unresolvedFileName = $(DemoDataPath)/ProbandT1Formats/ProbandT1.small.itk.uint16.mhd
+  }
+}
+module itkImageFileWriter {
+  internal  {
+    frame = "-2134 -943 191 64"
+    moduleGroupName = "itkImageFileWriter (Uncompressed)"
+    windows  {
+      window _default {
+        geometry = "69 57 552 411"
+        sizeHint = "276 411"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = itkImageFileWriter_itk_nii
+    useCompression = FALSE
+    correctSubVoxelShift = FALSE
+    forceDirectionCosineWrite = TRUE
+    outputVoxelType = Automatic
+    info = ""
+    unresolvedFileName = $(DemoDataPath)/ProbandT1Formats/ProbandT1.small.itk.uint16.nii
+  }
+}
+module itkImageFileWriter {
+  internal  {
+    frame = "-2132 -727 202 64"
+    moduleGroupName = "itkImageFileWriter (Uncompressed)"
+    windows  {
+      window _default {
+        geometry = "69 57 552 411"
+        sizeHint = "276 411"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = itkImageFileWriter_itk_nrrd
+    useCompression = FALSE
+    correctSubVoxelShift = FALSE
+    forceDirectionCosineWrite = TRUE
+    outputVoxelType = Automatic
+    info = ""
+    unresolvedFileName = $(DemoDataPath)/ProbandT1Formats/ProbandT1.small.itk.uint16.nrrd
+  }
+}
+module itkImageFileWriter {
+  internal  {
+    frame = "-2129 -799 197 64"
+    moduleGroupName = "itkImageFileWriter (Uncompressed)"
+    windows  {
+      window _default {
+        geometry = "70 57 552 411"
+        sizeHint = "276 411"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = itkImageFileWriter_itk_lsm
+    useCompression = FALSE
+    correctSubVoxelShift = FALSE
+    forceDirectionCosineWrite = TRUE
+    outputVoxelType = Automatic
+    info = ""
+    unresolvedFileName = $(DemoDataPath)/ProbandT1Formats/ProbandT1.small.itk.uint16.lsm
+  }
+}
+module MLImageFormatSave {
+  internal  {
+    frame = "-1632 -559 184 64"
+    moduleGroupName = "MLImageFormatSave (Compressed and Uncompressed)"
+    windows  {
+      window _default {
+        geometry = "266 392 370 393"
+        sizeHint = "306 393"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = MLImageFormatSave_ml
+    compression = None
+    dblHintVal0 = 0
+    intHintVal0 = 0
+    strHintVal0 = ""
+    boolHintVal0 = FALSE
+    dblHintVal1 = 0
+    intHintVal1 = 0
+    strHintVal1 = ""
+    boolHintVal1 = FALSE
+    dblHintVal2 = 0
+    intHintVal2 = 0
+    strHintVal2 = ""
+    boolHintVal2 = FALSE
+    dblHintVal3 = 0
+    intHintVal3 = 0
+    strHintVal3 = ""
+    boolHintVal3 = FALSE
+    dblHintVal4 = 0
+    intHintVal4 = 0
+    strHintVal4 = ""
+    boolHintVal4 = FALSE
+    dblHintVal5 = 0
+    intHintVal5 = 0
+    strHintVal5 = ""
+    boolHintVal5 = FALSE
+    dblHintVal6 = 0
+    intHintVal6 = 0
+    strHintVal6 = ""
+    boolHintVal6 = FALSE
+    dblHintVal7 = 0
+    intHintVal7 = 0
+    strHintVal7 = ""
+    boolHintVal7 = FALSE
+    dblHintVal8 = 0
+    intHintVal8 = 0
+    strHintVal8 = ""
+    boolHintVal8 = FALSE
+    dblHintVal9 = 0
+    intHintVal9 = 0
+    strHintVal9 = ""
+    boolHintVal9 = FALSE
+    updateMode = AutoUpdate
+    userTag00 = ""
+    userTag01 = ""
+    userTag02 = ""
+    userTag03 = ""
+    userTag04 = ""
+    userTag05 = ""
+    userTag06 = ""
+    userTag07 = ""
+    userTag08 = ""
+    userTag09 = ""
+    regionOffset = "0 0 0 0 0 0"
+    suppressWorldPos = FALSE
+    fileName = $(DemoDataPath)/ProbandT1Formats/ProbandT1.small.ml.uint16
+  }
+}
+module Scale {
+  internal  {
+    frame = "-1503 -728 65 50"
+    moduleGroupName = "itkImageFileWriter (Uncompressed)"
+    windows  {
+      window _default {
+        geometry = "765 495 254 347"
+        sizeHint = "254 347"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Scale
+    inputMin = 0
+    inputMax = 1951
+    updateMode = AutoUpdateMinMaxOn
+    useTrueRange = TRUE
+    typeSelect = UInt8
+    outputMin = 0
+    outputMax = 255
+  }
+}
+module MinMaxScan {
+  internal  {
+    frame = "-1726 -232 111 50"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "723 485 488 266"
+        sizeHint = "482 266"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = MinMaxScan
+    updateMode = AutoUpdate
+    typeSelect = "Proposed Data Type"
+    preferredIntType = PreferUnsigned
+  }
+}
+module Resample3D {
+  internal  {
+    frame = "-1725 -168 108 50"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "1111 793 357 341"
+        sizeHint = "357 341"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Resample3D
+    keep = "Scale factor"
+    filter = Lanczos_3
+    isotropic = FALSE
+    filterAlways = FALSE
+    filterAlwaysTolerance = 0
+    zoom = "0.41 0.41 0.41"
+    imageSize = "45 37 33"
+    voxelSize = "4.7637073005118 4.76373172387844 4.8780487804878"
+    subVoxelShift = "0 0 0"
+    useReferenceImage = FALSE
+  }
+}
+module LocalImage {
+  internal  {
+    frame = "-1730 -104 102 50"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "673 800 424 279"
+        sizeHint = "-1 -1"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = LocalImage
+    name = /Repository/MeVisLab/Resources/DemoData/BrainMultiModal/ProbandT1.dcm
+    autoLoad = TRUE
+  }
+}
+module itkImageFileWriter {
+  internal  {
+    frame = "-2344 -873 199 64"
+    moduleGroupName = "itkImageFileWriter (Uncompressed)"
+    windows  {
+      window _default {
+        geometry = "69 57 552 411"
+        sizeHint = "276 411"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = itkImageFileWriter_itk_gipl
+    useCompression = FALSE
+    correctSubVoxelShift = FALSE
+    forceDirectionCosineWrite = TRUE
+    outputVoxelType = Automatic
+    info = ""
+    unresolvedFileName = $(DemoDataPath)/ProbandT1Formats/ProbandT1.small.itk.uint16.gipl
+  }
+}
+connections  {
+  vtkTIFFWriter_compressed_deflate.inputInput_vtkDataObject = MLToVTKImage.outputImage
+  vtkTIFFWriter.inputInput_vtkDataObject = MLToVTKImage.outputImage
+  vtkTIFFWriter_compressed_lzw.inputInput_vtkDataObject = MLToVTKImage.outputImage
+  vtkMetaImageWriter.inputInput_vtkDataObject = MLToVTKImage.outputImage
+  vtkXMLImageDataWriter.inputInput_vtkDataObject = MLToVTKImage.outputImage
+  vtkXMLImageDataWriter_compressed.inputInput_vtkDataObject = MLToVTKImage.outputImage
+  vtkMetaImageWriter_compressed.inputInput_vtkDataObject = MLToVTKImage.outputImage
+  vtkDataSetWriter.inputInput_vtkDataObject = MLToVTKImage.outputImage
+  MLToVTKImage.input0 = MinMaxScan.output0
+  vtkMINCImageWriter.inputInput_vtkDataObject = MLToVTKImage.outputImage
+  itkImageFileWriter_itk_mhd_compressed.input0 = MinMaxScan.output0
+  itkImageFileWriter_itk_nrrd_compressed.input0 = MinMaxScan.output0
+  itkImageFileWriter_itk_dicom_compressed.input0 = MinMaxScan.output0
+  ImageSave_ml_jpg_2d.input0 = Scale3.output0
+  ImageSave_ml_pnm_2d.input0 = SubImage2.output0
+  ImageSave_ml_png_2d.input0 = SubImage2.output0
+  ImageSave_ml_bmp_2d.input0 = Scale3.output0
+  Scale3.input0 = SubImage2.output0
+  SubImage2.input0 = MinMaxScan.output0
+  Scale2.input0 = MinMaxScan.output0
+  ImageSave_Analyze.input0 = Scale2.output0
+  ImageSave_DICOM.input0 = MinMaxScan.output0
+  ImageSave_ml_dcmtiff_lzw_compressed.input0 = MinMaxScan.output0
+  ImageSave_ml_dcmtiff.input0 = MinMaxScan.output0
+  MLImageFormatSave_ml_ctcomp2.input0 = MinMaxScan.output0
+  MLImageFormatSave_ml_lzma.input0 = MinMaxScan.output0
+  MLImageFormatSave_ml_bzip2.input0 = MinMaxScan.output0
+  MLImageFormatSave_ml_zlib.input0 = MinMaxScan.output0
+  MLImageFormatSave_ml_lzf.input0 = MinMaxScan.output0
+  itkImageFileWriter_itk_vtk.input0 = MinMaxScan.output0
+  itkImageFileWriter_itk_bmp.input0 = SubImage.output0
+  SubImage1.input0 = MinMaxScan.output0
+  SubImage.input0 = Scale.output0
+  itkImageFileWriter_itk_jpg_2d.input0 = SubImage.output0
+  itkImageFileWriter_itk_png_2d.input0 = SubImage1.output0
+  Scale1.input0 = MinMaxScan.output0
+  itkImageFileWriter_int16_itk_spr.input0 = Scale1.output0
+  itkImageFileWriter_itk_tiff.input0 = MinMaxScan.output0
+  itkImageFileWriter_itk_dicom.input0 = MinMaxScan.output0
+  itkImageFileWriter_itk_hdr.input0 = MinMaxScan.output0
+  itkImageFileWriter_uint8_itk_pic.input0 = Scale.output0
+  itkImageFileWriter_itk_mhd.input0 = MinMaxScan.output0
+  itkImageFileWriter_itk_nii.input0 = MinMaxScan.output0
+  itkImageFileWriter_itk_nrrd.input0 = MinMaxScan.output0
+  itkImageFileWriter_itk_lsm.input0 = MinMaxScan.output0
+  MLImageFormatSave_ml.input0 = MinMaxScan.output0
+  Scale.input0 = MinMaxScan.output0
+  MinMaxScan.input0 = Resample3D.output0
+  Resample3D.input0 = LocalImage.outImage
+  itkImageFileWriter_itk_gipl.input0 = MinMaxScan.output0
+}
+networkModel  {
+  parentItems  {
+    0  {
+      MLABNetworkModelItem MLABNetworkModelItemGroup {
+        uniqueId = 172
+        objectName = "MLImageFormatSave (Compressed and Uncompressed)"
+        parentUniqueId = 0
+        color  {
+          r = 23
+          g = 226
+          b = 80
+          a = 40
+        }
+      }
+      MLABNetworkModelItem MLABNetworkModelItemGroup {
+        uniqueId = 187
+        objectName = "ImageSave (Compressed and Uncompressed)"
+        parentUniqueId = 0
+        color  {
+          r = 226
+          g = 103
+          b = 216
+          a = 40
+        }
+      }
+      MLABNetworkModelItem MLABNetworkModelItemGroup {
+        uniqueId = 224
+        objectName = "itkImageFileWriter (Uncompressed)"
+        parentUniqueId = 0
+        color  {
+          r = 226
+          g = 226
+          b = 71
+          a = 40
+        }
+      }
+      MLABNetworkModelItem MLABNetworkModelItemGroup {
+        uniqueId = 279
+        objectName = "itkImageFileWriter (Compressed)"
+        parentUniqueId = 0
+        color  {
+          r = 226
+          g = 226
+          b = 71
+          a = 40
+        }
+      }
+      MLABNetworkModelItem MLABNoteItem {
+        uniqueId = 324
+        objectName = ""
+        parentUniqueId = 0
+        frame = "-2702 -629 302 548"
+        backgroundColor  {
+          r = 252
+          g = 242
+          b = 2
+          a = 255
+        }
+        text = "This module network shows the file writer modules and their parameters which were used to create the different file format versions of the ProbandT1 files in the DemoData/ProbandT1Formats directory of MeVisLab.
+
+Note that most writers and file formats can store only a subset of voxel types or image meta data. Therefore information such as DICOM tags, time point information, data set orientation, voxel value ranges etc. often cannot fully be reloaded from stored files. 
+For writers supporting only specific voxel types or 2d images the image data was rescaled or 2d slices were extracted.
+
+Some file formats providing compression functionality appear more than once to show the difference between compressed and uncompressed file sizes.
+
+Note that comparing compressed file sizes is not very meaningful, because file formats store different amounts of meta data (e.g. DICOM tags) which also influences the final file sizes. So file sizes may be larger even if stored image data is compressed better than in other file formats.
+
+2D vtk image writers (bmp, jpg, pnm, png) are not listed."
+        titleText = Note:
+        isCollapsed = False
+        titleFrame = "-2697 -624 292 22"
+      }
+      MLABNetworkModelItem MLABNetworkModelItemGroup {
+        uniqueId = 329
+        objectName = "vtk Image Writers"
+        parentUniqueId = 0
+        color  {
+          r = 0
+          g = 12
+          b = 255
+          a = 40
+        }
+      }
+    }
+  }
+}

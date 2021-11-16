@@ -1,0 +1,14 @@
+ObjectType = Image
+NDims = 3
+BinaryData = True
+BinaryDataByteOrderMSB = False
+CompressedData = True
+CompressedDataSize = 73247
+TransformMatrix = 1 0 0 0 1 0 0 0 1
+Offset = 72.0668 -131.413 117.829
+CenterOfRotation = 0 0 0
+ElementSpacing = 4.76371 4.76373 4.87805
+DimSize = 45 37 33
+AnatomicalOrientation = ???
+ElementType = MET_USHORT
+ElementDataFile = ProbandT1.small.vtk.uint16.compressed.zraw

@@ -13,6 +13,12 @@
 #include <tiny_gltf.h>
 #include <chrono>
 
+
+#include <dcmtk/dcmdata/dctk.h>
+#include <dcmtk/dcmimgle/dcmimage.h>
+
+
+
 const uint32_t WIDTH = 1600;
 const uint32_t HEIGHT = 900;
 const int MAX_FRAMES_IN_FLIGHT = 2;
@@ -523,8 +529,8 @@ private:
         glslang::InitializeProcess();
         std::vector<uint32_t> vertShaderCodeSPIRV;
         std::vector<uint32_t> fragShaderCodeSPIRV;
-        SpirvHelper::GLSLtoSPV(vk::ShaderStageFlagBits::eVertex, "/shaderVolume.vert", vertShaderCodeSPIRV);
-        SpirvHelper::GLSLtoSPV(vk::ShaderStageFlagBits::eFragment, "/shaderVolume.frag", fragShaderCodeSPIRV);
+        SpirvHelper::GLSLtoSPV(vk::ShaderStageFlagBits::eVertex, "/shader.vert", vertShaderCodeSPIRV);
+        SpirvHelper::GLSLtoSPV(vk::ShaderStageFlagBits::eFragment, "/shader.frag", fragShaderCodeSPIRV);
         try{
             vertShaderModule = createShaderModule(vertShaderCodeSPIRV);
             fragShaderModule = createShaderModule(fragShaderCodeSPIRV);
@@ -624,27 +630,55 @@ private:
     }
 
     void createTextureImage() {
-        int texWidth, texHeight, texChannels;
-        stbi_uc* pixels = stbi_load(TEXTURE_PATH "/purplesmoke.png", &texWidth, &texHeight, &texChannels, STBI_rgb_alpha);
-        vk::DeviceSize imageSize = texWidth * texHeight * 4;
+        //int texWidth, texHeight, texChannels;
+        //stbi_uc* pixels = stbi_load(TEXTURE_PATH "/purplesmoke.png", &texWidth, &texHeight, &texChannels, STBI_rgb_alpha);
+        DicomImage *image = new DicomImage(ASSET_PATH"/DemoData/Head4_t1.small.dcm");
+        if (image != NULL)
+        {
+            vk::DeviceSize imageSize = image->getOutputDataSize();
+            std::cout << "Size: " << image->getOutputDataSize() << " Width: " << image->getWidth() << " Height: " << image->getHeight() << " Depth: " << image->getDepth() << " Number of frames: " << image->getNumberOfFrames()  << std::endl;
+            if (image->getStatus() == EIS_Normal)
+            {
+                const DiPixel* interData = image->getInterData();
+                int count = interData->getCount();
+                Uint8* pixelData = (Uint8 *)(image->getOutputData());
+                if (pixelData != NULL)
+                {
+                    Buffer stagingBuffer = Buffer(imageSize, vk::BufferUsageFlagBits::eTransferSrc, VMA_MEMORY_USAGE_CPU_ONLY);
+                    stagingBuffer.map();
+                    stagingBuffer.copyTo(pixelData);
+                    stagingBuffer.unmap();
 
-        if (!pixels) {
-            throw std::runtime_error("failed to load texture image!");
+                    createImage(textureImage, textureImageAllocation, vk::ImageUsageFlagBits::eTransferDst | vk::ImageUsageFlagBits::eSampled, VMA_MEMORY_USAGE_GPU_ONLY, image->getWidth(), image->getHeight(), vk::Format::eR8G8B8A8Srgb, vk::ImageTiling::eOptimal);
+
+                    transitionImageLayout(textureImage, vk::Format::eR8G8B8A8Srgb, vk::ImageLayout::eUndefined, vk::ImageLayout::eTransferDstOptimal);
+                    copyBufferToImage(stagingBuffer.getHandle(), textureImage, static_cast<uint32_t>(image->getWidth()), static_cast<uint32_t>(image->getHeight()));
+                    transitionImageLayout(textureImage, vk::Format::eR8G8B8A8Srgb, vk::ImageLayout::eTransferDstOptimal, vk::ImageLayout::eShaderReadOnlyOptimal);
+                }
+            } 
+            else
+                std::cerr << "Error: cannot load DICOM image (" << DicomImage::getString(image->getStatus()) << ")" << std::endl;
         }
+        delete image;
+        //vk::DeviceSize imageSize = texWidth * texHeight * 4;
 
-        Buffer stagingBuffer = Buffer(imageSize, vk::BufferUsageFlagBits::eTransferSrc, VMA_MEMORY_USAGE_CPU_ONLY);
+        //if (!pixels) {
+        //    throw std::runtime_error("failed to load texture image!");
+        //}
 
-        stagingBuffer.map();
-        stagingBuffer.copyTo(pixels);
-        stagingBuffer.unmap();
+        //Buffer stagingBuffer = Buffer(imageSize, vk::BufferUsageFlagBits::eTransferSrc, VMA_MEMORY_USAGE_CPU_ONLY);
 
-        stbi_image_free(pixels);
+        //stagingBuffer.map();
+        //stagingBuffer.copyTo(pixels);
+        //stagingBuffer.unmap();
+
+        //stbi_image_free(pixels);
         
-        createImage(textureImage, textureImageAllocation, vk::ImageUsageFlagBits::eTransferDst | vk::ImageUsageFlagBits::eSampled, VMA_MEMORY_USAGE_GPU_ONLY, texWidth, texHeight, vk::Format::eR8G8B8A8Srgb, vk::ImageTiling::eOptimal);
+        //createImage(textureImage, textureImageAllocation, vk::ImageUsageFlagBits::eTransferDst | vk::ImageUsageFlagBits::eSampled, VMA_MEMORY_USAGE_GPU_ONLY, texWidth, texHeight, vk::Format::eR8G8B8A8Srgb, vk::ImageTiling::eOptimal);
 
-        transitionImageLayout(textureImage, vk::Format::eR8G8B8A8Srgb, vk::ImageLayout::eUndefined, vk::ImageLayout::eTransferDstOptimal);
-            copyBufferToImage(stagingBuffer.getHandle(), textureImage, static_cast<uint32_t>(texWidth), static_cast<uint32_t>(texHeight));
-        transitionImageLayout(textureImage, vk::Format::eR8G8B8A8Srgb, vk::ImageLayout::eTransferDstOptimal, vk::ImageLayout::eShaderReadOnlyOptimal);
+        //transitionImageLayout(textureImage, vk::Format::eR8G8B8A8Srgb, vk::ImageLayout::eUndefined, vk::ImageLayout::eTransferDstOptimal);
+        //copyBufferToImage(stagingBuffer.getHandle(), textureImage, static_cast<uint32_t>(texWidth), static_cast<uint32_t>(texHeight));
+        //transitionImageLayout(textureImage, vk::Format::eR8G8B8A8Srgb, vk::ImageLayout::eTransferDstOptimal, vk::ImageLayout::eShaderReadOnlyOptimal);
     }
 
     void createTextureImageView() {
@@ -1044,7 +1078,52 @@ private:
     }
 };
 
+void dcmtkTest(){
+    DcmFileFormat fileformat;
+    std::string file = ASSET_PATH"/DemoData/BrainT1Dicom/export0009.dcm";
+    OFCondition status = fileformat.loadFile(file.c_str());
+    
+    if (status.good())
+    {
+        OFString patientName;
+        DcmDataset* dataset = fileformat.getDataset();
+        if (dataset->findAndGetOFString(DCM_PatientName, patientName).good())
+        {
+            std::cout << "Patient's Name: " << patientName << std::endl;
+        } 
+        else{
+            std::cerr << "Error: cannot access Patient's Name!" << std::endl;
+        }    
+        
+    }
+    else
+    {
+        std::cerr << "Error: cannot read DICOM file (" << status.text() << ")" << std::endl;
+    }
+    
+    DicomImage *image = new DicomImage(file.c_str());
+    Uint8* pixelData;
+    if (image != NULL)
+    {
+        if (image->getStatus() == EIS_Normal)
+        {
+            pixelData = (Uint8 *)(image->getOutputData());
+            if (pixelData != NULL)
+            {
+                std::cout << pixelData << std::endl;
+            }
+        } 
+        else
+            std::cerr << "Error: cannot load DICOM image (" << DicomImage::getString(image->getStatus()) << ")" << std::endl;
+    }
+    delete image;
+}
+
+
 int main() {
+    
+    //dcmtkTest();
+
     VulkanBase app;
     try {
         app.run();

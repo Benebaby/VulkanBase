@@ -9,7 +9,7 @@ IF(APPLE)
 ENDIF()
 
 
-add_compile_definitions(SHADER_PATH="${PROJECT_SOURCE_DIR}/src/shaders" TEXTURE_PATH="${PROJECT_SOURCE_DIR}/src/textures" MODEL_PATH="${PROJECT_SOURCE_DIR}/src/models")
+add_compile_definitions(SHADER_PATH="${PROJECT_SOURCE_DIR}/src/shaders" TEXTURE_PATH="${PROJECT_SOURCE_DIR}/src/textures" MODEL_PATH="${PROJECT_SOURCE_DIR}/src/models" ASSET_PATH="${PROJECT_SOURCE_DIR}/assets")
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -61,4 +61,6 @@ include_directories(${PROJECT_SOURCE_DIR}/lib/stb)
 add_subdirectory(${PROJECT_SOURCE_DIR}/lib/glslang)
 target_link_libraries(${CMAKE_PROJECT_NAME} glslang SPIRV)
 
-
+#add dcmtk
+add_subdirectory(${PROJECT_SOURCE_DIR}/lib/dcmtk)
+target_link_libraries(${CMAKE_PROJECT_NAME} DCMTK)

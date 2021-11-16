@@ -19,9 +19,6 @@
 [submodule "lib/glslang"]
 	path = lib/glslang
 	url = https://github.com/KhronosGroup/glslang.git
-[submodule "lib/--force"]
-	path = lib/--force
-	url = https://github.com/DCMTK/dcmtk.git
 [submodule "lib/dcmtk"]
 	path = lib/dcmtk
 	url = https://github.com/DCMTK/dcmtk.git
