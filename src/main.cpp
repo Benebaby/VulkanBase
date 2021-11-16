@@ -411,7 +411,7 @@ private:
         ImGui::StyleColorsDark();
         //ImGui::StyleColorsClassic();
         ImGui_ImplGlfw_InitForVulkan(window, true);
-        
+
         std::array<vk::DescriptorPoolSize, 11> poolSizes{
             vk::DescriptorPoolSize{ vk::DescriptorType::eSampler, 1000 },
             vk::DescriptorPoolSize{ vk::DescriptorType::eCombinedImageSampler, 1000 },
@@ -756,7 +756,7 @@ private:
         }
     }
 
-    void createCommandPool(){
+    void createCommandPool() {
         QueueFamilyIndices queueFamilyIndices = findQueueFamilies(physicalDevice);
         vk::CommandPoolCreateInfo poolInfo({}, queueFamilyIndices.graphicsFamily.value());
         try{
