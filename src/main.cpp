@@ -5,6 +5,8 @@
 #include "SpirvHelper.h"
 #include "Utils.h"
 #include "Buffer.hpp"
+#include "Image.hpp"
+#include "CommandBuffer.hpp"
 
 #include <optional>
 #include <set>
@@ -157,6 +159,7 @@ private:
     
     vk::Image textureImage;
     VmaAllocation textureImageAllocation;
+    //Image* textureImage;
     vk::ImageView textureImageView;
     vk::Sampler textureSampler;
 
@@ -195,7 +198,9 @@ private:
         readAndCompileShaders();
         createGraphicsPipeline();
         createCommandPool();
+        CommandBuffer::init(device, commandPool,graphicsQueue);
         Buffer::init(allocator, device, commandPool, graphicsQueue);
+        Image::init(allocator, device);
         createDepthResources();
         createFramebuffers();
         createTextureImage();
@@ -640,10 +645,11 @@ private:
 
         stbi_image_free(pixels);
         
+        //textureImage = new Image(texWidth, texHeight, vk::ImageUsageFlagBits::eTransferDst | vk::ImageUsageFlagBits::eSampled, VMA_MEMORY_USAGE_GPU_ONLY, vk::Format::eR8G8B8A8Srgb, vk::ImageTiling::eOptimal);
         createImage(textureImage, textureImageAllocation, vk::ImageUsageFlagBits::eTransferDst | vk::ImageUsageFlagBits::eSampled, VMA_MEMORY_USAGE_GPU_ONLY, texWidth, texHeight, vk::Format::eR8G8B8A8Srgb, vk::ImageTiling::eOptimal);
 
         transitionImageLayout(textureImage, vk::Format::eR8G8B8A8Srgb, vk::ImageLayout::eUndefined, vk::ImageLayout::eTransferDstOptimal);
-            copyBufferToImage(stagingBuffer.getHandle(), textureImage, static_cast<uint32_t>(texWidth), static_cast<uint32_t>(texHeight));
+        copyBufferToImage(stagingBuffer.getHandle(), textureImage, static_cast<uint32_t>(texWidth), static_cast<uint32_t>(texHeight));
         transitionImageLayout(textureImage, vk::Format::eR8G8B8A8Srgb, vk::ImageLayout::eTransferDstOptimal, vk::ImageLayout::eShaderReadOnlyOptimal);
     }
 
@@ -716,7 +722,7 @@ private:
             sourceStage = vk::PipelineStageFlagBits::eTransfer;
             destinationStage = vk::PipelineStageFlagBits::eFragmentShader;
         } else {
-            throw std::invalid_argument("unsupported layout transition!");
+            throw std::invalid_argument("Unsupported layout transition!");
         }
 
         vk::ImageMemoryBarrier barrier(srcAccessMask, dstAccessMask, oldLayout, newLayout, VK_QUEUE_FAMILY_IGNORED, VK_QUEUE_FAMILY_IGNORED, image, vk::ImageSubresourceRange(vk::ImageAspectFlagBits::eColor, 0, 1, 0, 1));
@@ -990,6 +996,7 @@ private:
         device.destroyShaderModule(vertShaderModule);
         device.destroySampler(textureSampler);
         device.destroyImageView(textureImageView);
+        //delete textureImage;
         vmaDestroyImage(allocator, textureImage, textureImageAllocation);
         device.destroyDescriptorSetLayout(descriptorSetLayout);
         
