@@ -632,16 +632,23 @@ private:
     void createTextureImage() {
         //int texWidth, texHeight, texChannels;
         //stbi_uc* pixels = stbi_load(TEXTURE_PATH "/purplesmoke.png", &texWidth, &texHeight, &texChannels, STBI_rgb_alpha);
-        DicomImage *image = new DicomImage(ASSET_PATH"/DemoData/Head4_t1.small.dcm");
+        //DcmDataset* dataset = new DcmDataset();
+        //dataset->loadFile(ASSET_PATH"/DemoData/BrainT1Dicom/export0010.dcm");
+        DcmDicomDir* testdir = new DcmDicomDir(ASSET_PATH"/OtherData/DICOMDIR");
+        auto testtype = testdir->getDirFileFormat();
+        auto testname = testdir->getDirFileName();
+        DcmDirectoryRecord* testrootrecord = &testdir->getRootRecord();
+        auto testrecordtype= testrootrecord->getRecordType();
+        auto testreferencemrdr= testrootrecord->getReferencedMRDR();
+
+        DicomImage *image = new DicomImage(ASSET_PATH"/DemoData/BrainT1Dicom/export0010.dcm",CIF_IgnoreModalityLutBitDepth);
         if (image != NULL)
         {
             vk::DeviceSize imageSize = image->getOutputDataSize();
-            std::cout << "Size: " << image->getOutputDataSize() << " Width: " << image->getWidth() << " Height: " << image->getHeight() << " Depth: " << image->getDepth() << " Number of frames: " << image->getNumberOfFrames()  << std::endl;
+            std::cout << "Size: " << image->getOutputDataSize() << " Width: " << image->getWidth() << " Height: " << image->getHeight() << " Depth: " << image->getDepth() << " Photometric Interpretation: " << image->getPhotometricInterpretation() << std::endl;
             if (image->getStatus() == EIS_Normal)
             {
-                const DiPixel* interData = image->getInterData();
-                int count = interData->getCount();
-                Uint8* pixelData = (Uint8 *)(image->getOutputData());
+                Uint16* pixelData = (Uint16 *)(image->getOutputData(image->getDepth(),image->getFirstFrame(), 0));
                 if (pixelData != NULL)
                 {
                     Buffer stagingBuffer = Buffer(imageSize, vk::BufferUsageFlagBits::eTransferSrc, VMA_MEMORY_USAGE_CPU_ONLY);
@@ -649,11 +656,12 @@ private:
                     stagingBuffer.copyTo(pixelData);
                     stagingBuffer.unmap();
 
-                    createImage(textureImage, textureImageAllocation, vk::ImageUsageFlagBits::eTransferDst | vk::ImageUsageFlagBits::eSampled, VMA_MEMORY_USAGE_GPU_ONLY, image->getWidth(), image->getHeight(), vk::Format::eR8G8B8A8Srgb, vk::ImageTiling::eOptimal);
+                    createImage(textureImage, textureImageAllocation, vk::ImageUsageFlagBits::eTransferDst | vk::ImageUsageFlagBits::eSampled, VMA_MEMORY_USAGE_GPU_ONLY, image->getWidth(), image->getHeight(), vk::Format::eR16G16B16Sfloat, vk::ImageTiling::eOptimal);
 
-                    transitionImageLayout(textureImage, vk::Format::eR8G8B8A8Srgb, vk::ImageLayout::eUndefined, vk::ImageLayout::eTransferDstOptimal);
+                    transitionImageLayout(textureImage, vk::Format::eR16G16B16Sfloat, vk::ImageLayout::eUndefined, vk::ImageLayout::eTransferDstOptimal);
                     copyBufferToImage(stagingBuffer.getHandle(), textureImage, static_cast<uint32_t>(image->getWidth()), static_cast<uint32_t>(image->getHeight()));
-                    transitionImageLayout(textureImage, vk::Format::eR8G8B8A8Srgb, vk::ImageLayout::eTransferDstOptimal, vk::ImageLayout::eShaderReadOnlyOptimal);
+                    auto testimage = textureImage;
+                    transitionImageLayout(textureImage, vk::Format::eR16G16B16Sfloat, vk::ImageLayout::eTransferDstOptimal, vk::ImageLayout::eShaderReadOnlyOptimal);
                 }
             } 
             else
@@ -674,15 +682,15 @@ private:
 
         //stbi_image_free(pixels);
         
-        //createImage(textureImage, textureImageAllocation, vk::ImageUsageFlagBits::eTransferDst | vk::ImageUsageFlagBits::eSampled, VMA_MEMORY_USAGE_GPU_ONLY, texWidth, texHeight, vk::Format::eR8G8B8A8Srgb, vk::ImageTiling::eOptimal);
+        //createImage(textureImage, textureImageAllocation, vk::ImageUsageFlagBits::eTransferDst | vk::ImageUsageFlagBits::eSampled, VMA_MEMORY_USAGE_GPU_ONLY, texWidth, texHeight, vk::Format::eR16G16B16Sfloat, vk::ImageTiling::eOptimal);
 
-        //transitionImageLayout(textureImage, vk::Format::eR8G8B8A8Srgb, vk::ImageLayout::eUndefined, vk::ImageLayout::eTransferDstOptimal);
+        //transitionImageLayout(textureImage, vk::Format::eR16G16B16Sfloat, vk::ImageLayout::eUndefined, vk::ImageLayout::eTransferDstOptimal);
         //copyBufferToImage(stagingBuffer.getHandle(), textureImage, static_cast<uint32_t>(texWidth), static_cast<uint32_t>(texHeight));
-        //transitionImageLayout(textureImage, vk::Format::eR8G8B8A8Srgb, vk::ImageLayout::eTransferDstOptimal, vk::ImageLayout::eShaderReadOnlyOptimal);
+        //transitionImageLayout(textureImage, vk::Format::eR16G16B16Sfloat, vk::ImageLayout::eTransferDstOptimal, vk::ImageLayout::eShaderReadOnlyOptimal);
     }
 
     void createTextureImageView() {
-        textureImageView = createImageView(textureImage, vk::Format::eR8G8B8A8Srgb, vk::ImageAspectFlagBits::eColor);
+        textureImageView = createImageView(textureImage, vk::Format::eR16G16B16Sfloat, vk::ImageAspectFlagBits::eColor);
     }
 
     void createTextureSampler() {
