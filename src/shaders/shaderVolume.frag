@@ -79,6 +79,7 @@ bool intersect(in Ray r, in AABBox box, out float tmin, out float tmax) {
 } 
 
 void main() {
+    vec3 color = vec3(0.0);
     Ray ray = calculateRay(vec2(0.0));
     AABBox box; 
     box.bounds[0] = vec3(-0.5); 
@@ -86,6 +87,23 @@ void main() {
     float tmin = 0.0;
     float tmax = 0.0;
     bool intersects = intersect(ray, box, tmin, tmax);
+    vec3 enter = ray.origin + tmin * ray.direction;
+    vec3 exit = ray.origin + tmax * ray.direction;
+
+    //highlight frontfacing edges
+    if((enter.x < -0.497 || enter.x > 0.497) && (enter.z < -0.497 || enter.z > 0.497)){
+        float distanceToEdge = ((0.5 - abs(enter.x)) + (0.5 - abs(enter.z))) / 2.0;
+        color += (1.0 - distanceToEdge * 333.333) * vec3(0.0, 1.0, 0.0) * 0.2;
+    }
+    if((enter.y < -0.497 || enter.y > 0.497) && (enter.x < -0.497 || enter.x > 0.497)){
+        float distanceToEdge = ((0.5 - abs(enter.y)) + (0.5 - abs(enter.x))) / 2.0;
+        color += (1.0 - distanceToEdge * 333.333) * vec3(0.0, 1.0, 0.0) * 0.2;
+    }
+    if((enter.z < -0.497 || enter.z > 0.497) && (enter.y < -0.497 || enter.y > 0.497)){
+        float distanceToEdge = ((0.5 - abs(enter.z)) + (0.5 - abs(enter.y))) / 2.0;
+        color += (1.0 - distanceToEdge * 333.333) * vec3(0.0, 1.0, 0.0) * 0.2;
+    }
+
     if(intersects){
         vec3 currentColor = vec3(0.0);
         for(float t = tmin; t < tmax ; t += 0.003906){
@@ -94,10 +112,26 @@ void main() {
             if(length(textureColor) < 0.05)
                 currentColor += vec3(0.0, 0.05, 0.05) * 0.003906;
             else
-                currentColor += textureColor * vec3(1.0, 1.0, 1.0) * 0.003906;
+                currentColor += textureColor * vec3(1.0, 1.0, 1.0) * 0.007812;
         }
-        outColor = vec4(currentColor, 1.0);
+        color += currentColor;
     }else{
-        outColor = vec4(vec3(0.0), 1.0);
+        color += vec3(0.0);
     }
+
+    //highlight backfacing edges
+    if((exit.x < -0.497 || exit.x > 0.497) && (exit.z < -0.497 || exit.z > 0.497)){
+        float distanceToEdge = ((0.5 - abs(exit.x)) + (0.5 - abs(exit.z))) / 2.0;
+        color += (1.0 - distanceToEdge * 333.333) * vec3(0.0, 1.0, 0.0) * 0.05;
+    }
+    if((exit.y < -0.497 || exit.y > 0.497) && (exit.x < -0.497 || exit.x > 0.497)){
+        float distanceToEdge = ((0.5 - abs(exit.y)) + (0.5 - abs(exit.x))) / 2.0;
+        color += (1.0 - distanceToEdge * 333.333) * vec3(0.0, 1.0, 0.0) * 0.05;
+    }
+    if((exit.z < -0.497 || exit.z > 0.497) && (exit.y < -0.497 || exit.y > 0.497)){
+        float distanceToEdge = ((0.5 - abs(exit.z)) + (0.5 - abs(exit.y))) / 2.0;
+        color += (1.0 - distanceToEdge * 333.333) * vec3(0.0, 1.0, 0.0) * 0.05;
+    }
+
+    outColor = vec4(color, 1.0);
 }
