@@ -32,7 +32,7 @@ file(GLOB SOURCES
 add_executable(${CMAKE_PROJECT_NAME} ${SOURCES})
 
 #add vulkan
-find_package(Vulkan)
+find_package(Vulkan REQUIRED)
 IF (Vulkan_FOUND)
     target_link_libraries(${CMAKE_PROJECT_NAME} ${Vulkan_LIBRARIES})
     target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC ${Vulkan_INCLUDE_DIR})
