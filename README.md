@@ -12,8 +12,8 @@ Visual Studio Build Tools:<br>
 https://visualstudio.microsoft.com/de/downloads/#build-tools-for-visual-studio-2022
 
 ### MacOS
-On mac os the MoltenVk implementation of the official Vulkan SDK is used as a translation layer for the native Metal API used by Apple. MoltenVk lacks some features that are not implemented in metal but it is vulkan conformant.
-install vulkan sdk from https://www.lunarg.com/vulkan-sdk/
+On mac os the MoltenVk implementation of the official Vulkan SDK is used as a translation layer for the native Metal API used by Apple. MoltenVk lacks some features that are not implemented in metal but it is vulkan conformant.<br>
+install vulkan sdk from https://www.lunarg.com/vulkan-sdk/<br>
 install clang compiler via xcode
 
 ### Ubuntu
