@@ -69,4 +69,32 @@ include_directories(${PROJECT_SOURCE_DIR}/lib/stb)
 add_subdirectory(${PROJECT_SOURCE_DIR}/lib/glslang)
 target_link_libraries(${CMAKE_PROJECT_NAME} glslang SPIRV)
 
+# add gdcm
+FIND_PACKAGE(GDCM CONFIG REQUIRED PATHS ${PROJECT_SOURCE_DIR}/lib/gdcm)
+ 
+if(${GDCM_FOUND}) 
+    message("found")    
+    INCLUDE(${GDCM_USE_FILE})
+        SET(GDCM_LIBRARIES 
+            gdcmcharls
+            gdcmCommon
+            gdcmDICT
+            gdcmDSED
+            gdcmexpat
+            # gdcmgetopt
+            gdcmIOD
+            gdcmjpeg12
+            gdcmjpeg16 
+            gdcmjpeg8
+            gdcmMEXD
+            gdcmMSFF
+            # gdcmopenjpeg
+            gdcmzlib
+            socketxx
+            # vtkgdcm
+            Rpcrt4)
+    
+    # das linken war das eigentlich Problem gewesen. Die libraries waren vorhanden, aber es wurde nicht korrekt eingebunden
+    target_link_libraries(${CMAKE_PROJECT_NAME} ${GDCM_LIBRARIES})
+endif()
 

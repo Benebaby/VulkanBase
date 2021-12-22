@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmEmptyMaskGenerator.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmEquipmentManufacturer.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmFileStreamer.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmJSON.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmFileChangeTransferSyntax.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmAnonymizer.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmFileAnonymizer.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmIconImageFilter.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmIconImageGenerator.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmDICOMDIRGenerator.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmSpacing.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmFileExplicitFilter.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmFileDerivation.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmImageFragmentSplitter.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmTagPath.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmSimpleSubjectWatcher.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmAnonymizeEvent.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmPixmap.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmBitmap.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmRescaler.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmImageToImageFilter.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmBitmapToBitmapFilter.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmPixmapToPixmapFilter.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmImageChangeTransferSyntax.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmImageApplyLookupTable.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmFileDecompressLookupTable.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmOrientation.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmDataSetHelper.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmImageChangePlanarConfiguration.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmImageChangePhotometricInterpretation.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmDirectionCosines.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmSorter.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmSerieHelper.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmIPPSorter.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmApplicationEntity.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmDICOMDIR.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmSpectroscopy.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmEncapsulatedDocument.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmSplitMosaicFilter.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmFiducials.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmWaveform.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmPersonName.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmIconImage.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmUIDGenerator.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmUUIDGenerator.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmPrinter.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmDictPrinter.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmXMLPrinter.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmScanner.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmStrictScanner.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmPixmapReader.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmImageReader.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmPixmapWriter.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmImageWriter.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmStringFilter.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmImageHelper.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmValidate.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmDumper.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmImage.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmImageConverter.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmImageCodec.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmJPEG12Codec.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmRLECodec.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmPDFCodec.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmAudioCodec.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmJPEG16Codec.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmJPEGLSCodec.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmJPEG8Codec.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmJPEGCodec.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmPVRGCodec.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmKAKADUCodec.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmPNMCodec.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmPGXCodec.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmRAWCodec.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmLookupTable.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmOverlay.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmCurve.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmPhotometricInterpretation.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmPixelFormat.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmSegmentedPaletteColorLookupTable.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmStreamImageReader.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmImageRegionReader.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmDirectoryHelper.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmSegment.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmSurface.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmMeshPrimitive.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmSegmentWriter.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmSurfaceWriter.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmSegmentReader.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmSurfaceReader.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmSurfaceHelper.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmSegmentHelper.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmJPEG2000Codec.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Utilities\gdcmrle\rle.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Utilities\gdcmrle\info.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Utilities\gdcmrle\io.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{0291721D-25C0-39D6-BC35-63BE7F5D95B1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Testing\Source\DataStructureAndEncodingDefinition\Cxx\gdcmDSEDTests.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestAttribute.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestCodeString.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestAttribute1.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestAttribute7.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestLO.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestCSAElement.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestPreamble.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestReader.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestReaderUpToTag1.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestReaderUpToTag2.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestReaderSelectedTags.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestReaderSelectedPrivateGroups.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestReaderCanRead.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestWriter.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestWriter2.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestCSAHeader.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestByteSwapFilter.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestBasicOffsetTable.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestComposite.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestDataElement.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestDataSet.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestDS.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestVRLT.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestVRUI.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestElement1.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestFile.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestFileSet.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestFragment.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestItem.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestSequenceOfFragments.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestSequenceOfItems.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestTag.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestPrivateTag.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestTransferSyntax.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestMediaStorage.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestVL.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestVM.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestVR.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestElement2.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestElement4.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestElement5.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestElement6.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{0291721D-25C0-39D6-BC35-63BE7F5D95B1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

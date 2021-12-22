@@ -1,0 +1,14 @@
+﻿  Building Custom Rule C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Source/DataDictionary/CMakeLists.txt
+  gdcmDicts.cxx
+  gdcmDictEntry.cxx
+  gdcmDefaultDicts.cxx
+  gdcmPrivateDefaultDicts.cxx
+  gdcmGlobal.cxx
+  gdcmGroupDict.cxx
+  gdcmDefaultGroupNames.cxx
+  gdcmUIDs.cxx
+  gdcmSOPClassUIDToIOD.cxx
+  gdcmCSAHeaderDefaultDicts.cxx
+  Code wird generiert...
+     Bibliothek "C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm/bin/Release/gdcmDICT.lib" und Objekt "C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm/bin/Release/gdcmDICT.exp" werden erstellt.
+  gdcmDICT.vcxproj -> C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\bin\Release\gdcmDICT.dll

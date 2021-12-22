@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmAAbortPDU.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmAAssociateACPDU.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmAAssociateRJPDU.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmAAssociateRQPDU.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmAbstractSyntax.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmApplicationContext.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmAReleaseRPPDU.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmAReleaseRQPDU.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmARTIMTimer.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmAsynchronousOperationsWindowSub.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmBaseQuery.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmBaseRootQuery.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmCEchoMessages.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmCFindMessages.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmCMoveMessages.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmCommandDataSet.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmCompositeMessageFactory.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmCompositeNetworkFunctions.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmCStoreMessages.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmFindPatientRootQuery.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmFindStudyRootQuery.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmImplementationClassUIDSub.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmImplementationUIDSub.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmImplementationVersionNameSub.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmMaximumLengthSub.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmModalityPerformedProcedureStepCreateQuery.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmModalityPerformedProcedureStepSetQuery.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmMovePatientRootQuery.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmMoveStudyRootQuery.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmNActionMessages.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmNCreateMessages.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmNDeleteMessages.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmNEventReportMessages.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmNGetMessages.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmNormalizedMessageFactory.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmNormalizedNetworkFunctions.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmNSetMessages.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmPDataTFPDU.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmPDUFactory.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmPresentationContext.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmPresentationContextAC.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmPresentationContextGenerator.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmPresentationContextRQ.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmPresentationDataValue.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmQueryBase.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmQueryFactory.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmQueryImage.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmQueryPatient.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmQuerySeries.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmQueryStudy.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmRoleSelectionSub.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmServiceClassApplicationInformation.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmServiceClassUser.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmSOPClassExtendedNegociationSub.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmTransferSyntaxSub.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmULActionAA.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmULActionAE.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmULActionAR.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmULActionDT.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmULBasicCallback.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmULConnection.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmULConnectionInfo.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmULConnectionManager.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmULTransitionTable.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmULWritingCallback.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmUserInformation.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\gdcmWLMFindQuery.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MessageExchangeDefinition\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{0291721D-25C0-39D6-BC35-63BE7F5D95B1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

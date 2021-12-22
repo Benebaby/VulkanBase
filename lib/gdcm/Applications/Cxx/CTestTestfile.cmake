@@ -1,0 +1,36 @@
+# CMake generated Testfile for 
+# Source directory: C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Applications/Cxx
+# Build directory: C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm/Applications/Cxx
+# 
+# This file includes the relevant testing commands required for 
+# testing this directory and lists subdirectories to be tested as well.
+if("${CTEST_CONFIGURATION_TYPE}" MATCHES "^([Dd][Ee][Bb][Uu][Gg])$")
+  add_test(gdcmscu-echo-dicomserver "C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm/bin/Debug/gdcmscu.exe" "--echo" "www.dicomserver.co.uk" "11112")
+  set_tests_properties(gdcmscu-echo-dicomserver PROPERTIES  _BACKTRACE_TRIPLES "C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Applications/Cxx/CMakeLists.txt;226;add_test;C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Applications/Cxx/CMakeLists.txt;0;")
+elseif("${CTEST_CONFIGURATION_TYPE}" MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
+  add_test(gdcmscu-echo-dicomserver "C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm/bin/Release/gdcmscu.exe" "--echo" "www.dicomserver.co.uk" "11112")
+  set_tests_properties(gdcmscu-echo-dicomserver PROPERTIES  _BACKTRACE_TRIPLES "C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Applications/Cxx/CMakeLists.txt;226;add_test;C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Applications/Cxx/CMakeLists.txt;0;")
+elseif("${CTEST_CONFIGURATION_TYPE}" MATCHES "^([Mm][Ii][Nn][Ss][Ii][Zz][Ee][Rr][Ee][Ll])$")
+  add_test(gdcmscu-echo-dicomserver "C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm/bin/MinSizeRel/gdcmscu.exe" "--echo" "www.dicomserver.co.uk" "11112")
+  set_tests_properties(gdcmscu-echo-dicomserver PROPERTIES  _BACKTRACE_TRIPLES "C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Applications/Cxx/CMakeLists.txt;226;add_test;C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Applications/Cxx/CMakeLists.txt;0;")
+elseif("${CTEST_CONFIGURATION_TYPE}" MATCHES "^([Rr][Ee][Ll][Ww][Ii][Tt][Hh][Dd][Ee][Bb][Ii][Nn][Ff][Oo])$")
+  add_test(gdcmscu-echo-dicomserver "C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm/bin/RelWithDebInfo/gdcmscu.exe" "--echo" "www.dicomserver.co.uk" "11112")
+  set_tests_properties(gdcmscu-echo-dicomserver PROPERTIES  _BACKTRACE_TRIPLES "C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Applications/Cxx/CMakeLists.txt;226;add_test;C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Applications/Cxx/CMakeLists.txt;0;")
+else()
+  add_test(gdcmscu-echo-dicomserver NOT_AVAILABLE)
+endif()
+if("${CTEST_CONFIGURATION_TYPE}" MATCHES "^([Dd][Ee][Bb][Uu][Gg])$")
+  add_test(gdcmscu-find-dicomserver "C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm/bin/Debug/gdcmscu.exe" "--find" "--patient" "www.dicomserver.co.uk" "11112" "--patientroot" "-k" "10,20=*")
+  set_tests_properties(gdcmscu-find-dicomserver PROPERTIES  _BACKTRACE_TRIPLES "C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Applications/Cxx/CMakeLists.txt;236;add_test;C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Applications/Cxx/CMakeLists.txt;0;")
+elseif("${CTEST_CONFIGURATION_TYPE}" MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
+  add_test(gdcmscu-find-dicomserver "C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm/bin/Release/gdcmscu.exe" "--find" "--patient" "www.dicomserver.co.uk" "11112" "--patientroot" "-k" "10,20=*")
+  set_tests_properties(gdcmscu-find-dicomserver PROPERTIES  _BACKTRACE_TRIPLES "C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Applications/Cxx/CMakeLists.txt;236;add_test;C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Applications/Cxx/CMakeLists.txt;0;")
+elseif("${CTEST_CONFIGURATION_TYPE}" MATCHES "^([Mm][Ii][Nn][Ss][Ii][Zz][Ee][Rr][Ee][Ll])$")
+  add_test(gdcmscu-find-dicomserver "C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm/bin/MinSizeRel/gdcmscu.exe" "--find" "--patient" "www.dicomserver.co.uk" "11112" "--patientroot" "-k" "10,20=*")
+  set_tests_properties(gdcmscu-find-dicomserver PROPERTIES  _BACKTRACE_TRIPLES "C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Applications/Cxx/CMakeLists.txt;236;add_test;C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Applications/Cxx/CMakeLists.txt;0;")
+elseif("${CTEST_CONFIGURATION_TYPE}" MATCHES "^([Rr][Ee][Ll][Ww][Ii][Tt][Hh][Dd][Ee][Bb][Ii][Nn][Ff][Oo])$")
+  add_test(gdcmscu-find-dicomserver "C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm/bin/RelWithDebInfo/gdcmscu.exe" "--find" "--patient" "www.dicomserver.co.uk" "11112" "--patientroot" "-k" "10,20=*")
+  set_tests_properties(gdcmscu-find-dicomserver PROPERTIES  _BACKTRACE_TRIPLES "C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Applications/Cxx/CMakeLists.txt;236;add_test;C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Applications/Cxx/CMakeLists.txt;0;")
+else()
+  add_test(gdcmscu-find-dicomserver NOT_AVAILABLE)
+endif()

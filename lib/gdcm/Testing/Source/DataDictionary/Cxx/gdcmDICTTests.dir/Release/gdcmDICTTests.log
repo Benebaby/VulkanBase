@@ -1,0 +1,13 @@
+﻿  Building Custom Rule C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Testing/Source/DataDictionary/Cxx/CMakeLists.txt
+  gdcmDICTTests.cxx
+  TestDictEntry.cxx
+  TestDict.cxx
+  TestGlobal.cxx
+  TestUIDs.cxx
+  TestDicts.cxx
+  TestGroupDict.cxx
+  TestTagToType.cxx
+  TestSOPClassUIDToIOD.cxx
+  TestTagKeywords.cxx
+  Code wird generiert...
+  gdcmDICTTests.vcxproj -> C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\bin\Release\gdcmDICTTests.exe

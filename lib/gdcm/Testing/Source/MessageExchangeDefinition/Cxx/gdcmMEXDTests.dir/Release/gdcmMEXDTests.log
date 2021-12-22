@@ -1,0 +1,15 @@
+﻿  Building Custom Rule C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Testing/Source/MessageExchangeDefinition/Cxx/CMakeLists.txt
+  gdcmMEXDTests.cxx
+  TestPresentationContextRQ.cxx
+  TestQueryFactory.cxx
+  TestULConnectionManager.cxx
+  TestServiceClassUser1.cxx
+  TestServiceClassUser2.cxx
+  TestServiceClassUser3.cxx
+  TestSCUValidation.cxx
+  TestEcho.cxx
+  TestFind.cxx
+  TestFindStudyRootQuery.cxx
+  TestFindPatientRootQuery.cxx
+  Code wird generiert...
+  gdcmMEXDTests.vcxproj -> C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\bin\Release\gdcmMEXDTests.exe

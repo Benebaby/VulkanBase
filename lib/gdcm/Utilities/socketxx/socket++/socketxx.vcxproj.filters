@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Utilities\socketxx\socket++\sockstream.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Utilities\socketxx\socket++\sockinet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Utilities\socketxx\socket++\fork.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Utilities\socketxx\socket++\protocol.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Utilities\socketxx\socket++\echo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Utilities\socketxx\socket++\sockstream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Utilities\socketxx\socket++\sockinet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Utilities\socketxx\socket++\fork.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Utilities\socketxx\socket++\protocol.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Utilities\socketxx\socket++\echo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Utilities\socketxx\socket++\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{77A46C34-D1DB-3B2A-9703-C2E8A0284B74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{0291721D-25C0-39D6-BC35-63BE7F5D95B1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

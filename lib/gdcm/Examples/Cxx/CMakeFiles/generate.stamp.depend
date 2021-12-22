@@ -1,0 +1,11 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-3.18/Modules/CMakePushCheckState.cmake
+C:/Program Files/CMake/share/cmake-3.18/Modules/CheckCXXSymbolExists.cmake
+C:/Program Files/CMake/share/cmake-3.18/Modules/CheckSymbolExists.cmake
+C:/Program Files/CMake/share/cmake-3.18/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/CMake/share/cmake-3.18/Modules/FindPackageMessage.cmake
+C:/Program Files/CMake/share/cmake-3.18/Modules/FindQt4.cmake
+C:/Program Files/CMake/share/cmake-3.18/Modules/MacroAddFileDependencies.cmake
+C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/CMake/FindMAGIC.cmake
+C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/CMake/FindSQLITE3.cmake
+C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Examples/Cxx/CMakeLists.txt

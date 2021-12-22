@@ -1,0 +1,21 @@
+﻿  Building Custom Rule C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Source/InformationObjectDefinition/CMakeLists.txt
+  gdcmModule.cxx
+  gdcmMacro.cxx
+  gdcmModules.cxx
+  gdcmMacros.cxx
+  gdcmNestedModuleEntries.cxx
+  gdcmIODEntry.cxx
+  gdcmTableReader.cxx
+  gdcmTable.cxx
+  gdcmSeries.cxx
+  gdcmDefs.cxx
+  gdcmDefinedTerms.cxx
+  gdcmEnumeratedValues.cxx
+  gdcmStudy.cxx
+  gdcmPatient.cxx
+  gdcmType.cxx
+  gdcmUsage.cxx
+  gdcmIOD.cxx
+  Code wird generiert...
+     Bibliothek "C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm/bin/Release/gdcmIOD.lib" und Objekt "C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm/bin/Release/gdcmIOD.exp" werden erstellt.
+  gdcmIOD.vcxproj -> C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\bin\Release\gdcmIOD.dll

@@ -5,6 +5,14 @@
 #include "SpirvHelper.h"
 #include "Utils.h"
 #include "Buffer.hpp"
+// GDCM
+#include "gdcmReader.h"
+#include "gdcmScanner.h"
+#include "gdcmTesting.h"
+#include "gdcmIPPSorter.h"
+#include "gdcmDirectionCosines.h"
+#include "gdcmDirectory.h"
+#include "gdcmImageReader.h"
 
 #include <optional>
 #include <set>
@@ -1271,6 +1279,51 @@ private:
 };
 
 int main() {
+
+    gdcm::ImageReader reader;
+
+    reader.SetFileName(TEXTURE_PATH "/MedData/manifest-1637709711563/APOLLO-5-PAAD/AP-JS5B/12-27-1975-NA-CT ABDPEL WCON-10542/3.000000-ABDOMENPELVIS-27696/1-01.dcm");
+    if( !reader.Read() ) {
+        std::cerr << "Could not read: " << std::endl;
+        return 1;
+    } else {
+        std::cout << "Is completely readable" << std::endl;
+    }
+    
+    const gdcm::Image &image = reader.GetImage();
+    gdcm::PixelFormat pixeltype = image.GetPixelFormat();
+    unsigned long len = image.GetBufferLength();
+    const unsigned int *dims = image.GetDimensions();
+    unsigned short pixelsize = pixeltype.GetPixelSize();
+    char *tempimage = new char[len];
+    image.GetBuffer(tempimage);
+
+
+    std::cout << "Image bufferlength: " << len << " Dimension " << dims[0] << " PixelSize: " << pixelsize << "\n";
+    std::cout << "Pixelformat " << pixeltype << "\n";
+    std::cout << "PixelData " << tempimage[40];
+    
+    
+
+    // bool fileDirectory = gdcm::System::FileIsDirectory(TEXTURE_PATH "/RAW_DATA/");
+    // const char *dir = (TEXTURE_PATH "/MedData/gdcmData");
+
+    // gdcm::Directory dcm_dir;
+    // dcm_dir.Load(dir, true);
+    // gdcm::Directory::FilenamesType l = dcm_dir.GetFilenames();
+    // // unsigned int number = dcm_dir.Load(dir); // laedt das ganze rekursiv
+    // std::cout << "Directory: " << dir << "\nIsDirectory?: " << fileDirectory << " Filenames? " << l.size() << "\n"; 
+    // // dcm_dir.Print(std::cout);
+    // dcm_dir.Print(std::cout);
+    // // explore ist halt protected
+    // // unsigned int test = dcm_dir.(dir, false); 
+    // //     > >> > import gdcm
+    // // > >> > r = gdcm.ImageReader()
+    // // > >> > r.SetFileName("C:\\0051\\0004.dcm")
+    // // > >> > r.Read()
+    // // > >> > tag = gdcm.Tag(0x0008, 0x0005)
+    // // > >> > ds = r.GetFile().GetDataSet()
+    // // > >> > print ds.GetDataElement(tag).GetValue()
     VulkanBase app;
     try {
         app.run();

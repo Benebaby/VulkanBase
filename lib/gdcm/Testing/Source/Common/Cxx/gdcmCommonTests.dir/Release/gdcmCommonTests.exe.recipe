@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <ProjectOutputs>
+    <ProjectOutput>
+      <FullPath>C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\x64\Release\ZERO_CHECK</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\bin\Release\gdcmmd5.dll</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\bin\Release\gdcmCommon.dll</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\bin\Release\gdcmCommonTests.exe</FullPath>
+    </ProjectOutput>
+  </ProjectOutputs>
+  <ContentFiles />
+  <SatelliteDlls />
+  <NonRecipeFileRefs />
+</Project>

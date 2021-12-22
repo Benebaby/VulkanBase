@@ -1,0 +1,571 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{60DE3FDC-686B-3CC5-891B-9158904AA9B1}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.20348.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>ALL_BUILD</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\CMakeLists.txt">
+      <StdOutEncoding>UTF-8</StdOutEncoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10 -BC:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm --check-stamp-file C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CTest.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CTestTargets.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CTestUseLaunchers.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CheckIncludeFiles.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CheckTypeSize.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\DartConfiguration.tcl.in;C:\Program Files\CMake\share\cmake-3.18\Modules\InstallRequiredSystemLibraries.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\TestBigEndian.cmake;C:\Program Files\CMake\share\cmake-3.18\Templates\CPackConfig.cmake.in;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\CMake\CTestCustom.ctest.in;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\CMake\InstallMacros.cmake;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\CMake\UseCopyright.cmake;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\CTestConfig.cmake;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\CMakeFiles\3.18.3\CMakeCCompiler.cmake;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\CMakeFiles\3.18.3\CMakeCXXCompiler.cmake;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\CMakeFiles\3.18.3\CMakeRCCompiler.cmake;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\CMakeFiles\3.18.3\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10 -BC:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm --check-stamp-file C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CTest.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CTestTargets.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CTestUseLaunchers.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CheckIncludeFiles.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CheckTypeSize.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\DartConfiguration.tcl.in;C:\Program Files\CMake\share\cmake-3.18\Modules\InstallRequiredSystemLibraries.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\TestBigEndian.cmake;C:\Program Files\CMake\share\cmake-3.18\Templates\CPackConfig.cmake.in;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\CMake\CTestCustom.ctest.in;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\CMake\InstallMacros.cmake;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\CMake\UseCopyright.cmake;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\CTestConfig.cmake;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\CMakeFiles\3.18.3\CMakeCCompiler.cmake;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\CMakeFiles\3.18.3\CMakeCXXCompiler.cmake;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\CMakeFiles\3.18.3\CMakeRCCompiler.cmake;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\CMakeFiles\3.18.3\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10 -BC:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm --check-stamp-file C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CTest.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CTestTargets.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CTestUseLaunchers.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CheckIncludeFiles.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CheckTypeSize.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\DartConfiguration.tcl.in;C:\Program Files\CMake\share\cmake-3.18\Modules\InstallRequiredSystemLibraries.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\TestBigEndian.cmake;C:\Program Files\CMake\share\cmake-3.18\Templates\CPackConfig.cmake.in;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\CMake\CTestCustom.ctest.in;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\CMake\InstallMacros.cmake;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\CMake\UseCopyright.cmake;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\CTestConfig.cmake;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\CMakeFiles\3.18.3\CMakeCCompiler.cmake;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\CMakeFiles\3.18.3\CMakeCXXCompiler.cmake;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\CMakeFiles\3.18.3\CMakeRCCompiler.cmake;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\CMakeFiles\3.18.3\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10 -BC:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm --check-stamp-file C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CTest.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CTestTargets.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CTestUseLaunchers.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CheckIncludeFiles.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CheckTypeSize.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\DartConfiguration.tcl.in;C:\Program Files\CMake\share\cmake-3.18\Modules\InstallRequiredSystemLibraries.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\TestBigEndian.cmake;C:\Program Files\CMake\share\cmake-3.18\Templates\CPackConfig.cmake.in;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\CMake\CTestCustom.ctest.in;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\CMake\InstallMacros.cmake;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\CMake\UseCopyright.cmake;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\CTestConfig.cmake;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\CMakeFiles\3.18.3\CMakeCCompiler.cmake;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\CMakeFiles\3.18.3\CMakeCXXCompiler.cmake;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\CMakeFiles\3.18.3\CMakeRCCompiler.cmake;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\CMakeFiles\3.18.3\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\ZERO_CHECK.vcxproj">
+      <Project>{BE5C88DA-5286-3FDA-B7EA-0C081C7F6F88}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\ChangePrivateTags.vcxproj">
+      <Project>{B78B2E13-6CD9-3C92-8CB6-004DC8AEB783}</Project>
+      <Name>ChangePrivateTags</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\ChangeSequenceUltrasound.vcxproj">
+      <Project>{38231E32-4B9A-394A-B8BF-913660661E15}</Project>
+      <Name>ChangeSequenceUltrasound</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\CheckBigEndianBug.vcxproj">
+      <Project>{85269BBC-5076-3320-BF11-02DF31E4CE5C}</Project>
+      <Name>CheckBigEndianBug</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\ClinicalTrialAnnotate.vcxproj">
+      <Project>{62D12C68-3607-312A-8A1B-EF9B61B61BA4}</Project>
+      <Name>ClinicalTrialAnnotate</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\CompressImage.vcxproj">
+      <Project>{D9F2EF15-07B9-3844-B7FD-CF015BF74779}</Project>
+      <Name>CompressImage</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\CreateARGBImage.vcxproj">
+      <Project>{6516A7AD-7AF4-3040-96F2-AC69819AD7CE}</Project>
+      <Name>CreateARGBImage</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\CreateCMYKImage.vcxproj">
+      <Project>{D2EB9332-A4DD-3C06-A5E1-F8CEE5ACDA49}</Project>
+      <Name>CreateCMYKImage</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\CreateJPIPDataSet.vcxproj">
+      <Project>{6807FACD-A052-3DB7-AEE0-6EE873E17C5A}</Project>
+      <Name>CreateJPIPDataSet</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\doxygen\DOCBOOK_MANPAGES.vcxproj">
+      <Project>{05D84168-784C-3D15-9624-C089D4183BF3}</Project>
+      <Name>DOCBOOK_MANPAGES</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\DeriveSeries.vcxproj">
+      <Project>{C691958D-7202-33D8-9EA7-19158B292B81}</Project>
+      <Name>DeriveSeries</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\DiffFile.vcxproj">
+      <Project>{7FCB7EDB-0688-3927-8E08-8D8016DC72AD}</Project>
+      <Name>DiffFile</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\DiscriminateVolume.vcxproj">
+      <Project>{3F961A79-3F10-3851-9216-10B6AECC77CF}</Project>
+      <Name>DiscriminateVolume</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\DumpADAC.vcxproj">
+      <Project>{F74C9DA1-B3E3-3CD3-876C-5F603C7F7DF9}</Project>
+      <Name>DumpADAC</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\DumpExamCard.vcxproj">
+      <Project>{16CBCDA0-ABEB-3E7C-B901-BFAA4533DB3A}</Project>
+      <Name>DumpExamCard</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\DumpGEMSMovieGroup.vcxproj">
+      <Project>{92EE35E9-BB68-39D9-8221-C24BABD7B1BE}</Project>
+      <Name>DumpGEMSMovieGroup</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\DumpImageHeaderInfo.vcxproj">
+      <Project>{121E615F-6DFD-37F4-97AE-419CFE79B43D}</Project>
+      <Name>DumpImageHeaderInfo</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\DumpPhilipsECHO.vcxproj">
+      <Project>{82BA614A-5102-3126-BCBA-F9E8E98D7552}</Project>
+      <Name>DumpPhilipsECHO</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\DumpSiemensBase64.vcxproj">
+      <Project>{E40E71F6-6D14-3955-8C3D-03FDEFD757DD}</Project>
+      <Name>DumpSiemensBase64</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\DumpToshibaDTI.vcxproj">
+      <Project>{8649538B-54B8-3760-8D9F-D01B478303A2}</Project>
+      <Name>DumpToshibaDTI</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\DumpToshibaDTI2.vcxproj">
+      <Project>{1B4D8CAE-99E8-3417-B672-0AE7A404BAC2}</Project>
+      <Name>DumpToshibaDTI2</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\DumpVisusChange.vcxproj">
+      <Project>{853E8C5A-402A-365B-A3D9-398383ADEF1B}</Project>
+      <Name>DumpVisusChange</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\DuplicatePCDE.vcxproj">
+      <Project>{C7F2C75C-BCFA-3DC3-A3DB-3EE87C01C1C5}</Project>
+      <Name>DuplicatePCDE</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\ELSCINT1WaveToText.vcxproj">
+      <Project>{10B0669B-1256-3FFB-8A34-19DC703E8D17}</Project>
+      <Name>ELSCINT1WaveToText</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\EmptyMask.vcxproj">
+      <Project>{58C3F47C-405A-3CE5-A54C-73CAC6020807}</Project>
+      <Name>EmptyMask</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\ExtractEncryptedContent.vcxproj">
+      <Project>{4747C477-DCE4-363B-AD08-A31505E7DF03}</Project>
+      <Name>ExtractEncryptedContent</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\ExtractIconFromFile.vcxproj">
+      <Project>{D6EE6D3B-0281-3A77-950B-8AECD9713E5D}</Project>
+      <Name>ExtractIconFromFile</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\FixBrokenJ2K.vcxproj">
+      <Project>{110AAF24-8348-3578-B084-ECAA7249A0B8}</Project>
+      <Name>FixBrokenJ2K</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\FixJAIBugJPEGLS.vcxproj">
+      <Project>{B479F445-B85C-3CC0-AECA-EC04A579B027}</Project>
+      <Name>FixJAIBugJPEGLS</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\FixOrientation.vcxproj">
+      <Project>{20DA22C6-6ADE-34DD-87B7-82F4F850038F}</Project>
+      <Name>FixOrientation</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\GenAllVR.vcxproj">
+      <Project>{F62D5A04-0FF8-3F8F-A1A3-0586B615C50C}</Project>
+      <Name>GenAllVR</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\GenFakeIdentifyFile.vcxproj">
+      <Project>{8EC44C6B-AA71-3B34-9532-086EFE767527}</Project>
+      <Name>GenFakeIdentifyFile</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\GenFakeImage.vcxproj">
+      <Project>{92DD46B3-0068-311A-9003-C63F762D45D9}</Project>
+      <Name>GenFakeImage</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\GenLongSeqs.vcxproj">
+      <Project>{36F12402-4775-3580-9FF5-9CAE41F94865}</Project>
+      <Name>GenLongSeqs</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\GenSeqs.vcxproj">
+      <Project>{5A9E253F-3F05-3612-A877-9D49B9A91FE2}</Project>
+      <Name>GenSeqs</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\GenerateStandardSOPClasses.vcxproj">
+      <Project>{B812581F-3808-3D70-A58E-F0E0DA73BED9}</Project>
+      <Name>GenerateStandardSOPClasses</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\GetJPEGSamplePrecision.vcxproj">
+      <Project>{B3D0E883-C365-3AD7-8F51-387036655A23}</Project>
+      <Name>GetJPEGSamplePrecision</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\GetSequenceUltrasound.vcxproj">
+      <Project>{1D2584F9-4244-3295-8948-C3A5469DA345}</Project>
+      <Name>GetSequenceUltrasound</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\GetSubSequenceData.vcxproj">
+      <Project>{244E1299-FC3E-3695-9F61-15067D5F9315}</Project>
+      <Name>GetSubSequenceData</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\HelloVizWorld.vcxproj">
+      <Project>{B1D02B79-2BBB-3856-A967-54054B2C5B1F}</Project>
+      <Name>HelloVizWorld</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\HelloWorld.vcxproj">
+      <Project>{0B820E2B-DCEA-317B-8D9C-873AA74B0A54}</Project>
+      <Name>HelloWorld</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\LargeVRDSExplicit.vcxproj">
+      <Project>{1CB2DC17-74E6-31D6-A403-2185DBA96409}</Project>
+      <Name>LargeVRDSExplicit</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\MakeTemplate.vcxproj">
+      <Project>{7FA4A164-0D6B-3FC0-B0C9-2FBB48EE3D31}</Project>
+      <Name>MakeTemplate</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\MergeTwoFiles.vcxproj">
+      <Project>{0D056B96-E2CE-32AB-AFA3-21F36DA08393}</Project>
+      <Name>MergeTwoFiles</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\MrProtocol.vcxproj">
+      <Project>{4C6B07B9-8885-334D-84A3-247B5663C91D}</Project>
+      <Name>MrProtocol</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\PatchFile.vcxproj">
+      <Project>{ABCCBA70-396F-3B30-972F-1FE10E49D5D8}</Project>
+      <Name>PatchFile</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\PrintLUT.vcxproj">
+      <Project>{9CFA21F4-06E2-3890-AC2B-ED016119C86A}</Project>
+      <Name>PrintLUT</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\PublicDict.vcxproj">
+      <Project>{24AFBCAE-ABFC-3B2E-9EDC-8FBA9F42EB17}</Project>
+      <Name>PublicDict</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\QIDO-RS.vcxproj">
+      <Project>{3292D8D1-71C5-337A-8060-41C17E5073F5}</Project>
+      <Name>QIDO-RS</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\ReadAndDumpDICOMDIR.vcxproj">
+      <Project>{B2054371-9212-3414-BF1C-04E8F3033DAD}</Project>
+      <Name>ReadAndDumpDICOMDIR</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\ReadAndPrintAttributes.vcxproj">
+      <Project>{AA55CBEC-8B14-3FF2-B83F-DD7D2332E77F}</Project>
+      <Name>ReadAndPrintAttributes</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\ReadExplicitLengthSQIVR.vcxproj">
+      <Project>{96297C37-C44A-3B82-B2AF-D37D1CC518B9}</Project>
+      <Name>ReadExplicitLengthSQIVR</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\ReadGEMSSDO.vcxproj">
+      <Project>{5DCD137D-CBC5-3998-89DB-A3C72E08998E}</Project>
+      <Name>ReadGEMSSDO</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\ReadMultiTimesException.vcxproj">
+      <Project>{58F2292F-F326-3D01-848B-E2B1885F3426}</Project>
+      <Name>ReadMultiTimesException</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\SimpleScanner.vcxproj">
+      <Project>{A4AD38D8-61C4-38DF-9470-895BB177D008}</Project>
+      <Name>SimpleScanner</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\SortImage.vcxproj">
+      <Project>{3FA91644-4BE7-3383-999F-EFAA48376092}</Project>
+      <Name>SortImage</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\TemplateEmptyImage.vcxproj">
+      <Project>{E3B40C9D-C0A7-3646-A6FC-2EDC3BBED549}</Project>
+      <Name>TemplateEmptyImage</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\TraverseModules.vcxproj">
+      <Project>{73CB45FD-EC48-3BC7-93CC-1DA57FD2DD8A}</Project>
+      <Name>TraverseModules</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\VolumeSorter.vcxproj">
+      <Project>{4B0F088C-C52E-39D8-AA43-26160A6BD30A}</Project>
+      <Name>VolumeSorter</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\csa2img.vcxproj">
+      <Project>{25A6F8BA-A050-3642-8CBE-30F45E129FD1}</Project>
+      <Name>csa2img</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Source\Common\gdcmCommon.vcxproj">
+      <Project>{0513D43F-120A-3FCD-A0B6-D0B179E28F01}</Project>
+      <Name>gdcmCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Testing\Source\Common\Cxx\gdcmCommonTests.vcxproj">
+      <Project>{E07717F3-FC7A-38E6-B857-43EF2315B1C5}</Project>
+      <Name>gdcmCommonTests</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Source\DataDictionary\gdcmDICT.vcxproj">
+      <Project>{3EF93F55-8C28-3CD6-B8A1-45059FFB030C}</Project>
+      <Name>gdcmDICT</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Testing\Source\DataDictionary\Cxx\gdcmDICTTests.vcxproj">
+      <Project>{98A1892B-61DE-3340-8D3B-7B1DB7D37920}</Project>
+      <Name>gdcmDICTTests</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Source\DataStructureAndEncodingDefinition\gdcmDSED.vcxproj">
+      <Project>{28A16559-E010-3AD2-8B5F-AB9502585BB1}</Project>
+      <Name>gdcmDSED</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Testing\Source\DataStructureAndEncodingDefinition\Cxx\gdcmDSEDTests.vcxproj">
+      <Project>{A753151F-85B3-3128-BB77-74F7F6E90BD8}</Project>
+      <Name>gdcmDSEDTests</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Source\InformationObjectDefinition\gdcmIOD.vcxproj">
+      <Project>{3BC3C1CB-A2B3-3ABA-8EA3-6E155D77DB0B}</Project>
+      <Name>gdcmIOD</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Testing\Source\InformationObjectDefinition\Cxx\gdcmIODTests.vcxproj">
+      <Project>{34B166AB-DB49-3764-B167-4EB764BDA799}</Project>
+      <Name>gdcmIODTests</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Source\MessageExchangeDefinition\gdcmMEXD.vcxproj">
+      <Project>{B0D708BA-D0D3-3119-B635-1DC160FBACF0}</Project>
+      <Name>gdcmMEXD</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Testing\Source\MessageExchangeDefinition\Cxx\gdcmMEXDTests.vcxproj">
+      <Project>{A780FE8B-DC77-3587-A435-556DE69FC026}</Project>
+      <Name>gdcmMEXDTests</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Source\MediaStorageAndFileFormat\gdcmMSFF.vcxproj">
+      <Project>{7D9E686A-9569-3B19-9776-D49BBD262B91}</Project>
+      <Name>gdcmMSFF</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Testing\Source\MediaStorageAndFileFormat\Cxx\gdcmMSFFTests.vcxproj">
+      <Project>{5803EAD2-FBBC-3DB3-9E1B-21C0C4A6C640}</Project>
+      <Name>gdcmMSFFTests</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Applications\Cxx\gdcmanon.vcxproj">
+      <Project>{E8409C65-3970-3723-AF70-652D0FAD1A20}</Project>
+      <Name>gdcmanon</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmcharls\gdcmcharls.vcxproj">
+      <Project>{AB310101-FE32-3D06-BC8C-00EB8276396C}</Project>
+      <Name>gdcmcharls</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Applications\Cxx\gdcmconv.vcxproj">
+      <Project>{6E0C41FA-9FD1-35D4-9426-5F6D19926F11}</Project>
+      <Name>gdcmconv</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Applications\Cxx\gdcmdiff.vcxproj">
+      <Project>{EDCBC676-10AC-38CC-B93B-152106B717C6}</Project>
+      <Name>gdcmdiff</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Applications\Cxx\gdcmdump.vcxproj">
+      <Project>{BF4C188C-42AF-3417-A709-9A0B5B500B54}</Project>
+      <Name>gdcmdump</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmexpat\lib\gdcmexpat.vcxproj">
+      <Project>{9E713DF3-7EF5-3509-99FA-459A2722E87C}</Project>
+      <Name>gdcmexpat</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Applications\Cxx\gdcmgendir.vcxproj">
+      <Project>{52F727B8-2D03-38E3-AFB6-9FA6FED28E21}</Project>
+      <Name>gdcmgendir</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\getopt\gdcmgetopt.vcxproj">
+      <Project>{453E2D45-EBE2-3A0C-AB7F-99C21898A553}</Project>
+      <Name>gdcmgetopt</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Applications\Cxx\gdcmimg.vcxproj">
+      <Project>{E6CE9C5A-DBF6-3A52-BC86-D2B3F63FDA0D}</Project>
+      <Name>gdcmimg</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Applications\Cxx\gdcminfo.vcxproj">
+      <Project>{96D0AA4E-D1AE-39DF-8BD1-0A118341DA8E}</Project>
+      <Name>gdcminfo</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmjpeg\12\gdcmjpeg12.vcxproj">
+      <Project>{B1B69EDF-41BF-39F5-BF86-3F6B5C065F85}</Project>
+      <Name>gdcmjpeg12</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmjpeg\16\gdcmjpeg16.vcxproj">
+      <Project>{96D39458-993F-33E9-BC21-FECEE3A96D7E}</Project>
+      <Name>gdcmjpeg16</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmjpeg\8\gdcmjpeg8.vcxproj">
+      <Project>{143DB02E-B298-3792-8531-3EBABAB001D6}</Project>
+      <Name>gdcmjpeg8</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmmd5\gdcmmd5.vcxproj">
+      <Project>{D776ACE9-761D-3C0C-8739-26B65E60FBA7}</Project>
+      <Name>gdcmmd5</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmopenjpeg\src\lib\openjp2\gdcmopenjp2.vcxproj">
+      <Project>{849AA6B3-E199-3A6F-BA4E-C9900BB87FC3}</Project>
+      <Name>gdcmopenjp2</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Applications\Cxx\gdcmpap3.vcxproj">
+      <Project>{D27BE480-E7DC-322A-A864-F2BBB4028E70}</Project>
+      <Name>gdcmpap3</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Applications\Cxx\gdcmraw.vcxproj">
+      <Project>{1955849A-0D13-33AB-8EE6-B145D29367CC}</Project>
+      <Name>gdcmraw</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Applications\Cxx\gdcmscanner.vcxproj">
+      <Project>{E1C09CA4-2D5F-392C-8EF9-3F3D93DDEBCC}</Project>
+      <Name>gdcmscanner</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Applications\Cxx\gdcmscu.vcxproj">
+      <Project>{C4A88DBD-3B40-3E77-9A15-C41595EEBC65}</Project>
+      <Name>gdcmscu</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Applications\Cxx\gdcmtar.vcxproj">
+      <Project>{9D24F29E-CC64-32E7-8CA3-324A1CABC896}</Project>
+      <Name>gdcmtar</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Applications\Cxx\gdcmxml.vcxproj">
+      <Project>{7CDA7C64-C987-33AC-9607-0B285D1A5C73}</Project>
+      <Name>gdcmxml</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmzlib\gdcmzlib.vcxproj">
+      <Project>{81BAC6D9-C667-3C53-9275-6F6021600200}</Project>
+      <Name>gdcmzlib</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\iU22tomultisc.vcxproj">
+      <Project>{7318AEAE-2862-3970-AA9E-7F0B62B766F5}</Project>
+      <Name>iU22tomultisc</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\pmsct_rgb1.vcxproj">
+      <Project>{985C3BB6-078B-310F-A185-24FC26738C53}</Project>
+      <Name>pmsct_rgb1</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\rle2img.vcxproj">
+      <Project>{71B7D6DA-8A78-3FE4-90D3-5A414035DF4A}</Project>
+      <Name>rle2img</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\socketxx\socket++\socketxx.vcxproj">
+      <Project>{3ACCCAFB-7697-3862-AA22-434ECF15132C}</Project>
+      <Name>socketxx</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Examples\Cxx\uid_unique.vcxproj">
+      <Project>{A439BE5C-5F84-3CE5-8F7F-8C14672A348A}</Project>
+      <Name>uid_unique</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

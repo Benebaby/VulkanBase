@@ -1,0 +1,28 @@
+﻿  Building Custom Rule C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Utilities/gdcmopenjpeg/src/lib/openjp2/CMakeLists.txt
+  thread.c
+  bio.c
+  cio.c
+  dwt.c
+  event.c
+  image.c
+  invert.c
+  j2k.c
+C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Utilities\gdcmopenjpeg\src\lib\openjp2\j2k.c(6925,63): warning C4244: "=": Konvertierung von "OPJ_FLOAT32" in "int", möglicher Datenverlust
+  jp2.c
+  mct.c
+  mqc.c
+  openjpeg.c
+  opj_clock.c
+  pi.c
+  t1.c
+  t2.c
+  tcd.c
+  tgt.c
+  function_list.c
+  opj_malloc.c
+  Code wird generiert...
+  Kompilieren...
+  sparse_array.c
+  Code wird generiert...
+     Bibliothek "C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm/bin/Release/gdcmopenjp2.lib" und Objekt "C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm/bin/Release/gdcmopenjp2.exp" werden erstellt.
+  gdcmopenjp2.vcxproj -> C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\bin\Release\gdcmopenjp2.dll

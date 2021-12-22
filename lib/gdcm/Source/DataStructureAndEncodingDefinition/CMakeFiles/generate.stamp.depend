@@ -1,0 +1,17 @@
+# CMake generation dependency list for this directory.
+C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Source/DataStructureAndEncodingDefinition/CMakeLists.txt
+C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Source/DataStructureAndEncodingDefinition/gdcmByteValue.cxx
+C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Source/DataStructureAndEncodingDefinition/gdcmDataElement.cxx
+C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Source/DataStructureAndEncodingDefinition/gdcmDataSet.cxx
+C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Source/DataStructureAndEncodingDefinition/gdcmExplicitDataElement.cxx
+C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Source/DataStructureAndEncodingDefinition/gdcmFile.cxx
+C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Source/DataStructureAndEncodingDefinition/gdcmFileMetaInformation.cxx
+C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Source/DataStructureAndEncodingDefinition/gdcmFragment.cxx
+C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Source/DataStructureAndEncodingDefinition/gdcmImplicitDataElement.cxx
+C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Source/DataStructureAndEncodingDefinition/gdcmItem.cxx
+C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Source/DataStructureAndEncodingDefinition/gdcmMediaStorage.cxx
+C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Source/DataStructureAndEncodingDefinition/gdcmPrivateTag.cxx
+C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Source/DataStructureAndEncodingDefinition/gdcmReader.cxx
+C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Source/DataStructureAndEncodingDefinition/gdcmSequenceOfFragments.cxx
+C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Source/DataStructureAndEncodingDefinition/gdcmSequenceOfItems.cxx
+C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Source/DataStructureAndEncodingDefinition/gdcmValue.cxx

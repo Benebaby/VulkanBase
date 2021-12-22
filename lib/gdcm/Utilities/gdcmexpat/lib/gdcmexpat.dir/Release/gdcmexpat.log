@@ -1,0 +1,9 @@
+﻿  Building Custom Rule C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Utilities/gdcmexpat/lib/CMakeLists.txt
+  xmlparse.c
+C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Utilities\gdcmexpat\lib\xmlparse.c(1493,30): warning C4244: "=": Konvertierung von "__int64" in "int", möglicher Datenverlust
+C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Utilities\gdcmexpat\lib\xmlparse.c(1751,56): warning C4244: "return": Konvertierung von "__int64" in "XML_Index", möglicher Datenverlust
+  xmltok.c
+  xmlrole.c
+  Code wird generiert...
+     Bibliothek "C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm/bin/Release/gdcmexpat.lib" und Objekt "C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm/bin/Release/gdcmexpat.exp" werden erstellt.
+  gdcmexpat.vcxproj -> C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\bin\Release\gdcmexpat.dll

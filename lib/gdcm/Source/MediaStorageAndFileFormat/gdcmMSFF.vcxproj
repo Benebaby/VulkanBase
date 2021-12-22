@@ -1,0 +1,465 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7D9E686A-9569-3B19-9776-D49BBD262B91}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.20348.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>gdcmMSFF</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\bin\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">gdcmMSFF.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">gdcmMSFF</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\bin\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">gdcmMSFF.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">gdcmMSFF</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\bin\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">gdcmMSFF.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">gdcmMSFF</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\bin\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">gdcmMSFF.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">gdcmMSFF</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\Common;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Source\Common;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\DataStructureAndEncodingDefinition;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\DataDictionary;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\InformationObjectDefinition;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Utilities;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmcharls;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmopenjpeg;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmopenjpeg\src\lib\openjp2;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmzlib;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmuuid;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;CMAKE_INTDIR="Debug";gdcmMSFF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;NDEBUG;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"Debug\";gdcmMSFF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\Common;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Source\Common;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\DataStructureAndEncodingDefinition;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\DataDictionary;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\InformationObjectDefinition;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Utilities;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmcharls;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmopenjpeg;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmopenjpeg\src\lib\openjp2;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmzlib;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmuuid;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\Common;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Source\Common;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\DataStructureAndEncodingDefinition;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\DataDictionary;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\InformationObjectDefinition;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Utilities;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmcharls;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmopenjpeg;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmopenjpeg\src\lib\openjp2;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmzlib;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmuuid;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\bin\Debug\gdcmDICT.lib;..\..\bin\Debug\gdcmjpeg8.lib;..\..\bin\Debug\gdcmjpeg12.lib;..\..\bin\Debug\gdcmjpeg16.lib;..\..\bin\Debug\gdcmopenjp2.lib;..\..\bin\Debug\gdcmcharls.lib;rpcrt4.lib;..\..\bin\Debug\gdcmIOD.lib;..\..\bin\Debug\gdcmDSED.lib;..\..\bin\Debug\gdcmCommon.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm/bin/Debug/gdcmMSFF.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm/bin/Debug/gdcmMSFF.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\Common;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Source\Common;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\DataStructureAndEncodingDefinition;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\DataDictionary;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\InformationObjectDefinition;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Utilities;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmcharls;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmopenjpeg;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmopenjpeg\src\lib\openjp2;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmzlib;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmuuid;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;CMAKE_INTDIR="Release";gdcmMSFF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"Release\";gdcmMSFF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\Common;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Source\Common;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\DataStructureAndEncodingDefinition;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\DataDictionary;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\InformationObjectDefinition;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Utilities;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmcharls;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmopenjpeg;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmopenjpeg\src\lib\openjp2;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmzlib;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmuuid;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\Common;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Source\Common;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\DataStructureAndEncodingDefinition;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\DataDictionary;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\InformationObjectDefinition;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Utilities;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmcharls;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmopenjpeg;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmopenjpeg\src\lib\openjp2;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmzlib;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmuuid;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\bin\Release\gdcmDICT.lib;..\..\bin\Release\gdcmjpeg8.lib;..\..\bin\Release\gdcmjpeg12.lib;..\..\bin\Release\gdcmjpeg16.lib;..\..\bin\Release\gdcmopenjp2.lib;..\..\bin\Release\gdcmcharls.lib;rpcrt4.lib;..\..\bin\Release\gdcmIOD.lib;..\..\bin\Release\gdcmDSED.lib;..\..\bin\Release\gdcmCommon.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm/bin/Release/gdcmMSFF.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm/bin/Release/gdcmMSFF.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\Common;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Source\Common;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\DataStructureAndEncodingDefinition;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\DataDictionary;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\InformationObjectDefinition;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Utilities;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmcharls;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmopenjpeg;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmopenjpeg\src\lib\openjp2;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmzlib;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmuuid;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;CMAKE_INTDIR="MinSizeRel";gdcmMSFF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"MinSizeRel\";gdcmMSFF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\Common;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Source\Common;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\DataStructureAndEncodingDefinition;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\DataDictionary;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\InformationObjectDefinition;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Utilities;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmcharls;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmopenjpeg;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmopenjpeg\src\lib\openjp2;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmzlib;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmuuid;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\Common;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Source\Common;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\DataStructureAndEncodingDefinition;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\DataDictionary;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\InformationObjectDefinition;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Utilities;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmcharls;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmopenjpeg;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmopenjpeg\src\lib\openjp2;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmzlib;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmuuid;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\bin\MinSizeRel\gdcmDICT.lib;..\..\bin\MinSizeRel\gdcmjpeg8.lib;..\..\bin\MinSizeRel\gdcmjpeg12.lib;..\..\bin\MinSizeRel\gdcmjpeg16.lib;..\..\bin\MinSizeRel\gdcmopenjp2.lib;..\..\bin\MinSizeRel\gdcmcharls.lib;rpcrt4.lib;..\..\bin\MinSizeRel\gdcmIOD.lib;..\..\bin\MinSizeRel\gdcmDSED.lib;..\..\bin\MinSizeRel\gdcmCommon.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm/bin/MinSizeRel/gdcmMSFF.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm/bin/MinSizeRel/gdcmMSFF.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\Common;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Source\Common;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\DataStructureAndEncodingDefinition;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\DataDictionary;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\InformationObjectDefinition;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Utilities;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmcharls;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmopenjpeg;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmopenjpeg\src\lib\openjp2;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmzlib;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmuuid;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;CMAKE_INTDIR="RelWithDebInfo";gdcmMSFF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"RelWithDebInfo\";gdcmMSFF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\Common;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Source\Common;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\DataStructureAndEncodingDefinition;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\DataDictionary;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\InformationObjectDefinition;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Utilities;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmcharls;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmopenjpeg;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmopenjpeg\src\lib\openjp2;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmzlib;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmuuid;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\Common;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Source\Common;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\DataStructureAndEncodingDefinition;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\DataDictionary;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\InformationObjectDefinition;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Utilities;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmcharls;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmopenjpeg;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmopenjpeg\src\lib\openjp2;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmzlib;C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmuuid;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\bin\RelWithDebInfo\gdcmDICT.lib;..\..\bin\RelWithDebInfo\gdcmjpeg8.lib;..\..\bin\RelWithDebInfo\gdcmjpeg12.lib;..\..\bin\RelWithDebInfo\gdcmjpeg16.lib;..\..\bin\RelWithDebInfo\gdcmopenjp2.lib;..\..\bin\RelWithDebInfo\gdcmcharls.lib;rpcrt4.lib;..\..\bin\RelWithDebInfo\gdcmIOD.lib;..\..\bin\RelWithDebInfo\gdcmDSED.lib;..\..\bin\RelWithDebInfo\gdcmCommon.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm/bin/RelWithDebInfo/gdcmMSFF.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm/bin/RelWithDebInfo/gdcmMSFF.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\CMakeLists.txt">
+      <StdOutEncoding>UTF-8</StdOutEncoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Source/MediaStorageAndFileFormat/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10 -BC:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm --check-stamp-file C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm/Source/MediaStorageAndFileFormat/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Source\MediaStorageAndFileFormat\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Source/MediaStorageAndFileFormat/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10 -BC:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm --check-stamp-file C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm/Source/MediaStorageAndFileFormat/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Source\MediaStorageAndFileFormat\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Source/MediaStorageAndFileFormat/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10 -BC:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm --check-stamp-file C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm/Source/MediaStorageAndFileFormat/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Source\MediaStorageAndFileFormat\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Source/MediaStorageAndFileFormat/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10 -BC:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm --check-stamp-file C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm/Source/MediaStorageAndFileFormat/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Source\MediaStorageAndFileFormat\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmEmptyMaskGenerator.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmEquipmentManufacturer.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmFileStreamer.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmJSON.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmFileChangeTransferSyntax.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmAnonymizer.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmFileAnonymizer.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmIconImageFilter.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmIconImageGenerator.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmDICOMDIRGenerator.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmSpacing.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmFileExplicitFilter.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmFileDerivation.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmImageFragmentSplitter.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmTagPath.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmSimpleSubjectWatcher.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmAnonymizeEvent.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmPixmap.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmBitmap.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmRescaler.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmImageToImageFilter.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmBitmapToBitmapFilter.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmPixmapToPixmapFilter.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmImageChangeTransferSyntax.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmImageApplyLookupTable.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmFileDecompressLookupTable.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmOrientation.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmDataSetHelper.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmImageChangePlanarConfiguration.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmImageChangePhotometricInterpretation.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmDirectionCosines.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmSorter.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmSerieHelper.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmIPPSorter.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmApplicationEntity.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmDICOMDIR.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmSpectroscopy.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmEncapsulatedDocument.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmSplitMosaicFilter.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmFiducials.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmWaveform.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmPersonName.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmIconImage.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmUIDGenerator.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmUUIDGenerator.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmPrinter.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmDictPrinter.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmXMLPrinter.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmScanner.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmStrictScanner.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmPixmapReader.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmImageReader.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmPixmapWriter.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmImageWriter.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmStringFilter.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmImageHelper.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmValidate.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmDumper.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmImage.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmImageConverter.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmImageCodec.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmJPEG12Codec.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmRLECodec.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmPDFCodec.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmAudioCodec.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmJPEG16Codec.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmJPEGLSCodec.cxx">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CHARLS_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CHARLS_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CHARLS_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CHARLS_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmJPEG8Codec.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmJPEGCodec.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmPVRGCodec.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmKAKADUCodec.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmPNMCodec.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmPGXCodec.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmRAWCodec.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmLookupTable.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmOverlay.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmCurve.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmPhotometricInterpretation.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmPixelFormat.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmSegmentedPaletteColorLookupTable.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmStreamImageReader.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmImageRegionReader.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmDirectoryHelper.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmSegment.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmSurface.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmMeshPrimitive.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmSegmentWriter.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmSurfaceWriter.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmSegmentReader.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmSurfaceReader.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmSurfaceHelper.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmSegmentHelper.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Source\MediaStorageAndFileFormat\gdcmJPEG2000Codec.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Utilities\gdcmrle\rle.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Utilities\gdcmrle\info.cxx" />
+    <ClCompile Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Utilities\gdcmrle\io.cxx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\ZERO_CHECK.vcxproj">
+      <Project>{BE5C88DA-5286-3FDA-B7EA-0C081C7F6F88}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Source\Common\gdcmCommon.vcxproj">
+      <Project>{0513D43F-120A-3FCD-A0B6-D0B179E28F01}</Project>
+      <Name>gdcmCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Source\DataDictionary\gdcmDICT.vcxproj">
+      <Project>{3EF93F55-8C28-3CD6-B8A1-45059FFB030C}</Project>
+      <Name>gdcmDICT</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Source\DataStructureAndEncodingDefinition\gdcmDSED.vcxproj">
+      <Project>{28A16559-E010-3AD2-8B5F-AB9502585BB1}</Project>
+      <Name>gdcmDSED</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Source\InformationObjectDefinition\gdcmIOD.vcxproj">
+      <Project>{3BC3C1CB-A2B3-3ABA-8EA3-6E155D77DB0B}</Project>
+      <Name>gdcmIOD</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmcharls\gdcmcharls.vcxproj">
+      <Project>{AB310101-FE32-3D06-BC8C-00EB8276396C}</Project>
+      <Name>gdcmcharls</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmjpeg\12\gdcmjpeg12.vcxproj">
+      <Project>{B1B69EDF-41BF-39F5-BF86-3F6B5C065F85}</Project>
+      <Name>gdcmjpeg12</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmjpeg\16\gdcmjpeg16.vcxproj">
+      <Project>{96D39458-993F-33E9-BC21-FECEE3A96D7E}</Project>
+      <Name>gdcmjpeg16</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmjpeg\8\gdcmjpeg8.vcxproj">
+      <Project>{143DB02E-B298-3792-8531-3EBABAB001D6}</Project>
+      <Name>gdcmjpeg8</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\Utilities\gdcmopenjpeg\src\lib\openjp2\gdcmopenjp2.vcxproj">
+      <Project>{849AA6B3-E199-3A6F-BA4E-C9900BB87FC3}</Project>
+      <Name>gdcmopenjp2</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

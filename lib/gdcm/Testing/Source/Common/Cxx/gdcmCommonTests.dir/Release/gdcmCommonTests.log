@@ -1,0 +1,29 @@
+﻿  Building Custom Rule C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Testing/Source/Common/Cxx/CMakeLists.txt
+  gdcmCommonTests.cxx
+  TestVersion.cxx
+  TestCommand.cxx
+  TestCryptographicMessageSyntax.cxx
+  TestDummyValueGenerator.cxx
+  TestASN1.cxx
+  TestTesting.cxx
+  TestSystem3.cxx
+  TestSwapper.cxx
+  TestByteSwap.cxx
+  TestString1.cxx
+  TestString2.cxx
+  TestTerminal.cxx
+  TestFilenameGenerator.cxx
+  TestObject.cxx
+  TestSmartPointer.cxx
+  TestSwapCode.cxx
+  TestSystem1.cxx
+  TestSystem2.cxx
+  TestTrace.cxx
+  Code wird generiert...
+  Kompilieren...
+  TestTypes.cxx
+  TestUnpacker12Bits.cxx
+  TestBase64.cxx
+  TestLog2.cxx
+  Code wird generiert...
+  gdcmCommonTests.vcxproj -> C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\bin\Release\gdcmCommonTests.exe

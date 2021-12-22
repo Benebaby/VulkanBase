@@ -1,0 +1,38 @@
+﻿  Building Custom Rule C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Source/Common/CMakeLists.txt
+  gdcmVersion.cxx
+  gdcmRegion.cxx
+  gdcmBoxRegion.cxx
+  gdcmEvent.cxx
+  gdcmDataEvent.cxx
+  gdcmProgressEvent.cxx
+  gdcmFileNameEvent.cxx
+  gdcmCommand.cxx
+  gdcmMD5.cxx
+  gdcmBase64.cxx
+  gdcmSHA1.cxx
+  gdcmDummyValueGenerator.cxx
+  gdcmCryptographicMessageSyntax.cxx
+  gdcmCryptoFactory.cxx
+  gdcmASN1.cxx
+  gdcmObject.cxx
+  gdcmSubject.cxx
+  gdcmDirectory.cxx
+  gdcmTerminal.cxx
+  gdcmString.cxx
+  Code wird generiert...
+  Kompilieren...
+  gdcmFilename.cxx
+  gdcmFilenameGenerator.cxx
+  gdcmSwapCode.cxx
+  gdcmSystem.cxx
+  gdcmTrace.cxx
+  gdcmException.cxx
+  gdcmDeflateStream.cxx
+  gdcmByteSwap.cxx
+  gdcmUnpacker12Bits.cxx
+  gdcmCAPICryptographicMessageSyntax.cxx
+  gdcmCAPICryptoFactory.cxx
+  gdcmTesting.cxx
+  Code wird generiert...
+     Bibliothek "C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm/bin/Release/gdcmCommon.lib" und Objekt "C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm/bin/Release/gdcmCommon.exp" werden erstellt.
+  gdcmCommon.vcxproj -> C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\bin\Release\gdcmCommon.dll

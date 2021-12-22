@@ -1,0 +1,52 @@
+﻿  Building Custom Rule C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Testing/Source/DataStructureAndEncodingDefinition/Cxx/CMakeLists.txt
+  gdcmDSEDTests.cxx
+  TestAttribute.cxx
+  TestCodeString.cxx
+  TestAttribute1.cxx
+  TestAttribute7.cxx
+  TestLO.cxx
+  TestCSAElement.cxx
+  TestPreamble.cxx
+  TestReader.cxx
+  TestReaderUpToTag1.cxx
+  TestReaderUpToTag2.cxx
+  TestReaderSelectedTags.cxx
+  TestReaderSelectedPrivateGroups.cxx
+  TestReaderCanRead.cxx
+  TestWriter.cxx
+  TestWriter2.cxx
+  TestCSAHeader.cxx
+  TestByteSwapFilter.cxx
+  TestBasicOffsetTable.cxx
+  TestComposite.cxx
+  Code wird generiert...
+  Kompilieren...
+  TestDataElement.cxx
+  TestDataSet.cxx
+  TestDS.cxx
+  TestVRLT.cxx
+  TestVRUI.cxx
+  TestElement1.cxx
+  TestFile.cxx
+  TestFileSet.cxx
+  TestFragment.cxx
+  TestItem.cxx
+  TestSequenceOfFragments.cxx
+  TestSequenceOfItems.cxx
+  TestTag.cxx
+  TestPrivateTag.cxx
+  TestTransferSyntax.cxx
+  TestMediaStorage.cxx
+  TestVL.cxx
+  TestVM.cxx
+  TestVR.cxx
+C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestVR.cxx(160,4): warning C4309: "Initialisierung": Verkürzung eines konstanten Wertes
+  TestElement2.cxx
+  Code wird generiert...
+  Kompilieren...
+  TestElement4.cxx
+  TestElement5.cxx
+C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm-3.0.10\Testing\Source\DataStructureAndEncodingDefinition\Cxx\TestElement5.cxx(34,40): warning C4267: "Argument": Konvertierung von "size_t" nach "unsigned long", Datenverlust möglich
+  TestElement6.cxx
+  Code wird generiert...
+  gdcmDSEDTests.vcxproj -> C:\Users\lukas\Documents\Bachelorarbeit\VulkanBase\lib\gdcm\bin\Release\gdcmDSEDTests.exe

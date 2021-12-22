@@ -1,0 +1,14 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-3.18/Modules/CheckIncludeFile.cmake
+C:/Program Files/CMake/share/cmake-3.18/Modules/CheckIncludeFileCXX.cmake
+C:/Program Files/CMake/share/cmake-3.18/Modules/CheckIncludeFiles.cmake
+C:/Program Files/CMake/share/cmake-3.18/Modules/CheckSymbolExists.cmake
+C:/Program Files/CMake/share/cmake-3.18/Modules/CheckTypeSize.cmake
+C:/Program Files/CMake/share/cmake-3.18/Modules/TestBigEndian.cmake
+C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Utilities/gdcmopenjpeg/CMakeLists.txt
+C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Utilities/gdcmopenjpeg/cmake/CTestCustom.cmake.in
+C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Utilities/gdcmopenjpeg/cmake/EnsureFileInclude.cmake
+C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Utilities/gdcmopenjpeg/cmake/OpenJPEGConfig.cmake.in
+C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Utilities/gdcmopenjpeg/cmake/TestLargeFiles.cmake
+C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Utilities/gdcmopenjpeg/src/lib/openjp2/opj_config.h.cmake.in
+C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/lib/gdcm-3.0.10/Utilities/gdcmopenjpeg/src/lib/openjp2/opj_config_private.h.cmake.in
