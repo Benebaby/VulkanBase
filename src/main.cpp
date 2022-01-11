@@ -939,14 +939,11 @@ private:
         const gdcm::Image &image = reader.GetImage();
         gdcm::PixelFormat pixeltype = image.GetPixelFormat();
         unsigned long len = image.GetBufferLength();
-        // std::vector<char> vbuffer;
-        // vbuffer.resize(image.GetBufferLength());
         const unsigned int *dims = image.GetDimensions();
         unsigned int dimx = dims[0];
         unsigned int dimy = dims[1];
         unsigned short pixelsize = pixeltype.GetPixelSize();
         char *tempimage = new char[len];
-        // char *tempimage = &vbuffer[0];
         image.GetBuffer(tempimage);
         // for (size_t i = 0; i < len; i++)
         // {
@@ -968,18 +965,12 @@ private:
 
         vk::DeviceSize dicomSize = size;
         
-
-        // // short *buffer16 = (short *)tempimage;
-        unsigned char ubuffer[524288];
+        // unsigned char ubuffer[524288];
+        unsigned char *ubuffer = new unsigned char[size];
         // unsigned char ubuffer[786432];
-        // convert from 16 Bit monochrome to rg 16 --> 8 bit per channel
+        // convert from 16 Bit monochrome to r8g8 --> 8 bit per channel
         for (size_t i = 0; i < size; i+=2)
         {
-            // Scalar Range of gdcmData/012345.002.050.dcm is [0,192], we could simply do:
-            // *pubuffer++ = *buffer16;
-            // *pubuffer++ = *buffer16;
-            // *pubuffer++ = *buffer16;
-            // instead do it right:
             ubuffer[i] = (unsigned char)std::max(0, 255 + tempimage[i]);
             ubuffer[i+1] = (unsigned char)std::max(0, 255 + tempimage[i]);
         }
@@ -1558,33 +1549,6 @@ private:
 
 int main()
 {
-
-    // gdcm::ImageReader reader;
-
-    // reader.SetFileName(TEXTURE_PATH "/MedData/manifest-1637709711563/APOLLO-5-PAAD/AP-JS5B/12-27-1975-NA-CT ABDPEL WCON-10542/3.000000-ABDOMENPELVIS-27696/1-01.dcm");
-    // if( !reader.Read() ) {
-    //     std::cerr << "Could not read: " << std::endl;
-    //     return 1;
-    // } else {
-    //     std::cout << "Is completely readable" << std::endl;
-    // }
-
-    // const gdcm::Image &image = reader.GetImage();
-    // gdcm::PixelFormat pixeltype = image.GetPixelFormat();
-    // unsigned long len = image.GetBufferLength();
-    // const unsigned int *dims = image.GetDimensions();
-    // unsigned short pixelsize = pixeltype.GetPixelSize();
-    // char *tempimage = new char[len];
-    // image.GetBuffer(tempimage);
-
-    // std::cout << "Image bufferlength: " << len << " Dimension " << dims[0] << ", " << dims[1] << ", " << dims[2] << " PixelSize: " << pixelsize << "\n";
-    // std::cout << "Pixelformat \n" << pixeltype << "\n";
-
-    // if( image.GetPixelFormat() == gdcm::PixelFormat::INT16 ) {
-    //     std::cout << "Format is INT16 \n";
-    // } else {
-    //     std::cout << "Format isn't INT16 \n";
-    // }
 
     VulkanBase app;
     try
