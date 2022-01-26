@@ -3,4 +3,4 @@
 build/*
 .DS_Store
 *.spv
-lib/gdcm
+lib/gdcm/*
