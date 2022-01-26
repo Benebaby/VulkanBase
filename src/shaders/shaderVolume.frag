@@ -10,7 +10,7 @@ struct AABBox {
     vec3 bounds[2];
 };
 
-layout(binding = 1) uniform sampler2D texSampler;
+layout(binding = 1) uniform sampler3D texSampler;
 
 layout(origin_upper_left) in vec4 gl_FragCoord;
 layout(location = 0) in vec3 fragColor;
@@ -82,8 +82,8 @@ void main() {
     vec3 color = vec3(0.0);
     Ray ray = calculateRay(vec2(0.0));
     AABBox box; 
-    box.bounds[0] = vec3(-0.5); 
-    box.bounds[1] = vec3(0.5);
+    box.bounds[0] = vec3(-0.5, -0.5, -0.08203125); 
+    box.bounds[1] = vec3(0.5, 0.5, 0.08203125);
     float tmin = 0.0;
     float tmax = 0.0;
     bool intersects = intersect(ray, box, tmin, tmax);
@@ -91,6 +91,7 @@ void main() {
     vec3 exit = ray.origin + tmax * ray.direction;
 
     //highlight frontfacing edges
+    /*
     if((enter.x < -0.497 || enter.x > 0.497) && (enter.z < -0.497 || enter.z > 0.497)){
         float distanceToEdge = ((0.5 - abs(enter.x)) + (0.5 - abs(enter.z))) / 2.0;
         color += (1.0 - distanceToEdge * 333.333) * vec3(0.0, 1.0, 0.0) * 0.2;
@@ -103,16 +104,15 @@ void main() {
         float distanceToEdge = ((0.5 - abs(enter.z)) + (0.5 - abs(enter.y))) / 2.0;
         color += (1.0 - distanceToEdge * 333.333) * vec3(0.0, 1.0, 0.0) * 0.2;
     }
+    */
 
     if(intersects){
         vec3 currentColor = vec3(0.0);
         for(float t = tmin; t < tmax ; t += 0.001953125){
-            vec2 uv = (ray.origin + t * ray.direction).xy + vec2(0.5);
-            vec3 textureColor = vec3(texture(texSampler, uv).r - 0.1 * (1.0 / 0.9));
-            if(length(textureColor) < 0.05)
-                currentColor += vec3(0.0, 0.05, 0.05) * 0.0015906;
-            else
-                currentColor += textureColor * vec3(1.0, 1.0, 1.0) * 0.00412;
+            vec3 uv = (ray.origin + t * ray.direction).xyz + vec3(0.5);
+            vec3 textureColor = vec3(texture(texSampler, uv).r);
+            if(textureColor.r > 0.07910 && textureColor.r < 0.567)
+                currentColor += textureColor * vec3((textureColor.r - 0.07910) /  0.4879, uv.y, uv.z) * 0.00412;
         }
         color += currentColor;
     }else{
@@ -120,6 +120,7 @@ void main() {
     }
 
     //highlight backfacing edges
+    /*
     if((exit.x < -0.497 || exit.x > 0.497) && (exit.z < -0.497 || exit.z > 0.497)){
         float distanceToEdge = ((0.5 - abs(exit.x)) + (0.5 - abs(exit.z))) / 2.0;
         color += (1.0 - distanceToEdge * 333.333) * vec3(0.0, 1.0, 0.0) * 0.05;
@@ -132,6 +133,7 @@ void main() {
         float distanceToEdge = ((0.5 - abs(exit.z)) + (0.5 - abs(exit.y))) / 2.0;
         color += (1.0 - distanceToEdge * 333.333) * vec3(0.0, 1.0, 0.0) * 0.05;
     }
+    */
 
     outColor = vec4(color, 1.0);
 }

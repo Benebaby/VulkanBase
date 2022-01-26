@@ -75,35 +75,35 @@ struct Vertex
 
 std::vector<Vertex> vertices = {
     //Position            //Color            //Normal              //UV
-    {{-0.5f, 0.5f, 0.5f}, {1.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 1.0f}, {0.0f, 0.0f}},
-    {{-0.5f, -0.5f, 0.5f}, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f, 1.0f}, {1.0f, 0.0f}},
-    {{0.5f, -0.5f, 0.5f}, {0.0f, 0.0f, 1.0f}, {0.0f, 0.0f, 1.0f}, {1.0f, 1.0f}},
-    {{0.5f, 0.5f, 0.5f}, {1.0f, 1.0f, 1.0f}, {0.0f, 0.0f, 1.0f}, {0.0f, 1.0f}},
+    {{-0.5f,  0.5f,  0.08203125f}, {1.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 1.0f}, {0.0f, 0.0f}},
+    {{-0.5f, -0.5f,  0.08203125f}, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f, 1.0f}, {1.0f, 0.0f}},
+    {{0.5f,  -0.5f,  0.08203125f}, {0.0f, 0.0f, 1.0f}, {0.0f, 0.0f, 1.0f}, {1.0f, 1.0f}},
+    {{0.5f,   0.5f,  0.08203125f}, {1.0f, 1.0f, 1.0f}, {0.0f, 0.0f, 1.0f}, {0.0f, 1.0f}},
 
-    {{-0.5f, 0.5f, -0.5f}, {1.0f, 0.0f, 0.0f}, {-1.0f, 0.0f, 0.0f}, {0.0f, 0.0f}},
-    {{-0.5f, -0.5f, -0.5f}, {0.0f, 1.0f, 0.0f}, {-1.0f, 0.0f, 0.0f}, {1.0f, 0.0f}},
-    {{-0.5f, -0.5f, 0.5f}, {0.0f, 0.0f, 1.0f}, {-1.0f, 0.0f, 0.0f}, {1.0f, 1.0f}},
-    {{-0.5f, 0.5f, 0.5f}, {1.0f, 1.0f, 1.0f}, {-1.0f, 0.0f, 0.0f}, {0.0f, 1.0f}},
+    {{-0.5f,  0.5f, -0.08203125f}, {1.0f, 0.0f, 0.0f}, {-1.0f, 0.0f, 0.0f}, {0.0f, 0.0f}},
+    {{-0.5f, -0.5f, -0.08203125f}, {0.0f, 1.0f, 0.0f}, {-1.0f, 0.0f, 0.0f}, {1.0f, 0.0f}},
+    {{-0.5f, -0.5f,  0.08203125f}, {0.0f, 0.0f, 1.0f}, {-1.0f, 0.0f, 0.0f}, {1.0f, 1.0f}},
+    {{-0.5f,  0.5f,  0.08203125f}, {1.0f, 1.0f, 1.0f}, {-1.0f, 0.0f, 0.0f}, {0.0f, 1.0f}},
 
-    {{0.5f, 0.5f, 0.5f}, {1.0f, 0.0f, 0.0f}, {1.0f, 0.0f, 0.0f}, {0.0f, 0.0f}},
-    {{0.5f, -0.5f, 0.5f}, {0.0f, 1.0f, 0.0f}, {1.0f, 0.0f, 0.0f}, {1.0f, 0.0f}},
-    {{0.5f, -0.5f, -0.5f}, {0.0f, 0.0f, 1.0f}, {1.0f, 0.0f, 0.0f}, {1.0f, 1.0f}},
-    {{0.5f, 0.5f, -0.5f}, {1.0f, 1.0f, 1.0f}, {1.0f, 0.0f, 0.0f}, {0.0f, 1.0f}},
+    {{0.5f,   0.5f,  0.08203125f}, {1.0f, 0.0f, 0.0f}, {1.0f, 0.0f, 0.0f}, {0.0f, 0.0f}},
+    {{0.5f,  -0.5f,  0.08203125f}, {0.0f, 1.0f, 0.0f}, {1.0f, 0.0f, 0.0f}, {1.0f, 0.0f}},
+    {{0.5f,  -0.5f, -0.08203125f}, {0.0f, 0.0f, 1.0f}, {1.0f, 0.0f, 0.0f}, {1.0f, 1.0f}},
+    {{0.5f,   0.5f, -0.08203125f}, {1.0f, 1.0f, 1.0f}, {1.0f, 0.0f, 0.0f}, {0.0f, 1.0f}},
 
-    {{-0.5f, 0.5f, -0.5f}, {1.0f, 0.0f, 0.0f}, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f}},
-    {{-0.5f, 0.5f, 0.5f}, {0.0f, 1.0f, 0.0f}, {0.0f, 1.0f, 0.0f}, {1.0f, 0.0f}},
-    {{0.5f, 0.5f, 0.5f}, {0.0f, 0.0f, 1.0f}, {0.0f, 1.0f, 0.0f}, {1.0f, 1.0f}},
-    {{0.5f, 0.5f, -0.5f}, {1.0f, 1.0f, 1.0f}, {0.0f, 1.0f, 0.0f}, {0.0f, 1.0f}},
+    {{-0.5f,  0.5f, -0.08203125f}, {1.0f, 0.0f, 0.0f}, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f}},
+    {{-0.5f,  0.5f,  0.08203125f}, {0.0f, 1.0f, 0.0f}, {0.0f, 1.0f, 0.0f}, {1.0f, 0.0f}},
+    {{0.5f,   0.5f,  0.08203125f}, {0.0f, 0.0f, 1.0f}, {0.0f, 1.0f, 0.0f}, {1.0f, 1.0f}},
+    {{0.5f,   0.5f, -0.08203125f}, {1.0f, 1.0f, 1.0f}, {0.0f, 1.0f, 0.0f}, {0.0f, 1.0f}},
 
-    {{-0.5f, -0.5f, 0.5f}, {1.0f, 0.0f, 0.0f}, {0.0f, -1.0f, 0.0f}, {0.0f, 0.0f}},
-    {{-0.5f, -0.5f, -0.5f}, {0.0f, 1.0f, 0.0f}, {0.0f, -1.0f, 0.0f}, {1.0f, 0.0f}},
-    {{0.5f, -0.5f, -0.5f}, {0.0f, 0.0f, 1.0f}, {0.0f, -1.0f, 0.0f}, {1.0f, 1.0f}},
-    {{0.5f, -0.5f, 0.5f}, {1.0f, 1.0f, 1.0f}, {0.0f, -1.0f, 0.0f}, {0.0f, 1.0f}},
+    {{-0.5f, -0.5f,  0.08203125f}, {1.0f, 0.0f, 0.0f}, {0.0f, -1.0f, 0.0f}, {0.0f, 0.0f}},
+    {{-0.5f, -0.5f, -0.08203125f}, {0.0f, 1.0f, 0.0f}, {0.0f, -1.0f, 0.0f}, {1.0f, 0.0f}},
+    {{0.5f,  -0.5f, -0.08203125f}, {0.0f, 0.0f, 1.0f}, {0.0f, -1.0f, 0.0f}, {1.0f, 1.0f}},
+    {{0.5f,  -0.5f,  0.08203125f}, {1.0f, 1.0f, 1.0f}, {0.0f, -1.0f, 0.0f}, {0.0f, 1.0f}},
 
-    {{0.5f, 0.5f, -0.5f}, {1.0f, 0.0f, 0.0f}, {0.0f, 0.0f, -1.0f}, {0.0f, 0.0f}},
-    {{0.5f, -0.5f, -0.5f}, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f, -1.0f}, {1.0f, 0.0f}},
-    {{-0.5f, -0.5f, -0.5f}, {0.0f, 0.0f, 1.0f}, {0.0f, 0.0f, -1.0f}, {1.0f, 1.0f}},
-    {{-0.5f, 0.5f, -0.5f}, {1.0f, 1.0f, 1.0f}, {0.0f, 0.0f, -1.0f}, {0.0f, 1.0f}}};
+    {{0.5f,   0.5f, -0.08203125f}, {1.0f, 0.0f, 0.0f}, {0.0f, 0.0f, -1.0f}, {0.0f, 0.0f}},
+    {{0.5f,  -0.5f, -0.08203125f}, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f, -1.0f}, {1.0f, 0.0f}},
+    {{-0.5f, -0.5f, -0.08203125f}, {0.0f, 0.0f, 1.0f}, {0.0f, 0.0f, -1.0f}, {1.0f, 1.0f}},
+    {{-0.5f,  0.5f, -0.08203125f}, {1.0f, 1.0f, 1.0f}, {0.0f, 0.0f, -1.0f}, {0.0f, 1.0f}}};
 
 std::vector<uint32_t> indices = {
     0, 1, 2, 0, 2, 3,
@@ -724,7 +724,7 @@ private:
         swapChainImageViews.resize(swapChainImages.size());
         for (size_t i = 0; i < swapChainImages.size(); i++)
         {
-            swapChainImageViews[i] = createImageView(swapChainImages[i], swapChainImageFormat, vk::ImageAspectFlagBits::eColor);
+            swapChainImageViews[i] = createImageView(swapChainImages[i], vk::ImageViewType::e2D, swapChainImageFormat, vk::ImageAspectFlagBits::eColor);
         }
     }
 
@@ -796,8 +796,8 @@ private:
         glslang::InitializeProcess();
         std::vector<uint32_t> vertShaderCodeSPIRV;
         std::vector<uint32_t> fragShaderCodeSPIRV;
-        SpirvHelper::GLSLtoSPV(vk::ShaderStageFlagBits::eVertex, "/shader.vert", vertShaderCodeSPIRV);
-        SpirvHelper::GLSLtoSPV(vk::ShaderStageFlagBits::eFragment, "/shader.frag", fragShaderCodeSPIRV);
+        SpirvHelper::GLSLtoSPV(vk::ShaderStageFlagBits::eVertex, "/shaderVolume.vert", vertShaderCodeSPIRV);
+        SpirvHelper::GLSLtoSPV(vk::ShaderStageFlagBits::eFragment, "/shaderVolume.frag", fragShaderCodeSPIRV);
         try
         {
             vertShaderModule = createShaderModule(vertShaderCodeSPIRV);
@@ -825,7 +825,7 @@ private:
         vk::Viewport viewport(0.0f, 0.0f, (float)swapChainExtent.width, (float)swapChainExtent.height, 0.0f, 1.0f);
         vk::Rect2D scissor(vk::Offset2D(0, 0), swapChainExtent);
         vk::PipelineViewportStateCreateInfo viewportState({}, viewport, scissor);
-        vk::PipelineRasterizationStateCreateInfo rasterizer({}, VK_FALSE, VK_FALSE, vk::PolygonMode::eFill, vk::CullModeFlagBits::eBack, vk::FrontFace::eClockwise, VK_FALSE, 0.0f, 0.0f, 0.0f, 1.0f);
+        vk::PipelineRasterizationStateCreateInfo rasterizer({}, VK_FALSE, VK_FALSE, vk::PolygonMode::eFill, vk::CullModeFlagBits::eBack, vk::FrontFace::eCounterClockwise, VK_FALSE, 0.0f, 0.0f, 0.0f, 1.0f);
         vk::PipelineMultisampleStateCreateInfo multisampling({}, vk::SampleCountFlagBits::e1, VK_FALSE);
 
         vk::PipelineDepthStencilStateCreateInfo depthStencil({}, VK_TRUE, VK_TRUE, vk::CompareOp::eLess, VK_FALSE, VK_FALSE);
@@ -894,8 +894,8 @@ private:
     {
         vk::Format depthFormat = findDepthFormat();
 
-        createImage(depthImage, depthImageAllocation, vk::ImageUsageFlagBits::eDepthStencilAttachment, VMA_MEMORY_USAGE_GPU_ONLY, swapChainExtent.width, swapChainExtent.height, depthFormat, vk::ImageTiling::eOptimal);
-        depthImageView = createImageView(depthImage, depthFormat, vk::ImageAspectFlagBits::eDepth);
+        createImage(depthImage, depthImageAllocation, vk::ImageUsageFlagBits::eDepthStencilAttachment, VMA_MEMORY_USAGE_GPU_ONLY, vk::ImageType::e2D, swapChainExtent.width, swapChainExtent.height, 1, depthFormat, vk::ImageTiling::eOptimal);
+        depthImageView = createImageView(depthImage, vk::ImageViewType::e2D, depthFormat, vk::ImageAspectFlagBits::eDepth);
     }
 
     vk::Format findSupportedFormat(const std::vector<vk::Format> &candidates, vk::ImageTiling tiling, vk::FormatFeatureFlags features)
@@ -923,67 +923,66 @@ private:
 
     void createTextureImage()
     {
-        gdcm::ImageReader reader;
+        std::vector<uint16_t> series(0);
 
-        reader.SetFileName(TEXTURE_PATH "/MedData/manifest-1637709711563/APOLLO-5-PAAD/AP-JS5B/12-27-1975-NA-CT ABDPEL WCON-10542/3.000000-ABDOMENPELVIS-27696/1-02.dcm");
-        if (!reader.Read())
-        {
-            std::cerr << "Could not read: " << std::endl;
-            return;
+        unsigned int dimx = 0;
+        unsigned int dimy = 0;
+        unsigned int dimz = 84;
+
+        for(uint32_t i = 1; i < 85; i++){
+            gdcm::ImageReader reader;
+            std::string imageFileName = TEXTURE_PATH "/MedData/manifest-1637709711563/APOLLO-5-PAAD/AP-JS5B/12-27-1975-NA-CT ABDPEL WCON-10542/3.000000-ABDOMENPELVIS-27696/1-";
+            if(i < 10)
+                imageFileName += "0"+std::to_string(i)+".dcm";
+            else
+                imageFileName += std::to_string(i)+".dcm";
+
+            reader.SetFileName(imageFileName.c_str());
+            if (!reader.Read()){
+                std::cerr << "Could not read: " << imageFileName << std::endl;
+                return;
+            }
+            gdcm::Image &image = reader.GetImage();
+            unsigned long len = image.GetBufferLength();
+            if(i == 1){
+                const unsigned int *dims = image.GetDimensions();
+                dimx = dims[0];
+                dimy = dims[1];
+            }
+
+            std::vector<char> tempImage8Bit(len);
+            image.GetBuffer(tempImage8Bit.data());
+
+            for (size_t i = 0; i < tempImage8Bit.size(); i += 2)
+            {
+                char r = tempImage8Bit[i];
+                char g = tempImage8Bit[i+1];
+                uint16_t result = 0;
+                result |= (uint16_t)r << 8;
+                result |= (uint16_t)g;
+                // result = glm::max(0, (65535 - result));
+                series.push_back(result);
+            }
         }
-        else
-        {
-            std::cout << "Is completely readable" << std::endl;
-        }
 
-        const gdcm::Image &image = reader.GetImage();
-        gdcm::PixelFormat pixeltype = image.GetPixelFormat();
-        unsigned long len = image.GetBufferLength();
-        const unsigned int *dims = image.GetDimensions();
-        unsigned int dimx = dims[0];
-        unsigned int dimy = dims[1];
-        unsigned short pixelsize = pixeltype.GetPixelSize();
-        std::vector<char> tempImage8Bit(len);
-        image.GetBuffer(tempImage8Bit.data());
-
-        std::vector<uint16_t> tempImage16Bit(len / 2);
-
-        // std::ofstream myfile;
-        // myfile.open (TEXTURE_PATH "/example.pgm");
-        // myfile << "P2\n";
-        // myfile << dimx << " " << dimy << "\n";
-        // myfile << "65535\n";
-        for (size_t i = 0; i < tempImage8Bit.size(); i += 2)
-        {
-            char r = tempImage8Bit[i];
-            char g = tempImage8Bit[i+1];
-            uint16_t result = 0;
-            result |= (uint16_t)r << 8;
-            result |= (uint16_t)g;
-            result = glm::max(0, (65535 - result));
-            tempImage16Bit[i/2] = result;
-            // myfile << result << " ";
-        }
-        // myfile.close();
-
-        vk::DeviceSize dicomSize = (uint64_t) tempImage8Bit.size();
+        vk::DeviceSize dicomSize = (uint64_t) (series.size() * 2);
 
         Buffer dic_stagingBuffer = Buffer(dicomSize, vk::BufferUsageFlagBits::eTransferSrc, VMA_MEMORY_USAGE_CPU_ONLY);
 
         dic_stagingBuffer.map();
-            dic_stagingBuffer.copyTo(tempImage16Bit.data());
+            dic_stagingBuffer.copyTo(series.data());
         dic_stagingBuffer.unmap();
 
-        createImage(textureImage, textureImageAllocation, vk::ImageUsageFlagBits::eTransferDst | vk::ImageUsageFlagBits::eSampled, VMA_MEMORY_USAGE_GPU_ONLY, dimx, dimy, vk::Format::eR16Unorm, vk::ImageTiling::eOptimal);
+        createImage(textureImage, textureImageAllocation, vk::ImageUsageFlagBits::eTransferDst | vk::ImageUsageFlagBits::eSampled, VMA_MEMORY_USAGE_GPU_ONLY, vk::ImageType::e3D, dimx, dimy, dimz, vk::Format::eR16Unorm, vk::ImageTiling::eOptimal);
 
         transitionImageLayout(textureImage, vk::Format::eR16Unorm, vk::ImageLayout::eUndefined, vk::ImageLayout::eTransferDstOptimal);
-            copyBufferToImage(dic_stagingBuffer.getHandle(), textureImage, static_cast<uint32_t>(dimx), static_cast<uint32_t>(dimy));
+            copyBufferToImage(dic_stagingBuffer.getHandle(), textureImage, static_cast<uint32_t>(dimx), static_cast<uint32_t>(dimy), static_cast<uint32_t>(dimz));
         transitionImageLayout(textureImage, vk::Format::eR16Unorm, vk::ImageLayout::eTransferDstOptimal, vk::ImageLayout::eShaderReadOnlyOptimal);
     }
 
     void createTextureImageView()
     {
-        textureImageView = createImageView(textureImage, vk::Format::eR16Unorm, vk::ImageAspectFlagBits::eColor);
+        textureImageView = createImageView(textureImage, vk::ImageViewType::e3D,vk::Format::eR16Unorm, vk::ImageAspectFlagBits::eColor);
     }
 
     void createTextureSampler()
@@ -995,14 +994,14 @@ private:
             vk::Filter::eLinear,
             vk::Filter::eLinear,
             vk::SamplerMipmapMode::eLinear,
-            vk::SamplerAddressMode::eRepeat,
-            vk::SamplerAddressMode::eRepeat,
-            vk::SamplerAddressMode::eRepeat,
+            vk::SamplerAddressMode::eClampToEdge,
+            vk::SamplerAddressMode::eClampToEdge,
+            vk::SamplerAddressMode::eClampToEdge,
             0.0f,
             VK_TRUE,
             properties.limits.maxSamplerAnisotropy,
             VK_FALSE,
-            vk::CompareOp::eAlways,
+            vk::CompareOp::eNever,
             0.0f,
             0.0f,
             vk::BorderColor::eIntOpaqueBlack,
@@ -1017,9 +1016,9 @@ private:
         }
     }
 
-    vk::ImageView createImageView(vk::Image image, vk::Format format, vk::ImageAspectFlags aspectFlags)
+    vk::ImageView createImageView(vk::Image image, vk::ImageViewType type, vk::Format format, vk::ImageAspectFlags aspectFlags)
     {
-        vk::ImageViewCreateInfo viewInfo({}, image, vk::ImageViewType::e2D, format, {}, vk::ImageSubresourceRange(aspectFlags, 0, 1, 0, 1));
+        vk::ImageViewCreateInfo viewInfo({}, image, type, format, {}, vk::ImageSubresourceRange(aspectFlags, 0, 1, 0, 1));
         vk::ImageView imageView;
         try
         {
@@ -1032,9 +1031,9 @@ private:
         return imageView;
     }
 
-    void createImage(vk::Image &image, VmaAllocation &imageAllocation, vk::ImageUsageFlags imageUsage, VmaMemoryUsage memoryUsage, uint32_t width, uint32_t height, vk::Format format, vk::ImageTiling tiling)
+    void createImage(vk::Image &image, VmaAllocation &imageAllocation, vk::ImageUsageFlags imageUsage, VmaMemoryUsage memoryUsage, vk::ImageType type, uint32_t width, uint32_t height, uint32_t depth, vk::Format format, vk::ImageTiling tiling)
     {
-        vk::ImageCreateInfo imageInfo({}, vk::ImageType::e2D, format, vk::Extent3D{{width, height}, 1}, 1, 1, vk::SampleCountFlagBits::e1, tiling, imageUsage, vk::SharingMode::eExclusive, {}, {}, vk::ImageLayout::eUndefined);
+        vk::ImageCreateInfo imageInfo({}, type, format, vk::Extent3D{width, height, depth}, 1, 1, vk::SampleCountFlagBits::e1, tiling, imageUsage, vk::SharingMode::eExclusive, {}, {}, vk::ImageLayout::eUndefined);
         VmaAllocationCreateInfo allocInfoImage = {};
         allocInfoImage.usage = memoryUsage;
         if (vmaCreateImage(allocator, reinterpret_cast<VkImageCreateInfo *>(&imageInfo), &allocInfoImage, reinterpret_cast<VkImage *>(&image), &imageAllocation, nullptr) != VK_SUCCESS)
@@ -1075,11 +1074,11 @@ private:
         endSingleTimeCommands(commandBuffer);
     }
 
-    void copyBufferToImage(vk::Buffer buffer, vk::Image image, uint32_t width, uint32_t height)
+    void copyBufferToImage(vk::Buffer buffer, vk::Image image, uint32_t width, uint32_t height, uint32_t depth)
     {
         vk::CommandBuffer commandBuffer = beginSingleTimeCommands();
 
-        vk::BufferImageCopy region(0, 0, 0, vk::ImageSubresourceLayers(vk::ImageAspectFlagBits::eColor, 0, 0, 1), {0, 0, 0}, vk::Extent3D{{width, height}, 1});
+        vk::BufferImageCopy region(0, 0, 0, vk::ImageSubresourceLayers(vk::ImageAspectFlagBits::eColor, 0, 0, 1), {0, 0, 0}, vk::Extent3D{width, height, depth});
 
         commandBuffer.copyBufferToImage(buffer, image, vk::ImageLayout::eTransferDstOptimal, 1, &region);
 
@@ -1292,13 +1291,13 @@ private:
 
         UniformBufferObject ubo{};
         ubo.model = glm::rotate(glm::mat4(1.0f), time * 0.2f * glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-        ubo.view = glm::lookAt(glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-        ubo.proj = glm::ortho(((float)swapChainExtent.width / (float)swapChainExtent.height)/2.f, -((float)swapChainExtent.width / (float)swapChainExtent.height) / 2.f, -0.5f, 0.5f, -1.f, 1.f);
-        ubo.proj[1][1] *= -1;
-        // ubo.view = glm::lookAt(glm::vec3(1.5f, 1.5f, 1.5f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-        // ubo.proj = glm::perspective(glm::radians(45.0f), swapChainExtent.width / (float)swapChainExtent.height, 0.1f, 10.0f);
+        // ubo.view = glm::lookAt(glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+        // ubo.proj = glm::ortho(((float)swapChainExtent.width / (float)swapChainExtent.height)/1.8f, -((float)swapChainExtent.width / (float)swapChainExtent.height) / 1.8f, -0.55f, 0.55f, -1.f, 1.f);
         // ubo.proj[1][1] *= -1;
-        // ubo.size = glm::vec2((float)swapChainExtent.width, (float)swapChainExtent.height);
+        ubo.view = glm::lookAt(glm::vec3(0.7f, 0.7f, 0.7f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+        ubo.proj = glm::perspective(glm::radians(45.0f), swapChainExtent.width / (float)swapChainExtent.height, 0.1f, 10.0f);
+        ubo.proj[1][1] *= -1;
+        ubo.size = glm::vec2((float)swapChainExtent.width, (float)swapChainExtent.height);
 
         uniformBuffers[currentImage]->map();
         uniformBuffers[currentImage]->copyTo(&ubo);
