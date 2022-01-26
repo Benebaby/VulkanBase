@@ -106,13 +106,13 @@ void main() {
 
     if(intersects){
         vec3 currentColor = vec3(0.0);
-        for(float t = tmin; t < tmax ; t += 0.003906){
+        for(float t = tmin; t < tmax ; t += 0.001953125){
             vec2 uv = (ray.origin + t * ray.direction).xy + vec2(0.5);
-            vec3 textureColor = texture(texSampler, uv).rgb;
+            vec3 textureColor = vec3(texture(texSampler, uv).r - 0.1 * (1.0 / 0.9));
             if(length(textureColor) < 0.05)
-                currentColor += vec3(0.0, 0.05, 0.05) * 0.003906;
+                currentColor += vec3(0.0, 0.05, 0.05) * 0.0015906;
             else
-                currentColor += textureColor * vec3(1.0, 1.0, 1.0) * 0.007812;
+                currentColor += textureColor * vec3(1.0, 1.0, 1.0) * 0.00412;
         }
         color += currentColor;
     }else{

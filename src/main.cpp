@@ -796,8 +796,8 @@ private:
         glslang::InitializeProcess();
         std::vector<uint32_t> vertShaderCodeSPIRV;
         std::vector<uint32_t> fragShaderCodeSPIRV;
-        SpirvHelper::GLSLtoSPV(vk::ShaderStageFlagBits::eVertex, "/shaderVolume.vert", vertShaderCodeSPIRV);
-        SpirvHelper::GLSLtoSPV(vk::ShaderStageFlagBits::eFragment, "/shaderVolume.frag", fragShaderCodeSPIRV);
+        SpirvHelper::GLSLtoSPV(vk::ShaderStageFlagBits::eVertex, "/shader.vert", vertShaderCodeSPIRV);
+        SpirvHelper::GLSLtoSPV(vk::ShaderStageFlagBits::eFragment, "/shader.frag", fragShaderCodeSPIRV);
         try
         {
             vertShaderModule = createShaderModule(vertShaderCodeSPIRV);
@@ -825,7 +825,7 @@ private:
         vk::Viewport viewport(0.0f, 0.0f, (float)swapChainExtent.width, (float)swapChainExtent.height, 0.0f, 1.0f);
         vk::Rect2D scissor(vk::Offset2D(0, 0), swapChainExtent);
         vk::PipelineViewportStateCreateInfo viewportState({}, viewport, scissor);
-        vk::PipelineRasterizationStateCreateInfo rasterizer({}, VK_FALSE, VK_FALSE, vk::PolygonMode::eFill, vk::CullModeFlagBits::eBack, vk::FrontFace::eCounterClockwise, VK_FALSE, 0.0f, 0.0f, 0.0f, 1.0f);
+        vk::PipelineRasterizationStateCreateInfo rasterizer({}, VK_FALSE, VK_FALSE, vk::PolygonMode::eFill, vk::CullModeFlagBits::eBack, vk::FrontFace::eClockwise, VK_FALSE, 0.0f, 0.0f, 0.0f, 1.0f);
         vk::PipelineMultisampleStateCreateInfo multisampling({}, vk::SampleCountFlagBits::e1, VK_FALSE);
 
         vk::PipelineDepthStencilStateCreateInfo depthStencil({}, VK_TRUE, VK_TRUE, vk::CompareOp::eLess, VK_FALSE, VK_FALSE);
@@ -925,7 +925,7 @@ private:
     {
         gdcm::ImageReader reader;
 
-        reader.SetFileName(TEXTURE_PATH "/MedData/manifest-1637709711563/APOLLO-5-PAAD/AP-JS5B/12-27-1975-NA-CT ABDPEL WCON-10542/3.000000-ABDOMENPELVIS-27696/1-01.dcm");
+        reader.SetFileName(TEXTURE_PATH "/MedData/manifest-1637709711563/APOLLO-5-PAAD/AP-JS5B/12-27-1975-NA-CT ABDPEL WCON-10542/3.000000-ABDOMENPELVIS-27696/1-02.dcm");
         if (!reader.Read())
         {
             std::cerr << "Could not read: " << std::endl;
@@ -943,79 +943,47 @@ private:
         unsigned int dimx = dims[0];
         unsigned int dimy = dims[1];
         unsigned short pixelsize = pixeltype.GetPixelSize();
-        char *tempimage = new char[len];
-        image.GetBuffer(tempimage);
-        // for (size_t i = 0; i < len; i++)
-        // {
-        //     std::cout << "BufferData: " << (int)tempimage[i] << "\n";
-        // }
-        std::ofstream myfile;
-        myfile.open("example.txt");
-        for(size_t i = 0; i < dimx * dimy; i++) {
-            if(i % 20 != 0) {
-                myfile << (int)tempimage[i] << " ";
-            } else {
-                myfile << (int)tempimage[i] << "\n";
-            }           
-        }
-        myfile.close();
-        // std::cout << "Image bufferlength: " << len << " Dimension " << dimx << " PixelSize: " << pixelsize << "\n";
-        // std::cout << "Pixelformat \n" << pixeltype << "\n";
-        const int size = dimx * dimy * 2;
+        std::vector<char> tempImage8Bit(len);
+        image.GetBuffer(tempImage8Bit.data());
 
-        vk::DeviceSize dicomSize = size;
-        
-        // unsigned char ubuffer[524288];
-        unsigned char *ubuffer = new unsigned char[size];
-        // unsigned char ubuffer[786432];
-        // convert from 16 Bit monochrome to r8g8 --> 8 bit per channel
-        for (size_t i = 0; i < size; i+=2)
+        std::vector<uint16_t> tempImage16Bit(len / 2);
+
+        // std::ofstream myfile;
+        // myfile.open (TEXTURE_PATH "/example.pgm");
+        // myfile << "P2\n";
+        // myfile << dimx << " " << dimy << "\n";
+        // myfile << "65535\n";
+        for (size_t i = 0; i < tempImage8Bit.size(); i += 2)
         {
-            ubuffer[i] = (unsigned char)std::max(0, 255 + tempimage[i]);
-            ubuffer[i+1] = (unsigned char)std::max(0, 255 + tempimage[i]);
+            char r = tempImage8Bit[i];
+            char g = tempImage8Bit[i+1];
+            uint16_t result = 0;
+            result |= (uint16_t)r << 8;
+            result |= (uint16_t)g;
+            result = glm::max(0, (65535 - result));
+            tempImage16Bit[i/2] = result;
+            // myfile << result << " ";
         }
+        // myfile.close();
+
+        vk::DeviceSize dicomSize = (uint64_t) tempImage8Bit.size();
 
         Buffer dic_stagingBuffer = Buffer(dicomSize, vk::BufferUsageFlagBits::eTransferSrc, VMA_MEMORY_USAGE_CPU_ONLY);
 
         dic_stagingBuffer.map();
-            dic_stagingBuffer.copyTo(ubuffer);
+            dic_stagingBuffer.copyTo(tempImage16Bit.data());
         dic_stagingBuffer.unmap();
 
-        // abfrage welches format werden soll! --> monochrome
+        createImage(textureImage, textureImageAllocation, vk::ImageUsageFlagBits::eTransferDst | vk::ImageUsageFlagBits::eSampled, VMA_MEMORY_USAGE_GPU_ONLY, dimx, dimy, vk::Format::eR16Unorm, vk::ImageTiling::eOptimal);
 
-        createImage(textureImage, textureImageAllocation, vk::ImageUsageFlagBits::eTransferDst | vk::ImageUsageFlagBits::eSampled, VMA_MEMORY_USAGE_GPU_ONLY, dimx, dimy, vk::Format::eR8G8Unorm, vk::ImageTiling::eOptimal);
-
-        transitionImageLayout(textureImage, vk::Format::eR8G8Unorm, vk::ImageLayout::eUndefined, vk::ImageLayout::eTransferDstOptimal);
+        transitionImageLayout(textureImage, vk::Format::eR16Unorm, vk::ImageLayout::eUndefined, vk::ImageLayout::eTransferDstOptimal);
             copyBufferToImage(dic_stagingBuffer.getHandle(), textureImage, static_cast<uint32_t>(dimx), static_cast<uint32_t>(dimy));
-        transitionImageLayout(textureImage, vk::Format::eR8G8Unorm, vk::ImageLayout::eTransferDstOptimal, vk::ImageLayout::eShaderReadOnlyOptimal);
-
-        // int texWidth, texHeight, texChannels;
-        // stbi_uc* pixels = stbi_load(TEXTURE_PATH "/mri.jpg", &texWidth, &texHeight, &texChannels, STBI_rgb_alpha);
-        // vk::DeviceSize imageSize = texWidth * texHeight * 4;
-
-        // if (!pixels) {
-        //     throw std::runtime_error("failed to load texture image!");
-        // }
-
-        // Buffer stagingBuffer = Buffer(imageSize, vk::BufferUsageFlagBits::eTransferSrc, VMA_MEMORY_USAGE_CPU_ONLY);
-
-        // stagingBuffer.map();
-        // stagingBuffer.copyTo(pixels);
-        // stagingBuffer.unmap();
-
-        // stbi_image_free(pixels);
-
-        // createImage(textureImage, textureImageAllocation, vk::ImageUsageFlagBits::eTransferDst | vk::ImageUsageFlagBits::eSampled, VMA_MEMORY_USAGE_GPU_ONLY, texWidth, texHeight, vk::Format::eR8G8B8A8Srgb, vk::ImageTiling::eOptimal);
-
-        // transitionImageLayout(textureImage, vk::Format::eR8G8B8A8Srgb, vk::ImageLayout::eUndefined, vk::ImageLayout::eTransferDstOptimal);
-        //     copyBufferToImage(stagingBuffer.getHandle(), textureImage, static_cast<uint32_t>(texWidth), static_cast<uint32_t>(texHeight));
-        // transitionImageLayout(textureImage, vk::Format::eR8G8B8A8Srgb, vk::ImageLayout::eTransferDstOptimal, vk::ImageLayout::eShaderReadOnlyOptimal);
+        transitionImageLayout(textureImage, vk::Format::eR16Unorm, vk::ImageLayout::eTransferDstOptimal, vk::ImageLayout::eShaderReadOnlyOptimal);
     }
 
     void createTextureImageView()
     {
-        // textureImageView = createImageView(textureImage, vk::Format::eR8G8B8A8Srgb, vk::ImageAspectFlagBits::eColor);
-        textureImageView = createImageView(textureImage, vk::Format::eR8G8Unorm, vk::ImageAspectFlagBits::eColor);
+        textureImageView = createImageView(textureImage, vk::Format::eR16Unorm, vk::ImageAspectFlagBits::eColor);
     }
 
     void createTextureSampler()
@@ -1324,10 +1292,13 @@ private:
 
         UniformBufferObject ubo{};
         ubo.model = glm::rotate(glm::mat4(1.0f), time * 0.2f * glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-        ubo.view = glm::lookAt(glm::vec3(1.5f, 1.5f, 1.5f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-        ubo.proj = glm::perspective(glm::radians(45.0f), swapChainExtent.width / (float)swapChainExtent.height, 0.1f, 10.0f);
+        ubo.view = glm::lookAt(glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+        ubo.proj = glm::ortho(((float)swapChainExtent.width / (float)swapChainExtent.height)/2.f, -((float)swapChainExtent.width / (float)swapChainExtent.height) / 2.f, -0.5f, 0.5f, -1.f, 1.f);
         ubo.proj[1][1] *= -1;
-        ubo.size = glm::vec2((float)swapChainExtent.width, (float)swapChainExtent.height);
+        // ubo.view = glm::lookAt(glm::vec3(1.5f, 1.5f, 1.5f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+        // ubo.proj = glm::perspective(glm::radians(45.0f), swapChainExtent.width / (float)swapChainExtent.height, 0.1f, 10.0f);
+        // ubo.proj[1][1] *= -1;
+        // ubo.size = glm::vec2((float)swapChainExtent.width, (float)swapChainExtent.height);
 
         uniformBuffers[currentImage]->map();
         uniformBuffers[currentImage]->copyTo(&ubo);
