@@ -82,8 +82,8 @@ void main() {
     vec3 color = vec3(0.0);
     Ray ray = calculateRay(vec2(0.0));
     AABBox box; 
-    box.bounds[0] = vec3(-0.5, -0.5, -0.08203125); 
-    box.bounds[1] = vec3(0.5, 0.5, 0.08203125);
+    box.bounds[0] = vec3(-0.5); 
+    box.bounds[1] = vec3(0.5, 0.5, 0.0);
     float tmin = 0.0;
     float tmax = 0.0;
     bool intersects = intersect(ray, box, tmin, tmax);
@@ -108,11 +108,20 @@ void main() {
 
     if(intersects){
         vec3 currentColor = vec3(0.0);
-        for(float t = tmin; t < tmax ; t += 0.001953125){
+        for(float t = tmin; t < tmax ; t += 0.00195){
             vec3 uv = (ray.origin + t * ray.direction).xyz + vec3(0.5);
-            vec3 textureColor = vec3(texture(texSampler, uv).r);
-            if(textureColor.r > 0.07910 && textureColor.r < 0.567)
-                currentColor += textureColor * vec3((textureColor.r - 0.07910) /  0.4879, uv.y, uv.z) * 0.00412;
+            float intensity = texture(texSampler, uv).r / 0.0625;
+            /*if(intensity > 0.5 && intensity < 0.7){
+                intensity = ((intensity - 0.6) / 0.1);
+                intensity = intensity < 0.0 ? (1 + intensity) : intensity;
+                currentColor += intensity * vec3(0.01);
+            }*/
+            /*if(intensity > 0.25 && intensity <= 0.26){
+                intensity = ((intensity - 0.255) / 0.005);
+                intensity = intensity < 0.0 ? (1 + intensity) : intensity;
+                currentColor += intensity * vec3(0.005);
+            }*/
+            currentColor += intensity * vec3(0.005);
         }
         color += currentColor;
     }else{

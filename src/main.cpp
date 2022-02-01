@@ -23,6 +23,8 @@
 #include <imgui.h>
 #include <imgui_impl_vulkan.h>
 #include <imgui_impl_glfw.h>
+#include <bitset>
+
 
 #include <fstream>
 
@@ -75,35 +77,35 @@ struct Vertex
 
 std::vector<Vertex> vertices = {
     //Position            //Color            //Normal              //UV
-    {{-0.5f,  0.5f,  0.08203125f}, {1.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 1.0f}, {0.0f, 0.0f}},
-    {{-0.5f, -0.5f,  0.08203125f}, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f, 1.0f}, {1.0f, 0.0f}},
-    {{0.5f,  -0.5f,  0.08203125f}, {0.0f, 0.0f, 1.0f}, {0.0f, 0.0f, 1.0f}, {1.0f, 1.0f}},
-    {{0.5f,   0.5f,  0.08203125f}, {1.0f, 1.0f, 1.0f}, {0.0f, 0.0f, 1.0f}, {0.0f, 1.0f}},
+    {{-0.5f,  0.5f,  0.5f}, {1.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 1.0f}, {0.0f, 0.0f}},
+    {{-0.5f, -0.5f,  0.5f}, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f, 1.0f}, {1.0f, 0.0f}},
+    {{0.5f,  -0.5f,  0.5f}, {0.0f, 0.0f, 1.0f}, {0.0f, 0.0f, 1.0f}, {1.0f, 1.0f}},
+    {{0.5f,   0.5f,  0.5f}, {1.0f, 1.0f, 1.0f}, {0.0f, 0.0f, 1.0f}, {0.0f, 1.0f}},
 
-    {{-0.5f,  0.5f, -0.08203125f}, {1.0f, 0.0f, 0.0f}, {-1.0f, 0.0f, 0.0f}, {0.0f, 0.0f}},
-    {{-0.5f, -0.5f, -0.08203125f}, {0.0f, 1.0f, 0.0f}, {-1.0f, 0.0f, 0.0f}, {1.0f, 0.0f}},
-    {{-0.5f, -0.5f,  0.08203125f}, {0.0f, 0.0f, 1.0f}, {-1.0f, 0.0f, 0.0f}, {1.0f, 1.0f}},
-    {{-0.5f,  0.5f,  0.08203125f}, {1.0f, 1.0f, 1.0f}, {-1.0f, 0.0f, 0.0f}, {0.0f, 1.0f}},
+    {{-0.5f,  0.5f, -0.5f}, {1.0f, 0.0f, 0.0f}, {-1.0f, 0.0f, 0.0f}, {0.0f, 0.0f}},
+    {{-0.5f, -0.5f, -0.5f}, {0.0f, 1.0f, 0.0f}, {-1.0f, 0.0f, 0.0f}, {1.0f, 0.0f}},
+    {{-0.5f, -0.5f,  0.5f}, {0.0f, 0.0f, 1.0f}, {-1.0f, 0.0f, 0.0f}, {1.0f, 1.0f}},
+    {{-0.5f,  0.5f,  0.5f}, {1.0f, 1.0f, 1.0f}, {-1.0f, 0.0f, 0.0f}, {0.0f, 1.0f}},
 
-    {{0.5f,   0.5f,  0.08203125f}, {1.0f, 0.0f, 0.0f}, {1.0f, 0.0f, 0.0f}, {0.0f, 0.0f}},
-    {{0.5f,  -0.5f,  0.08203125f}, {0.0f, 1.0f, 0.0f}, {1.0f, 0.0f, 0.0f}, {1.0f, 0.0f}},
-    {{0.5f,  -0.5f, -0.08203125f}, {0.0f, 0.0f, 1.0f}, {1.0f, 0.0f, 0.0f}, {1.0f, 1.0f}},
-    {{0.5f,   0.5f, -0.08203125f}, {1.0f, 1.0f, 1.0f}, {1.0f, 0.0f, 0.0f}, {0.0f, 1.0f}},
+    {{0.5f,   0.5f,  0.5f}, {1.0f, 0.0f, 0.0f}, {1.0f, 0.0f, 0.0f}, {0.0f, 0.0f}},
+    {{0.5f,  -0.5f,  0.5f}, {0.0f, 1.0f, 0.0f}, {1.0f, 0.0f, 0.0f}, {1.0f, 0.0f}},
+    {{0.5f,  -0.5f, -0.5f}, {0.0f, 0.0f, 1.0f}, {1.0f, 0.0f, 0.0f}, {1.0f, 1.0f}},
+    {{0.5f,   0.5f, -0.5f}, {1.0f, 1.0f, 1.0f}, {1.0f, 0.0f, 0.0f}, {0.0f, 1.0f}},
 
-    {{-0.5f,  0.5f, -0.08203125f}, {1.0f, 0.0f, 0.0f}, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f}},
-    {{-0.5f,  0.5f,  0.08203125f}, {0.0f, 1.0f, 0.0f}, {0.0f, 1.0f, 0.0f}, {1.0f, 0.0f}},
-    {{0.5f,   0.5f,  0.08203125f}, {0.0f, 0.0f, 1.0f}, {0.0f, 1.0f, 0.0f}, {1.0f, 1.0f}},
-    {{0.5f,   0.5f, -0.08203125f}, {1.0f, 1.0f, 1.0f}, {0.0f, 1.0f, 0.0f}, {0.0f, 1.0f}},
+    {{-0.5f,  0.5f, -0.5f}, {1.0f, 0.0f, 0.0f}, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f}},
+    {{-0.5f,  0.5f,  0.5f}, {0.0f, 1.0f, 0.0f}, {0.0f, 1.0f, 0.0f}, {1.0f, 0.0f}},
+    {{0.5f,   0.5f,  0.5f}, {0.0f, 0.0f, 1.0f}, {0.0f, 1.0f, 0.0f}, {1.0f, 1.0f}},
+    {{0.5f,   0.5f, -0.5f}, {1.0f, 1.0f, 1.0f}, {0.0f, 1.0f, 0.0f}, {0.0f, 1.0f}},
 
-    {{-0.5f, -0.5f,  0.08203125f}, {1.0f, 0.0f, 0.0f}, {0.0f, -1.0f, 0.0f}, {0.0f, 0.0f}},
-    {{-0.5f, -0.5f, -0.08203125f}, {0.0f, 1.0f, 0.0f}, {0.0f, -1.0f, 0.0f}, {1.0f, 0.0f}},
-    {{0.5f,  -0.5f, -0.08203125f}, {0.0f, 0.0f, 1.0f}, {0.0f, -1.0f, 0.0f}, {1.0f, 1.0f}},
-    {{0.5f,  -0.5f,  0.08203125f}, {1.0f, 1.0f, 1.0f}, {0.0f, -1.0f, 0.0f}, {0.0f, 1.0f}},
+    {{-0.5f, -0.5f,  0.5f}, {1.0f, 0.0f, 0.0f}, {0.0f, -1.0f, 0.0f}, {0.0f, 0.0f}},
+    {{-0.5f, -0.5f, -0.5f}, {0.0f, 1.0f, 0.0f}, {0.0f, -1.0f, 0.0f}, {1.0f, 0.0f}},
+    {{0.5f,  -0.5f, -0.5f}, {0.0f, 0.0f, 1.0f}, {0.0f, -1.0f, 0.0f}, {1.0f, 1.0f}},
+    {{0.5f,  -0.5f,  0.5f}, {1.0f, 1.0f, 1.0f}, {0.0f, -1.0f, 0.0f}, {0.0f, 1.0f}},
 
-    {{0.5f,   0.5f, -0.08203125f}, {1.0f, 0.0f, 0.0f}, {0.0f, 0.0f, -1.0f}, {0.0f, 0.0f}},
-    {{0.5f,  -0.5f, -0.08203125f}, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f, -1.0f}, {1.0f, 0.0f}},
-    {{-0.5f, -0.5f, -0.08203125f}, {0.0f, 0.0f, 1.0f}, {0.0f, 0.0f, -1.0f}, {1.0f, 1.0f}},
-    {{-0.5f,  0.5f, -0.08203125f}, {1.0f, 1.0f, 1.0f}, {0.0f, 0.0f, -1.0f}, {0.0f, 1.0f}}};
+    {{0.5f,   0.5f, -0.5f}, {1.0f, 0.0f, 0.0f}, {0.0f, 0.0f, -1.0f}, {0.0f, 0.0f}},
+    {{0.5f,  -0.5f, -0.5f}, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f, -1.0f}, {1.0f, 0.0f}},
+    {{-0.5f, -0.5f, -0.5f}, {0.0f, 0.0f, 1.0f}, {0.0f, 0.0f, -1.0f}, {1.0f, 1.0f}},
+    {{-0.5f,  0.5f, -0.5f}, {1.0f, 1.0f, 1.0f}, {0.0f, 0.0f, -1.0f}, {0.0f, 1.0f}}};
 
 std::vector<uint32_t> indices = {
     0, 1, 2, 0, 2, 3,
@@ -927,16 +929,198 @@ private:
 
         unsigned int dimx = 0;
         unsigned int dimy = 0;
-        unsigned int dimz = 84;
+        unsigned int dimz = 0;
 
-        for(uint32_t i = 1; i < 85; i++){
+        gdcm::Reader reader;
+        std::string imageFileName = ASSET_PATH "/OtherData/DICOMDIR";
+        reader.SetFileName(imageFileName.c_str());
+        if (!reader.Read()){
+            std::cerr << "Could not read: " << imageFileName << std::endl;
+            return;
+        }
+        std::stringstream strm;
+        gdcm::File &file = reader.GetFile();
+        gdcm::DataSet &ds = file.GetDataSet();
+        gdcm::FileMetaInformation &fmi = file.GetHeader();
+
+        gdcm::MediaStorage ms;
+        ms.SetFromFile(file);
+        if( ms != gdcm::MediaStorage::MediaStorageDirectoryStorage )
+        {
+            std::cout << "This file is not a DICOMDIR" << std::endl;
+        }
+
+        if (fmi.FindDataElement( gdcm::Tag (0x0002, 0x0002))) {   
+            strm.str("");
+            fmi.GetDataElement( gdcm::Tag (0x0002, 0x0002) ).GetValue().Print(strm);
+        } else {
+            std::cerr << " Media Storage Sop Class UID not present" << std::endl;
+        }
+
+        if ("1.2.840.10008.1.3.10"!=strm.str()) {
+            std::cout << "This file is not a DICOMDIR" << std::endl;
+        }
+        
+        if(fmi.FindDataElement(gdcm::Tag(0x10, 0x10))){
+            strm.str("");
+            fmi.GetDataElement( gdcm::Tag (0x10, 0x10) ).GetValue().Print(strm);
+            int test = 0;
+        }
+
+        gdcm::DataSet::DataElementSet::const_iterator it = ds.GetDES().begin();
+
+        std::vector<std::string> all_paths(0);
+        std::vector<std::vector<std::string>> seriespaths(0);
+
+        for (; it != ds.GetDES().end(); ++it)
+        {
+            if (it->GetTag() == gdcm::Tag(0x0004, 0x1220))
+            {
+                const gdcm::DataElement &de = (*it);
+                // ne pas utiliser GetSequenceOfItems pour extraire les items
+                gdcm::SmartPointer<gdcm::SequenceOfItems> sqi = de.GetValueAsSQ();
+                unsigned int itemused = 1;
+                while (itemused <= sqi->GetNumberOfItems())
+                {
+                    strm.str("");
+
+                    if (sqi->GetItem(itemused).FindDataElement(gdcm::Tag(0x0004, 0x1430)))
+                        sqi->GetItem(itemused).GetDataElement(gdcm::Tag(0x0004, 0x1430)).GetValue().Print(strm);
+
+                    //TODO il faut trimer strm.str() avant la comparaison
+                    while ((strm.str() == "PATIENT") || ((strm.str() == "PATIENT ")))
+                    {
+                        std::cout << strm.str() << std::endl;
+                        strm.str("");
+                        if (sqi->GetItem(itemused).FindDataElement(gdcm::Tag(0x0010, 0x0010)))
+                            sqi->GetItem(itemused).GetDataElement(gdcm::Tag(0x0010, 0x0010)).GetValue().Print(strm);
+                        std::cout << "PATIENT NAME : " << strm.str() << std::endl;
+
+                        //PATIENT ID
+                        strm.str("");
+                        if (sqi->GetItem(itemused).FindDataElement(gdcm::Tag(0x0010, 0x0020)))
+                            sqi->GetItem(itemused).GetDataElement(gdcm::Tag(0x0010, 0x0020)).GetValue().Print(strm);
+                        std::cout << "PATIENT ID : " << strm.str() << std::endl;
+
+                        /*ADD TAG TO READ HERE*/
+                        std::cout << "=========================== " << std::endl;
+                        itemused++;
+                        strm.str("");
+                        if (sqi->GetItem(itemused).FindDataElement(gdcm::Tag(0x0004, 0x1430)))
+                            sqi->GetItem(itemused).GetDataElement(gdcm::Tag(0x0004, 0x1430)).GetValue().Print(strm);
+
+                        //TODO il faut trimer strm.str() avant la comparaison
+                        while ((strm.str() == "STUDY") || ((strm.str() == "STUDY ")))
+                        {
+                            std::cout << "  " << strm.str() << std::endl;
+                            //UID
+                            strm.str("");
+                            if (sqi->GetItem(itemused).FindDataElement(gdcm::Tag(0x0020, 0x000d)))
+                                sqi->GetItem(itemused).GetDataElement(gdcm::Tag(0x0020, 0x000d)).GetValue().Print(strm);
+                            std::cout << "      STUDY UID : " << strm.str() << std::endl;
+
+                            //STUDY DATE
+                            strm.str("");
+                            if (sqi->GetItem(itemused).FindDataElement(gdcm::Tag(0x0008, 0x0020)))
+                                sqi->GetItem(itemused).GetDataElement(gdcm::Tag(0x0008, 0x0020)).GetValue().Print(strm);
+                            std::cout << "      STUDY DATE : " << strm.str() << std::endl;
+
+                            /*ADD TAG TO READ HERE*/
+                            std::cout << "      "
+                                      << "=========================== " << std::endl;
+
+                            itemused++;
+                            strm.str("");
+                            if (sqi->GetItem(itemused).FindDataElement(gdcm::Tag(0x0004, 0x1430)))
+                                sqi->GetItem(itemused).GetDataElement(gdcm::Tag(0x0004, 0x1430)).GetValue().Print(strm);
+
+                            //TODO il faut trimer strm.str() avant la comparaison
+                            while ((strm.str() == "SERIES") || ((strm.str() == "SERIES ")))
+                            {
+                                std::cout << "      " << strm.str() << std::endl;
+                                strm.str("");
+                                if (sqi->GetItem(itemused).FindDataElement(gdcm::Tag(0x0020, 0x000e)))
+                                    sqi->GetItem(itemused).GetDataElement(gdcm::Tag(0x0020, 0x000e)).GetValue().Print(strm);
+                                std::cout << "          SERIE UID " << strm.str() << std::endl;
+
+                                //SERIE MODALITY
+                                strm.str("");
+                                if (sqi->GetItem(itemused).FindDataElement(gdcm::Tag(0x0008, 0x0060)))
+                                    sqi->GetItem(itemused).GetDataElement(gdcm::Tag(0x0008, 0x0060)).GetValue().Print(strm);
+                                std::cout << "          SERIE MODALITY " << strm.str() << std::endl;
+
+                                //SERIE DESCRIPTION
+                                strm.str("");
+                                if (sqi->GetItem(itemused).FindDataElement(gdcm::Tag(0x0008, 0x103e)))
+                                    sqi->GetItem(itemused).GetDataElement(gdcm::Tag(0x0008, 0x103e)).GetValue().Print(strm);
+                                std::cout << "          SERIE DESCRIPTION " << strm.str() << std::endl;
+
+                                /*ADD TAG TO READ HERE*/
+
+                                std::cout << "          "
+                                          << "=========================== " << std::endl;
+                                itemused++;
+                                strm.str("");
+                                if (sqi->GetItem(itemused).FindDataElement(gdcm::Tag(0x0004, 0x1430)))
+                                    sqi->GetItem(itemused).GetDataElement(gdcm::Tag(0x0004, 0x1430)).GetValue().Print(strm);
+                                
+                                uint32_t imagecount = 0;
+                                std::vector<std::string> tempseriespaths(0);
+                                //TODO il faut trimer strm.str() avant la comparaison
+                                while ((strm.str() == "IMAGE") || ((strm.str() == "IMAGE ")))
+                                // if(tmp=="IMAGE")
+                                {
+                                    imagecount++;
+                                    //std::cout << "          " << strm.str() << std::endl;
+
+                                    //UID
+                                    strm.str("");
+                                    if (sqi->GetItem(itemused).FindDataElement(gdcm::Tag(0x0004, 0x1511)))
+                                        sqi->GetItem(itemused).GetDataElement(gdcm::Tag(0x0004, 0x1511)).GetValue().Print(strm);
+                                    //std::cout << "              IMAGE UID : " << strm.str() << std::endl;
+                                    
+                                    //PATH de l'image
+                                    strm.str("");
+                                    if (sqi->GetItem(itemused).FindDataElement(gdcm::Tag(0x0004, 0x1500)))
+                                        sqi->GetItem(itemused).GetDataElement(gdcm::Tag(0x0004, 0x1500)).GetValue().Print(strm);
+                                    //std::cout << "              IMAGE PATH : " << strm.str() << std::endl;
+                                    tempseriespaths.push_back(strm.str());
+
+                                    
+
+                                    if (itemused < sqi->GetNumberOfItems())
+                                    {
+                                        itemused++;
+                                    }
+                                    else
+                                    {
+                                        break;
+                                    }
+
+                                    strm.str("");
+
+                                    if (sqi->GetItem(itemused).FindDataElement(gdcm::Tag(0x0004, 0x1430)))
+                                        sqi->GetItem(itemused).GetDataElement(gdcm::Tag(0x0004, 0x1430)).GetValue().Print(strm);
+                                }
+                                std::cout << "          SERIE IMAGECOUNT " << std::to_string(imagecount) << std::endl; 
+                                seriespaths.push_back(tempseriespaths);
+                            }
+                        }
+                    }
+                    itemused++;
+                }
+            }
+        }
+
+        dimz = (unsigned int)seriespaths[0].size();
+
+        std::ofstream myfile;
+        myfile.open (TEXTURE_PATH "/example.pgm");
+        myfile << "P2\n";
+        for (size_t i = 0; i < seriespaths[0].size(); i++){
             gdcm::ImageReader reader;
-            std::string imageFileName = TEXTURE_PATH "/MedData/manifest-1637709711563/APOLLO-5-PAAD/AP-JS5B/12-27-1975-NA-CT ABDPEL WCON-10542/3.000000-ABDOMENPELVIS-27696/1-";
-            if(i < 10)
-                imageFileName += "0"+std::to_string(i)+".dcm";
-            else
-                imageFileName += std::to_string(i)+".dcm";
-
+            std::string imageFileName = ASSET_PATH "/OtherData/";
+            imageFileName += seriespaths[0][i];
             reader.SetFileName(imageFileName.c_str());
             if (!reader.Read()){
                 std::cerr << "Could not read: " << imageFileName << std::endl;
@@ -944,26 +1128,39 @@ private:
             }
             gdcm::Image &image = reader.GetImage();
             unsigned long len = image.GetBufferLength();
-            if(i == 1){
-                const unsigned int *dims = image.GetDimensions();
-                dimx = dims[0];
-                dimy = dims[1];
+            const unsigned int *dims = image.GetDimensions();
+            gdcm::PixelFormat format = image.GetPixelFormat();
+            const double *spacing = image.GetSpacing();
+            double spacingx = spacing[0];
+            double spacingy = spacing[1];
+            double spacingz = spacing[2];
+            std::cout << spacingx << ", " << spacingy << ", " << spacingz << ", " << std::endl;
+            
+            unsigned short bitsAllocated = format.GetBitsAllocated();
+            unsigned short bitsStored = format.GetBitsStored();
+            dimx = dims[0];
+            dimy = dims[1];
+            if(i == 12){
+                myfile << dimx << " " << dimy << "\n";
+                myfile << "4096\n";
             }
 
-            std::vector<char> tempImage8Bit(len);
-            image.GetBuffer(tempImage8Bit.data());
-
-            for (size_t i = 0; i < tempImage8Bit.size(); i += 2)
+            std::vector<uint8_t> tempImage8Bit(len, 0x00);
+            image.GetBuffer(reinterpret_cast<char*>(tempImage8Bit.data()));
+            for (size_t j = 0; j < tempImage8Bit.size(); j += 2)
             {
-                char r = tempImage8Bit[i];
-                char g = tempImage8Bit[i+1];
-                uint16_t result = 0;
-                result |= (uint16_t)r << 8;
-                result |= (uint16_t)g;
-                // result = glm::max(0, (65535 - result));
+                uint16_t r = 0x0000;
+                uint16_t g = 0x0000;
+                r |= tempImage8Bit[j] << 0;
+                g |= tempImage8Bit[j+1] << 8;
+                uint16_t result = g | r;
                 series.push_back(result);
+                if(i == 12){
+                    myfile << std::to_string(result) << " ";
+                }
             }
         }
+        myfile.close();
 
         vk::DeviceSize dicomSize = (uint64_t) (series.size() * 2);
 
@@ -976,7 +1173,7 @@ private:
         createImage(textureImage, textureImageAllocation, vk::ImageUsageFlagBits::eTransferDst | vk::ImageUsageFlagBits::eSampled, VMA_MEMORY_USAGE_GPU_ONLY, vk::ImageType::e3D, dimx, dimy, dimz, vk::Format::eR16Unorm, vk::ImageTiling::eOptimal);
 
         transitionImageLayout(textureImage, vk::Format::eR16Unorm, vk::ImageLayout::eUndefined, vk::ImageLayout::eTransferDstOptimal);
-            copyBufferToImage(dic_stagingBuffer.getHandle(), textureImage, static_cast<uint32_t>(dimx), static_cast<uint32_t>(dimy), static_cast<uint32_t>(dimz));
+            copyBufferToImage(dic_stagingBuffer.getHandle(), textureImage, dimx, dimy, dimz);
         transitionImageLayout(textureImage, vk::Format::eR16Unorm, vk::ImageLayout::eTransferDstOptimal, vk::ImageLayout::eShaderReadOnlyOptimal);
     }
 
@@ -1290,11 +1487,11 @@ private:
         float time = std::chrono::duration<float, std::chrono::seconds::period>(currentTime - startTime).count();
 
         UniformBufferObject ubo{};
-        ubo.model = glm::rotate(glm::mat4(1.0f), time * 0.2f * glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+        ubo.model = glm::scale(glm::rotate(glm::mat4(1.0f), time * 0.2f * glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f)), glm::vec3(1.f, 1.f, 0.4551f));
         // ubo.view = glm::lookAt(glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
         // ubo.proj = glm::ortho(((float)swapChainExtent.width / (float)swapChainExtent.height)/1.8f, -((float)swapChainExtent.width / (float)swapChainExtent.height) / 1.8f, -0.55f, 0.55f, -1.f, 1.f);
         // ubo.proj[1][1] *= -1;
-        ubo.view = glm::lookAt(glm::vec3(0.7f, 0.7f, 0.7f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+        ubo.view = glm::lookAt(glm::vec3(0.8f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
         ubo.proj = glm::perspective(glm::radians(45.0f), swapChainExtent.width / (float)swapChainExtent.height, 0.1f, 10.0f);
         ubo.proj[1][1] *= -1;
         ubo.size = glm::vec2((float)swapChainExtent.width, (float)swapChainExtent.height);
