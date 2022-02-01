@@ -932,7 +932,7 @@ private:
         unsigned int dimz = 0;
 
         gdcm::Reader reader;
-        std::string imageFileName = ASSET_PATH "/OtherData/DICOMDIR";
+        std::string imageFileName = ASSET_PATH "/Schaedel_Weiser_Kurt/DICOMDIR";
         reader.SetFileName(imageFileName.c_str());
         if (!reader.Read()){
             std::cerr << "Could not read: " << imageFileName << std::endl;
@@ -1112,15 +1112,15 @@ private:
             }
         }
 
-        dimz = (unsigned int)seriespaths[0].size();
+        dimz = (unsigned int)seriespaths[2].size();
 
-        std::ofstream myfile;
-        myfile.open (TEXTURE_PATH "/example.pgm");
-        myfile << "P2\n";
-        for (size_t i = 0; i < seriespaths[0].size(); i++){
+        // std::ofstream myfile;
+        // myfile.open (TEXTURE_PATH "/example.pgm");
+        // myfile << "P2\n";
+        for (size_t i = 0; i < seriespaths[2].size(); i++){
             gdcm::ImageReader reader;
-            std::string imageFileName = ASSET_PATH "/OtherData/";
-            imageFileName += seriespaths[0][i];
+            std::string imageFileName = ASSET_PATH "/Schaedel_Weiser_Kurt/";
+            imageFileName += seriespaths[2][i];
             reader.SetFileName(imageFileName.c_str());
             if (!reader.Read()){
                 std::cerr << "Could not read: " << imageFileName << std::endl;
@@ -1130,20 +1130,15 @@ private:
             unsigned long len = image.GetBufferLength();
             const unsigned int *dims = image.GetDimensions();
             gdcm::PixelFormat format = image.GetPixelFormat();
-            const double *spacing = image.GetSpacing();
-            double spacingx = spacing[0];
-            double spacingy = spacing[1];
-            double spacingz = spacing[2];
-            std::cout << spacingx << ", " << spacingy << ", " << spacingz << ", " << std::endl;
             
             unsigned short bitsAllocated = format.GetBitsAllocated();
             unsigned short bitsStored = format.GetBitsStored();
             dimx = dims[0];
             dimy = dims[1];
-            if(i == 12){
-                myfile << dimx << " " << dimy << "\n";
-                myfile << "4096\n";
-            }
+            // if(i == 12){
+            //     myfile << dimx << " " << dimy << "\n";
+            //     myfile << "4096\n";
+            // }
 
             std::vector<uint8_t> tempImage8Bit(len, 0x00);
             image.GetBuffer(reinterpret_cast<char*>(tempImage8Bit.data()));
@@ -1155,12 +1150,12 @@ private:
                 g |= tempImage8Bit[j+1] << 8;
                 uint16_t result = g | r;
                 series.push_back(result);
-                if(i == 12){
-                    myfile << std::to_string(result) << " ";
-                }
+                // if(i == 12){
+                //     myfile << std::to_string(result) << " ";
+                // }
             }
         }
-        myfile.close();
+        // myfile.close();
 
         vk::DeviceSize dicomSize = (uint64_t) (series.size() * 2);
 
@@ -1491,7 +1486,7 @@ private:
         // ubo.view = glm::lookAt(glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
         // ubo.proj = glm::ortho(((float)swapChainExtent.width / (float)swapChainExtent.height)/1.8f, -((float)swapChainExtent.width / (float)swapChainExtent.height) / 1.8f, -0.55f, 0.55f, -1.f, 1.f);
         // ubo.proj[1][1] *= -1;
-        ubo.view = glm::lookAt(glm::vec3(0.8f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+        ubo.view = glm::lookAt(glm::vec3(0.7f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
         ubo.proj = glm::perspective(glm::radians(45.0f), swapChainExtent.width / (float)swapChainExtent.height, 0.1f, 10.0f);
         ubo.proj[1][1] *= -1;
         ubo.size = glm::vec2((float)swapChainExtent.width, (float)swapChainExtent.height);

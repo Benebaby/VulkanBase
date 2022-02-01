@@ -82,8 +82,8 @@ void main() {
     vec3 color = vec3(0.0);
     Ray ray = calculateRay(vec2(0.0));
     AABBox box; 
-    box.bounds[0] = vec3(-0.5); 
-    box.bounds[1] = vec3(0.5, 0.5, 0.0);
+    box.bounds[0] = vec3(-0.34, -0.5, -0.5); 
+    box.bounds[1] = vec3(0.34, 0.4, 0.5);
     float tmin = 0.0;
     float tmax = 0.0;
     bool intersects = intersect(ray, box, tmin, tmax);
@@ -111,17 +111,25 @@ void main() {
         for(float t = tmin; t < tmax ; t += 0.00195){
             vec3 uv = (ray.origin + t * ray.direction).xyz + vec3(0.5);
             float intensity = texture(texSampler, uv).r / 0.0625;
-            /*if(intensity > 0.5 && intensity < 0.7){
-                intensity = ((intensity - 0.6) / 0.1);
+            //Knochenfenster
+            if(intensity > 0.3 && intensity <= 0.6){
+                intensity = ((intensity - 0.45) / 0.15);
                 intensity = intensity < 0.0 ? (1 + intensity) : intensity;
                 currentColor += intensity * vec3(0.01);
-            }*/
-            /*if(intensity > 0.25 && intensity <= 0.26){
-                intensity = ((intensity - 0.255) / 0.005);
+            }
+            //HirnFenster
+            /*if(intensity > 0.25 && intensity <= 0.26953125){
+                intensity = ((intensity - 0.259765625) / 0.009765625);
                 intensity = intensity < 0.0 ? (1 + intensity) : intensity;
-                currentColor += intensity * vec3(0.005);
+                if(intensity > 0.9)
+                    currentColor += intensity * vec3(0.01);
             }*/
-            currentColor += intensity * vec3(0.005);
+            //Weichteilfenster
+            /*if(intensity > 0.221 && intensity <= 0.308){
+                intensity = ((intensity - 0.2646) / 0.087593);
+                intensity = intensity < 0.0 ? (1 + intensity) : intensity;
+                currentColor += intensity * vec3(0, 0, 0.005);
+            }*/
         }
         color += currentColor;
     }else{
