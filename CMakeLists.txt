@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.7)
 project(VulkanBase VERSION 1.0.0)
 
-
 add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 IF(APPLE)
     add_definitions(-Wno-nullability-completeness)
@@ -70,31 +69,48 @@ add_subdirectory(${PROJECT_SOURCE_DIR}/lib/glslang)
 target_link_libraries(${CMAKE_PROJECT_NAME} glslang SPIRV)
 
 # add gdcm
-FIND_PACKAGE(GDCM CONFIG REQUIRED PATHS ${PROJECT_SOURCE_DIR}/lib/gdcm)
- 
-if(${GDCM_FOUND}) 
-    message("found")    
-    INCLUDE(${GDCM_USE_FILE})
-        SET(GDCM_LIBRARIES 
-            gdcmcharls
-            gdcmCommon
-            gdcmDICT
-            gdcmDSED
-            gdcmexpat
-            # gdcmgetopt
-            gdcmIOD
-            gdcmjpeg12
-            gdcmjpeg16 
-            gdcmjpeg8
-            gdcmMEXD
-            gdcmMSFF
-            # gdcmopenjpeg
-            gdcmzlib
-            socketxx
-            # vtkgdcm
-            Rpcrt4)
-    
-    # das linken war das eigentlich Problem gewesen. Die libraries waren vorhanden, aber es wurde nicht korrekt eingebunden
-    target_link_libraries(${CMAKE_PROJECT_NAME} ${GDCM_LIBRARIES})
-endif()
+# FIND_PACKAGE(GDCM CONFIG REQUIRED PATHS ${PROJECT_SOURCE_DIR}/lib/gdcm)
+set(GDCM_BUILD_TESTING OFF)
+set(GDCM_DOCUMENTATION OFF)
+set(GDCM_BUILD_EXAMPLES OFF)
+set(GDCM_WRAP_PYTHON OFF)
+set(GDCM_WRAP_CSHARP OFF)
+set(GDCM_WRAP_JAVA OFF)
+set(GDCM_WRAP_PHP OFF)
+set(GDCM_USE_VTK OFF)
 
+# set(GDCM_BUILD_APPLICATIONS ON)
+# set(GDCM_BUILD_SHARED_LIBS ON)
+
+add_subdirectory(${PROJECT_SOURCE_DIR}/lib/gdcm)
+include_directories(
+  "${GDCM_BINARY_DIR}/Source/Common"
+  "${GDCM_SOURCE_DIR}/Source/Common"
+  "${GDCM_SOURCE_DIR}/Source/DataStructureAndEncodingDefinition"
+  "${GDCM_SOURCE_DIR}/Source/MediaStorageAndFileFormat"
+  "${GDCM_SOURCE_DIR}/Source/InformationObjectDefinition"
+  "${GDCM_SOURCE_DIR}/Source/MessageExchangeDefinition"
+  "${GDCM_SOURCE_DIR}/Source/DataDictionary"
+  "${GDCM_SOURCE_DIR}/Utilities"
+)
+
+SET(GDCM_LIBRARIES 
+    gdcmcharls
+    gdcmCommon
+    gdcmDICT
+    gdcmDSED
+    gdcmexpat
+    # gdcmgetopt
+    gdcmIOD
+    gdcmjpeg12
+    gdcmjpeg16 
+    gdcmjpeg8
+    gdcmMEXD
+    gdcmMSFF
+    # gdcmopenjpeg
+    # gdcmzlib
+    socketxx
+    # vtkgdcm
+    Rpcrt4) 
+# das linken war das eigentlich Problem gewesen. Die libraries waren vorhanden, aber es wurde nicht korrekt eingebunden
+target_link_libraries(${CMAKE_PROJECT_NAME} ${GDCM_LIBRARIES})

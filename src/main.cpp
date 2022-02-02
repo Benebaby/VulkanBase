@@ -6,13 +6,14 @@
 #include "Utils.h"
 #include "Buffer.hpp"
 // GDCM
-#include "gdcmReader.h"
-#include "gdcmScanner.h"
-#include "gdcmTesting.h"
-#include "gdcmIPPSorter.h"
-#include "gdcmDirectionCosines.h"
-#include "gdcmDirectory.h"
-#include "gdcmImageReader.h"
+
+#include <gdcmScanner.h>
+#include <gdcmTesting.h>
+#include <gdcmIPPSorter.h>
+#include <gdcmDirectionCosines.h>
+#include <gdcmDirectory.h>
+#include <gdcmImageReader.h>
+#include <gdcmReader.h>
 
 #include <optional>
 #include <set>
