@@ -1,0 +1,62 @@
+// MDL v1 utf8
+mevislabVersion = 3.4.3
+network  {
+  watchlist = ""
+}
+module ImageLoad {
+  internal  {
+    frame = "577 389 128 72"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "723 394 474 353"
+        sizeHint = "474 353"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = ImageLoad
+    filename = "C:/Users/lukas/Documents/Bachelorarbeit/VulkanBase/src/textures/MedData/manifest-1637709711563/APOLLO-5-PAAD/AP-JS5B/12-27-1975-NA-CT ABDPEL WCON-10542/3.000000-ABDOMENPELVIS-27696/1-01.dcm"
+    autoLoad = TRUE
+    readRaw = FALSE
+    rawX = 1
+    rawY = 1
+    rawZ = 1
+    rawC = 1
+    rawT = 1
+    rawU = 1
+    dataTypeRaw = "unsigned int8"
+    planarConfig = Contiguous
+    byteOrder = LittleEndian
+    dataOffset = 0
+    pageSizeHint = "0 0 0 0 0 0"
+    suppressErrorLog = FALSE
+    dicomIgnoreHalfVoxelShift = FALSE
+    enableCheckSumTests = FALSE
+  }
+}
+module DicomTagBrowser {
+  internal  {
+    frame = "669 165 136 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "283 232 610 436"
+        sizeHint = "610 436"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = DicomTagBrowser
+    sortByColumn = 0
+    sortAscending = TRUE
+    useAlternatingRowColors = FALSE
+  }
+}
+connections  {
+  DicomTagBrowser.input0 = ImageLoad.output0
+}
+networkModel = ""

@@ -1,0 +1,212 @@
+******************************************************************************************************
+***                     	Releasenotes für eView 2.0 Build 2.0.9.4
+***  
+***                                       Datum : 04.07.2012
+******************************************************************************************************
+
+1. Aktuelle Phoenix eingeplegt (9.0.0.8) 16bit "COLOR PALETTE" Unterstützung
+
+
+******************************************************************************************************
+***                     	Releasenotes für eView 2.0 Build 2.0.9.2
+***  
+***                                       Datum : 29.06.2012
+******************************************************************************************************
+
+1. Fehler bei der Zuweisung von Befunden behoben
+
+
+******************************************************************************************************
+***                     	Releasenotes für eView 2.0 Build 2.0.8.24
+***  
+***                                       Datum : 19.01.2012
+******************************************************************************************************
+
+1. Aktuelle Phoenix eingeplegt (9.0.0.2)
+2. Aktuelle DHPhToOf eingeplegt (1.0.0.154)
+
+
+
+******************************************************************************************************
+***                     	Releasenotes für eView 2.0 Build 2.0.8.12
+***  
+***                                       Datum : 16.06.2011
+******************************************************************************************************
+
+1. Aktuelle Phoenix eingeplegt
+2. Upgrade auf LeadTools 15
+3. SIGMOID LUT Unterstützung
+
+
+
+******************************************************************************************************
+***                     	Releasenotes für eView 2.0 Build 2.0.5.70
+***  
+***                                       Datum : 21.04.2008
+******************************************************************************************************
+
+1. content.inv wird durch content.xml ersetzt.
+2. Scoutauswahl bei den Miniscouts ist jetzt vollständig
+3. GDI Handleleck beim Drag&Drop von Serien behoben
+4. Anpassungen der Monitor DPI werden unterstützt.
+5. Es ist jetzt möglich Downloads über das WP zu machen, ohne das die Bilder gleich angezeigt werden.
+6. IOD Status Informationen in *.web Dateien werden ignoriert.
+
+
+******************************************************************************************************
+***                     	Releasenotes für eView 2.0 Build 2.0.5.4
+***  
+***                                       Datum : 14.01.2008
+******************************************************************************************************
+
+1. BUGFIX: ND Portal verschlüsselung verbessert 
+2. BUGFIX: Position des Schlüsseleingabefeldes geändert.
+
+
+******************************************************************************************************
+***                     	Releasenotes für eView 2.0 Build 2.0.5.2
+***  
+***                                       Datum : 10.12.2007
+******************************************************************************************************
+
+1. BUGFIX: ND Portal verschlüsselung verbessert
+
+
+
+
+******************************************************************************************************
+***                     	Releasenotes für eView 2.0 Build 2.0.5.0
+***  
+***                                       Datum : 12.11.2007
+******************************************************************************************************
+
+1. Unterstützung komprimierter und verschlüsselter Bilder.
+2. ND Portal Ready
+
+
+
+******************************************************************************************************
+***                     	Releasenotes für eView 2.0 Build 2.0.4.182
+***  
+***                                       Datum : 17.10.2007
+******************************************************************************************************
+
+1. Neue Funktionen (Zoom InOut, Kantenglättung)
+2. Performance Verbesserung beim Lade, und Scollen
+3. Asynchrones Nachzeichnen der Scouts
+4. Verbesserungen der Lupe (Zoom Faktor per Scrollrad)
+5. BugFix beim Print auf A3
+
+
+******************************************************************************************************
+***                     	Releasenotes für eView 2.0 Build 2.0.4.66
+***  
+***                                       Datum : 24.02.2006
+******************************************************************************************************
+
+1. BugFix: Beim Umschalten in den Full screen Modus wurden bei Doppelmonitor Systemen ein 
+   falscher VP eingeblendet.
+
+******************************************************************************************************
+***                     	Releasenotes für eView 2.0 Build 2.0.4.64
+***  
+***                                       Datum : 17.02.2006
+******************************************************************************************************
+
+1. BugFix: MPR dll nur laden wenn DirectX 8.1 installiert ist.
+2. BugFix: Glättung auf Matrox Medical Cards zeigte Dither Muster.
+
+
+
+******************************************************************************************************
+***                     	Releasenotes für eView 2.0 Build 2.0.4.60
+***  
+***                                       Datum : 31.01.2006
+******************************************************************************************************
+
+1. Neue Funktionen um Mehrfachstart zu verhindern.
+2. Änderung für Patient Protokoll Images: Neue defaults. CW Wert und automatische Glättung
+3. MPR MIP VOlUME funktionen
+4. BugFix: Leerzeichen vor ^ im Patientenname löste einen Fehler aus.
+5. BugFix: beim einlesen der Scou Header wurde 1k gelesen. Das Konnte bei sehr großen
+   Headern dazu führen, dass einige Scout RefUID nicht gefunden wurden. Jetzt 2k.
+6. BugFix: Wenn Series Id fehlt wird die SeriesInstanceUID verwendet. (Dental CT)
+7. BugFix: Wenn Scout Zzuweisung über die ReferencedSOPInstanceUID nicht möglich ist, 
+   wird jetzt die FrameRefUID verwendet.
+8. Neue Scanline Funktionen für MR
+
+
+
+******************************************************************************************************
+***                     	Releasenotes für eView 2.0 Build 2.0.4.8
+***  
+***                                       Datum : 24.06.2005
+******************************************************************************************************
+
+1. Scout Handling verbessert. Erweiterte Einstellungen für Scouts (Automatisch laden, Bild im Bild ...)
+
+******************************************************************************************************
+***                     	Releasenotes für eView 2.0 Build 2.0.3.54
+***  
+***                                       Datum : 01.07.2004
+******************************************************************************************************
+
+1. Einbindung von neuem DX Gerät. (Swissray)
+2. Vorlagen, Overlay, Printen
+3. Verschieden Viewport Einstellungen möglich
+
+
+******************************************************************************************************
+***                     	Releasenotes für eView 2.0 Build 2.0.2.498
+***  
+***                                       Datum : 01.07.2004
+******************************************************************************************************
+
+1. Änderungen für Befundanzeige auf einer MedCD (rtf)
+2. Änderungen am Drag&Drop der Serien auf die Viewports
+3. Änderungen an der Orientation - Anzeige.
+1. Umschalten der Viewports flackerfrei
+2. Trennung der Viewports mit grauem Rahmen
+3. Drag Drop Image der Serie nicht mehr das erste Bild sondern das jeweils ausgewählte
+4. Drag Drop Scout Scanlines werden eingezeichnet
+5. Drag Drop Bild im Bild und Font klein Skaliert
+6. Bug beim Repaint der Scout wenn mehr als 2 Studien geladen sind
+7. Bug beim Repaint der Scout wenn man die Viewports umschaltet
+7. Bug beim Repaint der Scout beim Drag Drop
+8. Schnellers starten der Anwendung (wegen zu hohem Speicherverbrauch der Viewports)
+9. Schnellers zeichnen von Scouts. (3MB Struct wird nicht komplett auf 0 gesetzt, jetzt auch Bild im Bild Scout schneller)
+10. Dynamisches Speicherhandling (Recourcen Verbrauch stark gesenkt)
+11. BildImBild Scout kann jetzt gefenstert werden
+12. Der Weiße Orientierungspunkt beim Fenstern bleibt jetzt solange sichtbar bis die komplette Serie fertig ist.
+13. Umschalten zu einer Farbpalette (F9)
+14. Anzeigen der Farbpalette (Lookuptable) auf dem Bild (F11)
+15. Löschen eines einzelnen Bildes (STRG + U)
+16. Bugfix: falscher Fokus nach Drag&Drop
+17. Bugfix: Fehler wenn während des Ladens ein Viewport gelöscht wird (STRG + DEL)
+18. Anzeige der aktuellen Serie in der Patientenliste.
+19. Anzeige des Status beim Laden einer Serie 
+20. Bug beim Fenstern von gedrehten (+90 oder -90) CR Bilder
+
+******************************************************************************************************
+***                     	Releasenotes für eView 2.0 Build 2.0.2.470
+***  
+***                                       Datum : 01.07.2004
+******************************************************************************************************
+
+1. Änderungen für Befundanzeige auf einer MedCD (rtf)
+2. Änderungen am Drag&Drop der Serien auf die Viewports
+3. Änderungen an der Orientation - Anzeige.
+    
+
+
+
+******************************************************************************************************
+***                     	Releasenotes für eView 2.0 Build 2.0.2.460
+***  
+***                                       Datum : 01.07.2004
+******************************************************************************************************
+
+
+                           ***        Initial Release eView         ***
+                           ***    Erweiterung des MedCD Viewers     ***    
+

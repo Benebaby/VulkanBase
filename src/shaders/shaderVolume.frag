@@ -10,7 +10,7 @@ struct AABBox {
     vec3 bounds[2];
 };
 
-layout(binding = 1) uniform sampler2D texSampler;
+layout(binding = 1) uniform sampler3D texSampler;
 
 layout(origin_upper_left) in vec4 gl_FragCoord;
 layout(location = 0) in vec3 fragColor;
@@ -79,25 +79,78 @@ bool intersect(in Ray r, in AABBox box, out float tmin, out float tmax) {
 } 
 
 void main() {
+    vec3 color = vec3(0.0);
     Ray ray = calculateRay(vec2(0.0));
     AABBox box; 
-    box.bounds[0] = vec3(-0.5); 
-    box.bounds[1] = vec3(0.5);
+    box.bounds[0] = vec3(-0.34, -0.5, -0.5); 
+    box.bounds[1] = vec3(0.34, 0.4, 0.5);
     float tmin = 0.0;
     float tmax = 0.0;
     bool intersects = intersect(ray, box, tmin, tmax);
+    vec3 enter = ray.origin + tmin * ray.direction;
+    vec3 exit = ray.origin + tmax * ray.direction;
+
+    //highlight frontfacing edges
+    /*
+    if((enter.x < -0.497 || enter.x > 0.497) && (enter.z < -0.497 || enter.z > 0.497)){
+        float distanceToEdge = ((0.5 - abs(enter.x)) + (0.5 - abs(enter.z))) / 2.0;
+        color += (1.0 - distanceToEdge * 333.333) * vec3(0.0, 1.0, 0.0) * 0.2;
+    }
+    if((enter.y < -0.497 || enter.y > 0.497) && (enter.x < -0.497 || enter.x > 0.497)){
+        float distanceToEdge = ((0.5 - abs(enter.y)) + (0.5 - abs(enter.x))) / 2.0;
+        color += (1.0 - distanceToEdge * 333.333) * vec3(0.0, 1.0, 0.0) * 0.2;
+    }
+    if((enter.z < -0.497 || enter.z > 0.497) && (enter.y < -0.497 || enter.y > 0.497)){
+        float distanceToEdge = ((0.5 - abs(enter.z)) + (0.5 - abs(enter.y))) / 2.0;
+        color += (1.0 - distanceToEdge * 333.333) * vec3(0.0, 1.0, 0.0) * 0.2;
+    }
+    */
+
     if(intersects){
         vec3 currentColor = vec3(0.0);
-        for(float t = tmin; t < tmax ; t += 0.003906){
-            vec2 uv = (ray.origin + t * ray.direction).xy + vec2(0.5);
-            vec3 textureColor = texture(texSampler, uv).rgb;
-            if(length(textureColor) < 0.05)
-                currentColor += vec3(0.0, 0.05, 0.05) * 0.003906;
-            else
-                currentColor += textureColor * vec3(1.0, 1.0, 1.0) * 0.003906;
+        for(float t = tmin; t < tmax ; t += 0.00195){
+            vec3 uv = (ray.origin + t * ray.direction).xyz + vec3(0.5);
+            float intensity = texture(texSampler, uv).r / 0.0625;
+            //Knochenfenster
+            if(intensity > 0.3 && intensity <= 0.6){
+                intensity = ((intensity - 0.45) / 0.15);
+                intensity = intensity < 0.0 ? (1 + intensity) : intensity;
+                currentColor += intensity * vec3(0.01);
+            }
+            //HirnFenster
+            /*if(intensity > 0.25 && intensity <= 0.26953125){
+                intensity = ((intensity - 0.259765625) / 0.009765625);
+                intensity = intensity < 0.0 ? (1 + intensity) : intensity;
+                if(intensity > 0.9)
+                    currentColor += intensity * vec3(0.01);
+            }*/
+            //Weichteilfenster
+            /*if(intensity > 0.221 && intensity <= 0.308){
+                intensity = ((intensity - 0.2646) / 0.087593);
+                intensity = intensity < 0.0 ? (1 + intensity) : intensity;
+                currentColor += intensity * vec3(0, 0, 0.005);
+            }*/
         }
-        outColor = vec4(currentColor, 1.0);
+        color += currentColor;
     }else{
-        outColor = vec4(vec3(0.0), 1.0);
+        color += vec3(0.0);
     }
+
+    //highlight backfacing edges
+    /*
+    if((exit.x < -0.497 || exit.x > 0.497) && (exit.z < -0.497 || exit.z > 0.497)){
+        float distanceToEdge = ((0.5 - abs(exit.x)) + (0.5 - abs(exit.z))) / 2.0;
+        color += (1.0 - distanceToEdge * 333.333) * vec3(0.0, 1.0, 0.0) * 0.05;
+    }
+    if((exit.y < -0.497 || exit.y > 0.497) && (exit.x < -0.497 || exit.x > 0.497)){
+        float distanceToEdge = ((0.5 - abs(exit.y)) + (0.5 - abs(exit.x))) / 2.0;
+        color += (1.0 - distanceToEdge * 333.333) * vec3(0.0, 1.0, 0.0) * 0.05;
+    }
+    if((exit.z < -0.497 || exit.z > 0.497) && (exit.y < -0.497 || exit.y > 0.497)){
+        float distanceToEdge = ((0.5 - abs(exit.z)) + (0.5 - abs(exit.y))) / 2.0;
+        color += (1.0 - distanceToEdge * 333.333) * vec3(0.0, 1.0, 0.0) * 0.05;
+    }
+    */
+
+    outColor = vec4(color, 1.0);
 }
