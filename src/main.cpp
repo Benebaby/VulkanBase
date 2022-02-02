@@ -183,6 +183,7 @@ private:
     std::vector<Buffer *> uniformBuffers;
 
     vk::Image textureImage;
+    glm::vec3 textureScale;
     VmaAllocation textureImageAllocation;
     vk::ImageView textureImageView;
     vk::Sampler textureSampler;
@@ -932,11 +933,14 @@ private:
         unsigned int dimy = 0;
         unsigned int dimz = 0;
 
+        std::string DICOMDIR_directory_path = ASSET_PATH "/DICOM/Schaedel_Weiser_Kurt/";
+        std::string DICOMDIR_file_name = "DICOMDIR";
+        std::string DICOMDIR_file_path = DICOMDIR_directory_path+DICOMDIR_file_name;
+        uint32_t seriesIndex = 2;
         gdcm::Reader reader;
-        std::string imageFileName = ASSET_PATH "/Schaedel_Weiser_Kurt/DICOMDIR";
-        reader.SetFileName(imageFileName.c_str());
+        reader.SetFileName(DICOMDIR_file_path.c_str());
         if (!reader.Read()){
-            std::cerr << "Could not read: " << imageFileName << std::endl;
+            std::cerr << "Could not read: " << DICOMDIR_file_path << std::endl;
             return;
         }
         std::stringstream strm;
@@ -951,7 +955,7 @@ private:
             std::cout << "This file is not a DICOMDIR" << std::endl;
         }
 
-        if (fmi.FindDataElement( gdcm::Tag (0x0002, 0x0002))) {   
+        if (fmi.FindDataElement( gdcm::Tag (0x0002, 0x0002))) {
             strm.str("");
             fmi.GetDataElement( gdcm::Tag (0x0002, 0x0002) ).GetValue().Print(strm);
         } else {
@@ -961,7 +965,7 @@ private:
         if ("1.2.840.10008.1.3.10"!=strm.str()) {
             std::cout << "This file is not a DICOMDIR" << std::endl;
         }
-        
+
         if(fmi.FindDataElement(gdcm::Tag(0x10, 0x10))){
             strm.str("");
             fmi.GetDataElement( gdcm::Tag (0x10, 0x10) ).GetValue().Print(strm);
@@ -1026,23 +1030,19 @@ private:
                                 sqi->GetItem(itemused).GetDataElement(gdcm::Tag(0x0008, 0x0020)).GetValue().Print(strm);
                             std::cout << "      STUDY DATE : " << strm.str() << std::endl;
 
-                            /*ADD TAG TO READ HERE*/
-                            std::cout << "      "
-                                      << "=========================== " << std::endl;
+                            std::cout << "      =========================== " << std::endl;
 
                             itemused++;
                             strm.str("");
                             if (sqi->GetItem(itemused).FindDataElement(gdcm::Tag(0x0004, 0x1430)))
                                 sqi->GetItem(itemused).GetDataElement(gdcm::Tag(0x0004, 0x1430)).GetValue().Print(strm);
 
-                            //TODO il faut trimer strm.str() avant la comparaison
                             while ((strm.str() == "SERIES") || ((strm.str() == "SERIES ")))
                             {
                                 std::cout << "      " << strm.str() << std::endl;
                                 strm.str("");
                                 if (sqi->GetItem(itemused).FindDataElement(gdcm::Tag(0x0020, 0x000e)))
                                     sqi->GetItem(itemused).GetDataElement(gdcm::Tag(0x0020, 0x000e)).GetValue().Print(strm);
-                                std::cout << "          SERIE UID " << strm.str() << std::endl;
 
                                 //SERIE MODALITY
                                 strm.str("");
@@ -1050,60 +1050,40 @@ private:
                                     sqi->GetItem(itemused).GetDataElement(gdcm::Tag(0x0008, 0x0060)).GetValue().Print(strm);
                                 std::cout << "          SERIE MODALITY " << strm.str() << std::endl;
 
-                                //SERIE DESCRIPTION
-                                strm.str("");
-                                if (sqi->GetItem(itemused).FindDataElement(gdcm::Tag(0x0008, 0x103e)))
-                                    sqi->GetItem(itemused).GetDataElement(gdcm::Tag(0x0008, 0x103e)).GetValue().Print(strm);
-                                std::cout << "          SERIE DESCRIPTION " << strm.str() << std::endl;
-
-                                /*ADD TAG TO READ HERE*/
-
-                                std::cout << "          "
-                                          << "=========================== " << std::endl;
                                 itemused++;
                                 strm.str("");
                                 if (sqi->GetItem(itemused).FindDataElement(gdcm::Tag(0x0004, 0x1430)))
                                     sqi->GetItem(itemused).GetDataElement(gdcm::Tag(0x0004, 0x1430)).GetValue().Print(strm);
-                                
+
                                 uint32_t imagecount = 0;
                                 std::vector<std::string> tempseriespaths(0);
-                                //TODO il faut trimer strm.str() avant la comparaison
-                                while ((strm.str() == "IMAGE") || ((strm.str() == "IMAGE ")))
-                                // if(tmp=="IMAGE")
-                                {
+
+                                while ((strm.str() == "IMAGE") || ((strm.str() == "IMAGE "))) {
                                     imagecount++;
                                     //std::cout << "          " << strm.str() << std::endl;
 
-                                    //UID
+                                    //IMAGE UID
                                     strm.str("");
                                     if (sqi->GetItem(itemused).FindDataElement(gdcm::Tag(0x0004, 0x1511)))
                                         sqi->GetItem(itemused).GetDataElement(gdcm::Tag(0x0004, 0x1511)).GetValue().Print(strm);
-                                    //std::cout << "              IMAGE UID : " << strm.str() << std::endl;
-                                    
-                                    //PATH de l'image
+
+                                    //IMAGE PATH
                                     strm.str("");
                                     if (sqi->GetItem(itemused).FindDataElement(gdcm::Tag(0x0004, 0x1500)))
                                         sqi->GetItem(itemused).GetDataElement(gdcm::Tag(0x0004, 0x1500)).GetValue().Print(strm);
-                                    //std::cout << "              IMAGE PATH : " << strm.str() << std::endl;
+
                                     tempseriespaths.push_back(strm.str());
 
-                                    
-
                                     if (itemused < sqi->GetNumberOfItems())
-                                    {
                                         itemused++;
-                                    }
                                     else
-                                    {
                                         break;
-                                    }
 
                                     strm.str("");
-
                                     if (sqi->GetItem(itemused).FindDataElement(gdcm::Tag(0x0004, 0x1430)))
                                         sqi->GetItem(itemused).GetDataElement(gdcm::Tag(0x0004, 0x1430)).GetValue().Print(strm);
                                 }
-                                std::cout << "          SERIE IMAGECOUNT " << std::to_string(imagecount) << std::endl; 
+                                std::cout << "          SERIE IMAGECOUNT " << std::to_string(imagecount) << std::endl;
                                 seriespaths.push_back(tempseriespaths);
                             }
                         }
@@ -1112,30 +1092,91 @@ private:
                 }
             }
         }
+        dimz = (unsigned int)seriespaths[seriesIndex].size();
+        std::cout << std::endl;
+        if(seriespaths[seriesIndex].size() > 1){
+            double spacingx = 1.0;
+            double spacingy = 1.0;
+            double spacingz = 1.0;
+            double positionfirst = 0.0;
+            double positionsecond = 1.0;
+            {
+                std::string imageFileName = DICOMDIR_directory_path;
+                imageFileName += seriespaths[seriesIndex][0];
+                gdcm::ImageReader reader;
+                reader.SetFileName(imageFileName.c_str());
+                if (!reader.Read()){
+                    std::cerr << "Could not read: " << imageFileName << std::endl;
+                    return;
+                }
+                gdcm::Image image = reader.GetImage();
+                const unsigned int *dims = image.GetDimensions();
+                dimx = dims[0];
+                dimy = dims[1];
+                const double *spacing = image.GetSpacing();
+                spacingx = spacing[0] * 2.0;
+                spacingy = spacing[1] * 2.0;
+                gdcm::DataSet ds = reader.GetFile().GetDataSet();
+                if(ds.FindDataElement( gdcm::Tag(0x0020, 0x1041))){
+                    strm.str("");
+                    ds.GetDataElement(gdcm::Tag(0x0020, 0x1041)).GetValue().Print(strm);
+                    positionfirst = std::stod(strm.str(), nullptr);
 
-        dimz = (unsigned int)seriespaths[2].size();
+                }
+            }
+            {
+                std::string imageFileName = DICOMDIR_directory_path;
+                imageFileName += seriespaths[seriesIndex][1];
+                gdcm::ImageReader reader;
+                reader.SetFileName(imageFileName.c_str());
+                if (!reader.Read()){
+                    std::cerr << "Could not read: " << imageFileName << std::endl;
+                    return;
+                }
+                gdcm::DataSet ds = reader.GetFile().GetDataSet();
+                if(ds.FindDataElement( gdcm::Tag(0x0020, 0x1041))){
+                    strm.str("");
+                    ds.GetDataElement(gdcm::Tag(0x0020, 0x1041)).GetValue().Print(strm);
+                    positionsecond = std::stod(strm.str(), nullptr);
+                }
+                if((abs(positionsecond - positionfirst) < 0.3 || abs(positionsecond - positionfirst) > 5) && ds.FindDataElement( gdcm::Tag(0x0018, 0x0050))){
+                    strm.str("");
+                    ds.GetDataElement(gdcm::Tag(0x0018, 0x1050)).GetValue().Print(strm);
+                    spacingz = std::stod(strm.str(), nullptr);
+                }else{
+                    spacingz = abs(positionsecond - positionfirst);
+                }
+            }
+            std:: cout << "Spacing: " << spacingx << ", " << spacingy << ", " << spacingz << std::endl;
+            textureScale = glm::vec3(spacingx * (dimx - 1), spacingy * (dimy - 1), spacingz * (dimz - 1));
+            if(textureScale.x >= textureScale.y && textureScale.x >= textureScale.z)
+                textureScale = glm::vec3(1.0, textureScale.y / textureScale.x, textureScale.z / textureScale.x);
+            else if(textureScale.y >= textureScale.x && textureScale.y >= textureScale.z)
+                textureScale = glm::vec3(textureScale.x / textureScale.y, 1.0 ,textureScale.z / textureScale.y);
+            else if(textureScale.z >= textureScale.x && textureScale.z >= textureScale.y)
+                textureScale = glm::vec3(textureScale.x / textureScale.z, textureScale.y / textureScale.z, 1.0);
+            else
+                textureScale = glm::vec3(1.0);
+            std:: cout << "Relative Spacing: " << textureScale.x << ", " << textureScale.y << ", " << textureScale.z << std::endl;
+        }else{
+            textureScale = glm::vec3(1.0);
+        }
 
         // std::ofstream myfile;
         // myfile.open (TEXTURE_PATH "/example.pgm");
         // myfile << "P2\n";
-        for (size_t i = 0; i < seriespaths[2].size(); i++){
+        for (size_t i = 0; i < seriespaths[seriesIndex].size(); i++){
+            std::string imageFileName = DICOMDIR_directory_path;
+            imageFileName += seriespaths[seriesIndex][i];
             gdcm::ImageReader reader;
-            std::string imageFileName = ASSET_PATH "/Schaedel_Weiser_Kurt/";
-            imageFileName += seriespaths[2][i];
             reader.SetFileName(imageFileName.c_str());
             if (!reader.Read()){
                 std::cerr << "Could not read: " << imageFileName << std::endl;
                 return;
             }
-            gdcm::Image &image = reader.GetImage();
+            gdcm::Image image = reader.GetImage();
             unsigned long len = image.GetBufferLength();
-            const unsigned int *dims = image.GetDimensions();
-            gdcm::PixelFormat format = image.GetPixelFormat();
-            
-            unsigned short bitsAllocated = format.GetBitsAllocated();
-            unsigned short bitsStored = format.GetBitsStored();
-            dimx = dims[0];
-            dimy = dims[1];
+
             // if(i == 12){
             //     myfile << dimx << " " << dimy << "\n";
             //     myfile << "4096\n";
@@ -1483,7 +1524,7 @@ private:
         float time = std::chrono::duration<float, std::chrono::seconds::period>(currentTime - startTime).count();
 
         UniformBufferObject ubo{};
-        ubo.model = glm::scale(glm::rotate(glm::mat4(1.0f), time * 0.2f * glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f)), glm::vec3(1.f, 1.f, 0.4551f));
+        ubo.model = glm::scale(glm::rotate(glm::mat4(1.0f), time * 0.2f * glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f)), textureScale);
         // ubo.view = glm::lookAt(glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
         // ubo.proj = glm::ortho(((float)swapChainExtent.width / (float)swapChainExtent.height)/1.8f, -((float)swapChainExtent.width / (float)swapChainExtent.height) / 1.8f, -0.55f, 0.55f, -1.f, 1.f);
         // ubo.proj[1][1] *= -1;
