@@ -1,5 +1,0 @@
-The DicomRT and CT datasets were kindly provided by:
-Universitätsklinikum Heidelberg 
-Klinik für Radioonkologie und Strahlentherapie (Ärztlicher Direktor: Prof. Dr. Dr. J. Debus) 
-
-Please note that the CT dataset has been downsampled to save diskspace.
