@@ -29,12 +29,6 @@
 
 #include <fstream>
 
-
-#include <dcmtk/dcmdata/dctk.h>
-#include <dcmtk/dcmimgle/dcmimage.h>
-
-
-
 const uint32_t WIDTH = 1600;
 const uint32_t HEIGHT = 900;
 const int MAX_FRAMES_IN_FLIGHT = 2;
