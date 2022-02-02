@@ -954,9 +954,7 @@ private:
         {
             std::cout << "This file is not a DICOMDIR" << std::endl;
         }
-        delete image;
-        //vk::DeviceSize imageSize = texWidth * texHeight * 4;
-
+        
         if (fmi.FindDataElement( gdcm::Tag (0x0002, 0x0002))) {
             strm.str("");
             fmi.GetDataElement( gdcm::Tag (0x0002, 0x0002) ).GetValue().Print(strm);
