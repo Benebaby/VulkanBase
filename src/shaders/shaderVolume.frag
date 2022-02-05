@@ -11,6 +11,12 @@ struct AABBox {
 };
 
 layout(binding = 1) uniform sampler3D texSampler;
+layout(binding = 2) uniform UniformBufferObject {
+    vec3 min;
+    float valueMin;
+    vec3 max;
+    float valueMax;
+} imgui;
 
 layout(origin_upper_left) in vec4 gl_FragCoord;
 layout(location = 0) in vec3 fragColor;
@@ -82,8 +88,8 @@ void main() {
     vec3 color = vec3(0.0);
     Ray ray = calculateRay(vec2(0.0));
     AABBox box; 
-    box.bounds[0] = vec3(-0.34, -0.5, -0.5); 
-    box.bounds[1] = vec3(0.34, 0.4, 0.5);
+    box.bounds[0] = imgui.min; 
+    box.bounds[1] = imgui.max;
     float tmin = 0.0;
     float tmax = 0.0;
     bool intersects = intersect(ray, box, tmin, tmax);
@@ -112,8 +118,7 @@ void main() {
             vec3 uv = (ray.origin + t * ray.direction).xyz + vec3(0.5);
             float intensity = texture(texSampler, uv).r / 0.0625;
             //MRT
-            intensity /= 0.15;
-            if(intensity > 0.1 && intensity < 0.2)
+            if(intensity > imgui.valueMin && intensity < imgui.valueMax)
                 currentColor += intensity * vec3(0.01);
 
             //Knochenfenster

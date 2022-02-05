@@ -117,6 +117,14 @@ struct UniformBufferObject
     glm::vec2 size = glm::vec2((float)WIDTH, (float)HEIGHT);
 };
 
+struct UniformBufferObjectImgui
+{
+    glm::vec3 renderBoxMin = glm::vec3(-0.5);
+    float valueMin;
+    glm::vec3 renderBoxMax = glm::vec3(0.5);
+    float valueMax;
+};
+
 static void check_vk_result(VkResult err)
 {
     if (err != VK_SUCCESS)
@@ -129,7 +137,6 @@ public:
     void run()
     {
         initWindow();
-        cam = new Camera(window, WIDTH, HEIGHT, glm::vec3(2.0), glm::vec3(0.0));
         initVulkan();
         mainLoop();
         cleanup();
@@ -176,6 +183,8 @@ private:
     Buffer *vertexBuffer;
     Buffer *indexBuffer;
     std::vector<Buffer *> uniformBuffers;
+    std::vector<Buffer *> uniformBuffersImgui;
+    UniformBufferObjectImgui uboImgui;
 
     vk::Image textureImage;
     DICOM_Series* dicomfile;
@@ -241,6 +250,7 @@ private:
 
         //imgui
         initImGui();
+        cam = new Camera(window, WIDTH, HEIGHT, glm::vec3(2.0), glm::vec3(0.0));
     }
 
     void createInstance()
@@ -457,17 +467,10 @@ private:
 
     void initImGui()
     {
-        // Setup Dear ImGui context
         IMGUI_CHECKVERSION();
         ImGui::CreateContext();
         ImGuiIO &io = ImGui::GetIO();
-        (void)io;
-        //io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
-        //io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
-
-        // Setup Dear ImGui style
         ImGui::StyleColorsDark();
-        //ImGui::StyleColorsClassic();
         ImGui_ImplGlfw_InitForVulkan(window, true);
 
         std::array<vk::DescriptorPoolSize, 11> poolSizes{
@@ -776,8 +779,9 @@ private:
     {
         vk::DescriptorSetLayoutBinding uboLayoutBinding(0, vk::DescriptorType::eUniformBuffer, 1, vk::ShaderStageFlagBits::eVertex, nullptr);
         vk::DescriptorSetLayoutBinding samplerLayoutBinding(1, vk::DescriptorType::eCombinedImageSampler, 1, vk::ShaderStageFlagBits::eFragment, nullptr);
+        vk::DescriptorSetLayoutBinding uboLayoutBindingImgui(2, vk::DescriptorType::eUniformBuffer, 1, vk::ShaderStageFlagBits::eFragment, nullptr);
 
-        std::array<vk::DescriptorSetLayoutBinding, 2> bindings = {uboLayoutBinding, samplerLayoutBinding};
+        std::array<vk::DescriptorSetLayoutBinding, 3> bindings = {uboLayoutBinding, samplerLayoutBinding, uboLayoutBindingImgui};
         vk::DescriptorSetLayoutCreateInfo layoutInfo({}, bindings);
 
         try
@@ -922,9 +926,9 @@ private:
 
     void createTextureImage()
     {
-        std::string DICOMDIR_directory_path = ASSET_PATH "/DICOM/MRT_HWS/";
+        std::string DICOMDIR_directory_path = ASSET_PATH "/DICOM/Schaedel_Weiser_Kurt/";
         std::string DICOMDIR_file_name = "DICOMDIR";
-        uint32_t seriesIndex = 0;
+        uint32_t seriesIndex = 1;
         dicomfile = new DICOM_Series(DICOMDIR_directory_path, DICOMDIR_file_name, seriesIndex);
         dicomfile->Read();
         glm::vec3 absoluteDimensions = dicomfile->GetDimensionsAbsolute();
@@ -1119,12 +1123,15 @@ private:
     void createUniformBuffers()
     {
         vk::DeviceSize bufferSize = sizeof(UniformBufferObject);
+        vk::DeviceSize bufferSizeImgui = sizeof(UniformBufferObjectImgui);
 
         uniformBuffers.resize(swapChainImages.size());
+        uniformBuffersImgui.resize(swapChainImages.size());
 
         for (size_t i = 0; i < swapChainImages.size(); i++)
         {
             uniformBuffers[i] = new Buffer(bufferSize, vk::BufferUsageFlagBits::eUniformBuffer, VMA_MEMORY_USAGE_CPU_TO_GPU);
+            uniformBuffersImgui[i] = new Buffer(bufferSizeImgui, vk::BufferUsageFlagBits::eUniformBuffer, VMA_MEMORY_USAGE_CPU_TO_GPU);
         }
     }
 
@@ -1132,7 +1139,8 @@ private:
     {
         vk::DescriptorPoolSize poolSizeUbo(vk::DescriptorType::eUniformBuffer, static_cast<uint32_t>(swapChainImages.size()));
         vk::DescriptorPoolSize poolSizeSampler(vk::DescriptorType::eCombinedImageSampler, static_cast<uint32_t>(swapChainImages.size()));
-        std::array<vk::DescriptorPoolSize, 2> poolSizes{poolSizeUbo, poolSizeSampler};
+        vk::DescriptorPoolSize poolSizeUboImgui(vk::DescriptorType::eUniformBuffer, static_cast<uint32_t>(swapChainImages.size()));
+        std::array<vk::DescriptorPoolSize, 3> poolSizes{poolSizeUbo, poolSizeSampler, poolSizeUboImgui};
 
         vk::DescriptorPoolCreateInfo poolInfo({}, static_cast<uint32_t>(swapChainImages.size()), poolSizes);
         try
@@ -1164,11 +1172,13 @@ private:
 
             vk::DescriptorBufferInfo bufferInfo(uniformBuffers[i]->getHandle(), 0, sizeof(UniformBufferObject));
             vk::DescriptorImageInfo imageInfo(textureSampler, textureImageView, vk::ImageLayout::eShaderReadOnlyOptimal);
+            vk::DescriptorBufferInfo bufferInfoImgui(uniformBuffersImgui[i]->getHandle(), 0, sizeof(UniformBufferObjectImgui));
 
             vk::WriteDescriptorSet descriptorWriteUbo(descriptorSets[i], 0, 0, 1, vk::DescriptorType::eUniformBuffer, {}, &bufferInfo);
             vk::WriteDescriptorSet descriptorWriteSampler(descriptorSets[i], 1, 0, 1, vk::DescriptorType::eCombinedImageSampler, &imageInfo);
+            vk::WriteDescriptorSet descriptorWriteImGui(descriptorSets[i], 2, 0, 1, vk::DescriptorType::eUniformBuffer, {}, &bufferInfoImgui);
 
-            std::array<vk::WriteDescriptorSet, 2> descriptorWrites{descriptorWriteUbo, descriptorWriteSampler};
+            std::array<vk::WriteDescriptorSet, 3> descriptorWrites{descriptorWriteUbo, descriptorWriteSampler, descriptorWriteImGui};
 
             device.updateDescriptorSets(descriptorWrites, nullptr);
         }
@@ -1255,9 +1265,9 @@ private:
 
         UniformBufferObject ubo{};
         //MRT
-        ubo.model = glm::scale(glm::rotate(glm::mat4(1.0f), glm::radians(-180.0f), glm::vec3(1.f, 0.f, 0.0f)), dicomfile->GetDimensionsRelative());
+        //ubo.model = glm::scale(glm::rotate(glm::mat4(1.0f), glm::radians(-180.0f), glm::vec3(1.f, 0.f, 0.0f)), dicomfile->GetDimensionsRelative());
         //CT
-        //ubo.model = glm::scale(glm::rotate(glm::mat4(1.0f), glm::radians(-120.0f), glm::vec3(1.f, 0.f, 0.0f)), dicomfile->GetDimensionsRelative());
+        ubo.model = glm::scale(glm::rotate(glm::mat4(1.0f), glm::radians(-120.0f), glm::vec3(1.f, 0.f, 0.0f)), dicomfile->GetDimensionsRelative());
         ubo.proj = glm::perspective(glm::radians(45.0f), swapChainExtent.width / (float)swapChainExtent.height, 0.01f, 10.0f);
         ubo.proj[1][1] *= -1;
         ubo.size = glm::vec2((float)swapChainExtent.width, (float)swapChainExtent.height);
@@ -1268,6 +1278,10 @@ private:
         uniformBuffers[currentImage]->copyTo(&ubo);
         uniformBuffers[currentImage]->flush();
         uniformBuffers[currentImage]->unmap();
+        uniformBuffersImgui[currentImage]->map();
+        uniformBuffersImgui[currentImage]->copyTo(&uboImgui);
+        uniformBuffersImgui[currentImage]->flush();
+        uniformBuffersImgui[currentImage]->unmap();
     }
 
     void drawFrame()
@@ -1354,7 +1368,15 @@ private:
             ImGui_ImplVulkan_NewFrame();
             ImGui_ImplGlfw_NewFrame();
             ImGui::NewFrame();
-            ImGui::ShowDemoWindow(&show_demo_window);
+            ImGui::Text("Rendered volume");
+            ImGui::SliderFloat("Min x", &uboImgui.renderBoxMin.x , -0.5f, 0.5f);
+            ImGui::SliderFloat("Min y", &uboImgui.renderBoxMin.y , -0.5f, 0.5f);
+            ImGui::SliderFloat("Min z", &uboImgui.renderBoxMin.z , -0.5f, 0.5f);
+            ImGui::SliderFloat("Max x", &uboImgui.renderBoxMax.x , -0.5f, 0.5f);
+            ImGui::SliderFloat("Max y", &uboImgui.renderBoxMax.y , -0.5f, 0.5f);
+            ImGui::SliderFloat("Max z", &uboImgui.renderBoxMax.z , -0.5f, 0.5f);
+            ImGui::SliderFloat("Value Min", &uboImgui.valueMin , -0.0f, 1.0f);
+            ImGui::SliderFloat("Value Max", &uboImgui.valueMax , -0.0f, 1.0f);
             ImGui::Render();
 
             drawFrame();

@@ -44,21 +44,23 @@ void Camera::update(){
     double time = glfwGetTime() - m_lastTime;
     m_lastTime = glfwGetTime();
 
-    if (glfwGetMouseButton(m_window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS) {
-        m_newPos = glm::vec2(Camera::m_xpos, Camera::m_ypos);
-        float xAngle = (m_newPos.x - m_oldPos.x) / m_width * 2 * 3.141592f;
-        float yAngle = (m_newPos.y - m_oldPos.y) / m_height * 3.141592f;
-        m_angle -= glm::vec2(xAngle, yAngle);
-        m_angle.y = glm::max(m_angle.y, 0.000001f);
-        m_angle.y = glm::min(m_angle.y, 3.141591f);
-    }
-    m_oldPos = glm::vec2(Camera::m_xpos, Camera::m_ypos);
-    m_timeout -= time;
-    m_eye.x = Camera::m_radius * sin(m_angle.y) * sin(m_angle.x);
-    m_eye.y = Camera::m_radius * cos(m_angle.y);
-    m_eye.z = Camera::m_radius * sin(m_angle.y) * cos(m_angle.x);
+    if(!ImGui::GetIO().WantCaptureMouse){
+        if (glfwGetMouseButton(m_window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS) {
+            m_newPos = glm::vec2(Camera::m_xpos, Camera::m_ypos);
+            float xAngle = (m_newPos.x - m_oldPos.x) / m_width * 2 * 3.141592f;
+            float yAngle = (m_newPos.y - m_oldPos.y) / m_height * 3.141592f;
+            m_angle -= glm::vec2(xAngle, yAngle);
+            m_angle.y = glm::max(m_angle.y, 0.000001f);
+            m_angle.y = glm::min(m_angle.y, 3.141591f);
+        }
+        m_oldPos = glm::vec2(Camera::m_xpos, Camera::m_ypos);
+        m_timeout -= time;
+        m_eye.x = Camera::m_radius * sin(m_angle.y) * sin(m_angle.x);
+        m_eye.y = Camera::m_radius * cos(m_angle.y);
+        m_eye.z = Camera::m_radius * sin(m_angle.y) * cos(m_angle.x);
 
-    m_viewMatrix = glm::lookAt(m_eye, glm::vec3(0.0f), glm::vec3(0.0, 1.0, 0.0));
+        m_viewMatrix = glm::lookAt(m_eye, glm::vec3(0.0f), glm::vec3(0.0, 1.0, 0.0));
+    }
 }
 
 glm::mat4 Camera::getView(){
