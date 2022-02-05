@@ -1,0 +1,1 @@
+start omninames.exe -logdir . -ORBtraceLevel 40 -ORBsupportBootstrapAgent 1

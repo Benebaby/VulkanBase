@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="no" ?>
+<TV_Version>
+
+	<CREATED>
+		<DATE>02.01.2019</DATE>
+		<TIME>12:59:00</TIME>
+	</CREATED>
+
+	<VERSION>
+		<HDSDLL>1.2.0.0</HDSDLL>
+	</VERSION>
+
+	<CHANGES>Init</CHANGES>
+
+	<FILES>
+		<FILE>
+			<NAME>HDS.dll</NAME>
+			<MD5>06E44C23AD2AAADCD1ECB3B36968BB1F</MD5>
+			<SUBDIR></SUBDIR>
+			<SIZE>5992960</SIZE>
+		</FILE>
+		<FILE>
+			<NAME>HDSLib.xml</NAME>
+			<MD5>38FE6FBFF241CFF62557E6C5A448915E</MD5>
+			<SUBDIR></SUBDIR>
+			<SIZE>2011</SIZE>
+		</FILE>
+		<FILE>
+			<NAME>HDSLib.xml</NAME>
+			<MD5></MD5>
+			<SUBDIR></SUBDIR>
+			<SIZE></SIZE>
+		</FILE>
+	</FILES>
+</TV_Version>
+
