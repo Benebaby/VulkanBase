@@ -111,12 +111,17 @@ void main() {
         for(float t = tmin; t < tmax ; t += 0.00195){
             vec3 uv = (ray.origin + t * ray.direction).xyz + vec3(0.5);
             float intensity = texture(texSampler, uv).r / 0.0625;
+            //MRT
+            intensity /= 0.15;
+            if(intensity > 0.1 && intensity < 0.2)
+                currentColor += intensity * vec3(0.01);
+
             //Knochenfenster
-            if(intensity > 0.3 && intensity <= 0.6){
+            /*if(intensity > 0.3 && intensity <= 0.6){
                 intensity = ((intensity - 0.45) / 0.15);
                 intensity = intensity < 0.0 ? (1 + intensity) : intensity;
                 currentColor += intensity * vec3(0.01);
-            }
+            }*/
             //HirnFenster
             /*if(intensity > 0.25 && intensity <= 0.26953125){
                 intensity = ((intensity - 0.259765625) / 0.009765625);

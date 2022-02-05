@@ -1,3 +1,5 @@
+#pragma once
+
 #include <gdcmScanner.h>
 #include <gdcmTesting.h>
 #include <gdcmIPPSorter.h>

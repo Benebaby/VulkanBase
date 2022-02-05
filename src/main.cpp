@@ -6,6 +6,7 @@
 #include "Utils.h"
 #include "Buffer.hpp"
 #include "DICOM_Series.hpp"
+#include "Camera.hpp"
 
 #include <optional>
 #include <set>
@@ -128,6 +129,7 @@ public:
     void run()
     {
         initWindow();
+        cam = new Camera(window, WIDTH, HEIGHT, glm::vec3(2.0), glm::vec3(0.0));
         initVulkan();
         mainLoop();
         cleanup();
@@ -135,6 +137,7 @@ public:
 
 private:
     GLFWwindow *window;
+    Camera* cam;
     VmaAllocator allocator;
     vk::Instance instance;
     bool enableValidation = true;
@@ -919,9 +922,9 @@ private:
 
     void createTextureImage()
     {
-        std::string DICOMDIR_directory_path = ASSET_PATH "/DICOM/Schaedel_Weiser_Kurt/";
+        std::string DICOMDIR_directory_path = ASSET_PATH "/DICOM/MRT_HWS/";
         std::string DICOMDIR_file_name = "DICOMDIR";
-        uint32_t seriesIndex = 2;
+        uint32_t seriesIndex = 0;
         dicomfile = new DICOM_Series(DICOMDIR_directory_path, DICOMDIR_file_name, seriesIndex);
         dicomfile->Read();
         glm::vec3 absoluteDimensions = dicomfile->GetDimensionsAbsolute();
@@ -1251,14 +1254,15 @@ private:
         float time = std::chrono::duration<float, std::chrono::seconds::period>(currentTime - startTime).count();
 
         UniformBufferObject ubo{};
-        ubo.model = glm::scale(glm::rotate(glm::mat4(1.0f), time * 0.2f *glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f)), dicomfile->GetDimensionsRelative());
-        // ubo.view = glm::lookAt(glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-        // ubo.proj = glm::ortho(((float)swapChainExtent.width / (float)swapChainExtent.height)/1.8f, -((float)swapChainExtent.width / (float)swapChainExtent.height) / 1.8f, -0.55f, 0.55f, -1.f, 1.f);
-        // ubo.proj[1][1] *= -1;
-        ubo.view = glm::lookAt(glm::vec3(0.7f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-        ubo.proj = glm::perspective(glm::radians(45.0f), swapChainExtent.width / (float)swapChainExtent.height, 0.1f, 10.0f);
+        //MRT
+        ubo.model = glm::scale(glm::rotate(glm::mat4(1.0f), glm::radians(-180.0f), glm::vec3(1.f, 0.f, 0.0f)), dicomfile->GetDimensionsRelative());
+        //CT
+        //ubo.model = glm::scale(glm::rotate(glm::mat4(1.0f), glm::radians(-120.0f), glm::vec3(1.f, 0.f, 0.0f)), dicomfile->GetDimensionsRelative());
+        ubo.proj = glm::perspective(glm::radians(45.0f), swapChainExtent.width / (float)swapChainExtent.height, 0.01f, 10.0f);
         ubo.proj[1][1] *= -1;
         ubo.size = glm::vec2((float)swapChainExtent.width, (float)swapChainExtent.height);
+        cam->update();
+        ubo.view = cam->getView();
 
         uniformBuffers[currentImage]->map();
         uniformBuffers[currentImage]->copyTo(&ubo);

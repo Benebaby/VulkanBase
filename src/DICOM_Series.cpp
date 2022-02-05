@@ -220,6 +220,7 @@ void DICOM_Series::Read(){
             }else{
                 spacingz = abs(positionsecond - positionfirst);
             }
+            spacingz *= 2.0f;
         }
         std:: cout << "Spacing: " << spacingx << ", " << spacingy << ", " << spacingz << std::endl;
         m_relativeDimensions = glm::vec3(spacingx * (m_absoluteDimensions.x - 1), spacingy * (m_absoluteDimensions.y - 1), spacingz * (m_absoluteDimensions.z - 1));
