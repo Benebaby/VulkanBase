@@ -120,9 +120,10 @@ struct UniformBufferObject
 struct UniformBufferObjectImgui
 {
     glm::vec3 renderBoxMin = glm::vec3(-0.5);
-    float valueMin;
+    float valueMin = 0.0f;
     glm::vec3 renderBoxMax = glm::vec3(0.5);
-    float valueMax;
+    float valueMax = 1.0f;
+    float color[4] = {1.0f,1.0f,1.0f,1.0f};
 };
 
 static void check_vk_result(VkResult err)
@@ -1368,15 +1369,19 @@ private:
             ImGui_ImplVulkan_NewFrame();
             ImGui_ImplGlfw_NewFrame();
             ImGui::NewFrame();
-            ImGui::Text("Rendered volume");
-            ImGui::SliderFloat("Min x", &uboImgui.renderBoxMin.x , -0.5f, 0.5f);
-            ImGui::SliderFloat("Min y", &uboImgui.renderBoxMin.y , -0.5f, 0.5f);
-            ImGui::SliderFloat("Min z", &uboImgui.renderBoxMin.z , -0.5f, 0.5f);
-            ImGui::SliderFloat("Max x", &uboImgui.renderBoxMax.x , -0.5f, 0.5f);
-            ImGui::SliderFloat("Max y", &uboImgui.renderBoxMax.y , -0.5f, 0.5f);
-            ImGui::SliderFloat("Max z", &uboImgui.renderBoxMax.z , -0.5f, 0.5f);
-            ImGui::SliderFloat("Value Min", &uboImgui.valueMin , -0.0f, 1.0f);
-            ImGui::SliderFloat("Value Max", &uboImgui.valueMax , -0.0f, 1.0f);
+            ImGui::Begin("View");
+                ImGui::Text("Crop");
+                ImGui::SliderFloat("Left", &uboImgui.renderBoxMin.x , -0.5f, 0.5f);
+                ImGui::SliderFloat("Front", &uboImgui.renderBoxMin.y , -0.5f, 0.5f);
+                ImGui::SliderFloat("Bottom", &uboImgui.renderBoxMin.z , -0.5f, 0.5f);
+                ImGui::SliderFloat("Right", &uboImgui.renderBoxMax.x , -0.5f, 0.5f);
+                ImGui::SliderFloat("Back", &uboImgui.renderBoxMax.y , -0.5f, 0.5f);
+                ImGui::SliderFloat("Top", &uboImgui.renderBoxMax.z , -0.5f, 0.5f);
+                ImGui::SliderFloat("Value Min", &uboImgui.valueMin , -0.0f, 1.0f);
+                ImGui::SliderFloat("Value Max", &uboImgui.valueMax , -0.0f, 1.0f);
+                //ImGui::Text("Color");
+                //ImGui::ColorEdit3("color", uboImgui.color);
+            ImGui::End();
             ImGui::Render();
 
             drawFrame();
@@ -1419,6 +1424,7 @@ private:
         for (size_t i = 0; i < swapChainImages.size(); i++)
         {
             delete uniformBuffers[i];
+            delete uniformBuffersImgui[i];
         }
         device.destroyDescriptorPool(descriptorPool);
     }

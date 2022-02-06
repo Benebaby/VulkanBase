@@ -16,6 +16,7 @@ layout(binding = 2) uniform UniformBufferObject {
     float valueMin;
     vec3 max;
     float valueMax;
+    //float color[4];
 } imgui;
 
 layout(origin_upper_left) in vec4 gl_FragCoord;
@@ -119,7 +120,7 @@ void main() {
             float intensity = texture(texSampler, uv).r / 0.0625;
             //MRT
             if(intensity > imgui.valueMin && intensity < imgui.valueMax)
-                currentColor += intensity * vec3(0.01);
+                currentColor += intensity * vec3(0.01);//vec3(imgui.color[0]*0.01,imgui.color[1]*0.01,imgui.color[2]*0.01);
 
             //Knochenfenster
             /*if(intensity > 0.3 && intensity <= 0.6){
