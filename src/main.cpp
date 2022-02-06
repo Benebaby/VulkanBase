@@ -120,9 +120,9 @@ struct UniformBufferObject
 struct UniformBufferObjectImgui
 {
     glm::vec3 renderBoxMin = glm::vec3(-0.5);
-    float valueMin = 0.0f;
+    float valueCenter = 0.5f;
     glm::vec3 renderBoxMax = glm::vec3(0.5);
-    float valueMax = 1.0f;
+    float valueExtent = 0.5f;
     int samplesPerRay = 512;
     float sampleIntensity = 0.01f;
 };
@@ -943,10 +943,10 @@ private:
             dic_stagingBuffer.copyTo(dicomfile->getBufferData());
         dic_stagingBuffer.unmap();
 
-        createImage(textureImage, textureImageAllocation, vk::ImageUsageFlagBits::eTransferDst | vk::ImageUsageFlagBits::eSampled, VMA_MEMORY_USAGE_GPU_ONLY, vk::ImageType::e3D, absoluteDimensions.x, absoluteDimensions.y, absoluteDimensions.z, vk::Format::eR16Unorm, vk::ImageTiling::eOptimal);
+        createImage(textureImage, textureImageAllocation, vk::ImageUsageFlagBits::eTransferDst | vk::ImageUsageFlagBits::eSampled, VMA_MEMORY_USAGE_GPU_ONLY, vk::ImageType::e3D, (uint32_t) absoluteDimensions.x, (uint32_t) absoluteDimensions.y, (uint32_t) absoluteDimensions.z, vk::Format::eR16Unorm, vk::ImageTiling::eOptimal);
 
         transitionImageLayout(textureImage, vk::Format::eR16Unorm, vk::ImageLayout::eUndefined, vk::ImageLayout::eTransferDstOptimal);
-            copyBufferToImage(dic_stagingBuffer.getHandle(), textureImage, absoluteDimensions.x, absoluteDimensions.y, absoluteDimensions.z);
+            copyBufferToImage(dic_stagingBuffer.getHandle(), textureImage, (uint32_t) absoluteDimensions.x, (uint32_t) absoluteDimensions.y, (uint32_t) absoluteDimensions.z);
         transitionImageLayout(textureImage, vk::Format::eR16Unorm, vk::ImageLayout::eTransferDstOptimal, vk::ImageLayout::eShaderReadOnlyOptimal);
     }
 
@@ -1269,7 +1269,7 @@ private:
         //MRT
         //ubo.model = glm::scale(glm::rotate(glm::mat4(1.0f), glm::radians(-180.0f), glm::vec3(1.f, 0.f, 0.0f)), dicomfile->GetDimensionsRelative());
         //CT
-        ubo.model = glm::scale(glm::rotate(glm::mat4(1.0f), glm::radians(-120.0f), glm::vec3(1.f, 0.f, 0.0f)), dicomfile->GetDimensionsRelative());
+        ubo.model = glm::scale(glm::rotate(glm::mat4(1.0f), glm::radians(-90.0f), glm::vec3(1.f, 0.f, 0.0f)), dicomfile->GetDimensionsRelative());
         ubo.proj = glm::perspective(glm::radians(45.0f), swapChainExtent.width / (float)swapChainExtent.height, 0.01f, 10.0f);
         ubo.proj[1][1] *= -1;
         ubo.size = glm::vec2((float)swapChainExtent.width, (float)swapChainExtent.height);
@@ -1378,10 +1378,10 @@ private:
                 ImGui::SliderFloat("Right", &uboImgui.renderBoxMax.x , -0.5f, 0.5f);
                 ImGui::SliderFloat("Back", &uboImgui.renderBoxMax.y , -0.5f, 0.5f);
                 ImGui::SliderFloat("Top", &uboImgui.renderBoxMax.z , -0.5f, 0.5f);
-                ImGui::SliderFloat("Value Min", &uboImgui.valueMin , -0.0f, 1.0f);
-                ImGui::SliderFloat("Value Max", &uboImgui.valueMax , -0.0f, 1.0f);
+                ImGui::SliderFloat("Value Center", &uboImgui.valueCenter , -0.0f, 1.0f);
+                ImGui::SliderFloat("Value Extent", &uboImgui.valueExtent , -0.0f, 0.5f);
                 ImGui::SliderInt("Samples Per Ray", &uboImgui.samplesPerRay, 0, 1024);
-                ImGui::SliderFloat("Sample Intensity", &uboImgui.sampleIntensity , -0.0f, 0.05);
+                ImGui::SliderFloat("Sample Intensity", &uboImgui.sampleIntensity , -0.0f, 0.05f);
             ImGui::End();
             ImGui::Render();
 

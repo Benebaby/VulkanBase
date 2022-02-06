@@ -13,9 +13,9 @@ struct AABBox {
 layout(binding = 1) uniform sampler3D texSampler;
 layout(binding = 2) uniform UniformBufferObject {
     vec3 min;
-    float valueMin;
+    float valueCenter;
     vec3 max;
-    float valueMax;
+    float valueExtent;
     int sampleCount;
     float sampleIntensity;
 } imgui;
@@ -98,30 +98,16 @@ void main() {
     vec3 enter = ray.origin + tmin * ray.direction;
     vec3 exit = ray.origin + tmax * ray.direction;
 
-    //highlight frontfacing edges
-    /*
-    if((enter.x < -0.497 || enter.x > 0.497) && (enter.z < -0.497 || enter.z > 0.497)){
-        float distanceToEdge = ((0.5 - abs(enter.x)) + (0.5 - abs(enter.z))) / 2.0;
-        color += (1.0 - distanceToEdge * 333.333) * vec3(0.0, 1.0, 0.0) * 0.2;
-    }
-    if((enter.y < -0.497 || enter.y > 0.497) && (enter.x < -0.497 || enter.x > 0.497)){
-        float distanceToEdge = ((0.5 - abs(enter.y)) + (0.5 - abs(enter.x))) / 2.0;
-        color += (1.0 - distanceToEdge * 333.333) * vec3(0.0, 1.0, 0.0) * 0.2;
-    }
-    if((enter.z < -0.497 || enter.z > 0.497) && (enter.y < -0.497 || enter.y > 0.497)){
-        float distanceToEdge = ((0.5 - abs(enter.z)) + (0.5 - abs(enter.y))) / 2.0;
-        color += (1.0 - distanceToEdge * 333.333) * vec3(0.0, 1.0, 0.0) * 0.2;
-    }
-    */
-
     if(intersects){
         vec3 currentColor = vec3(0.0);
         for(float t = tmin; t < tmax ; t += (1.0/imgui.sampleCount)){
             vec3 uv = (ray.origin + t * ray.direction).xyz + vec3(0.5);
             float intensity = texture(texSampler, uv).r / 0.0625;
-            if(intensity > imgui.valueMin && intensity < imgui.valueMax){
-                float halfValueRange = (imgui.valueMax-imgui.valueMin) / 2.0;
-                intensity = (intensity - (imgui.valueMin + halfValueRange)) / halfValueRange;
+            float valueMin = max(imgui.valueCenter - imgui.valueExtent, 0.0);
+            float valueMax = min(imgui.valueCenter + imgui.valueExtent, 1.0);
+            if(intensity > valueMin && intensity < valueMax){
+                float halfValueRange = (valueMax-valueMin) / 2.0;
+                intensity = (intensity - (valueMin + halfValueRange)) / halfValueRange;
                 intensity = intensity < 0.0 ? (1 + intensity) : intensity;
                 currentColor += intensity * vec3(imgui.sampleIntensity);
             }
@@ -130,22 +116,6 @@ void main() {
     }else{
         color += vec3(0.0);
     }
-
-    //highlight backfacing edges
-    /*
-    if((exit.x < -0.497 || exit.x > 0.497) && (exit.z < -0.497 || exit.z > 0.497)){
-        float distanceToEdge = ((0.5 - abs(exit.x)) + (0.5 - abs(exit.z))) / 2.0;
-        color += (1.0 - distanceToEdge * 333.333) * vec3(0.0, 1.0, 0.0) * 0.05;
-    }
-    if((exit.y < -0.497 || exit.y > 0.497) && (exit.x < -0.497 || exit.x > 0.497)){
-        float distanceToEdge = ((0.5 - abs(exit.y)) + (0.5 - abs(exit.x))) / 2.0;
-        color += (1.0 - distanceToEdge * 333.333) * vec3(0.0, 1.0, 0.0) * 0.05;
-    }
-    if((exit.z < -0.497 || exit.z > 0.497) && (exit.y < -0.497 || exit.y > 0.497)){
-        float distanceToEdge = ((0.5 - abs(exit.z)) + (0.5 - abs(exit.y))) / 2.0;
-        color += (1.0 - distanceToEdge * 333.333) * vec3(0.0, 1.0, 0.0) * 0.05;
-    }
-    */
 
     outColor = vec4(color, 1.0);
 }
