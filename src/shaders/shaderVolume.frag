@@ -16,7 +16,8 @@ layout(binding = 2) uniform UniformBufferObject {
     float valueMin;
     vec3 max;
     float valueMax;
-    //float color[4];
+    int sampleCount;
+    float sampleIntensity;
 } imgui;
 
 layout(origin_upper_left) in vec4 gl_FragCoord;
@@ -115,32 +116,15 @@ void main() {
 
     if(intersects){
         vec3 currentColor = vec3(0.0);
-        for(float t = tmin; t < tmax ; t += 0.00195){
+        for(float t = tmin; t < tmax ; t += (1.0/imgui.sampleCount)){
             vec3 uv = (ray.origin + t * ray.direction).xyz + vec3(0.5);
             float intensity = texture(texSampler, uv).r / 0.0625;
-            //MRT
-            if(intensity > imgui.valueMin && intensity < imgui.valueMax)
-                currentColor += intensity * vec3(0.01);//vec3(imgui.color[0]*0.01,imgui.color[1]*0.01,imgui.color[2]*0.01);
-
-            //Knochenfenster
-            /*if(intensity > 0.3 && intensity <= 0.6){
-                intensity = ((intensity - 0.45) / 0.15);
+            if(intensity > imgui.valueMin && intensity < imgui.valueMax){
+                float halfValueRange = (imgui.valueMax-imgui.valueMin) / 2.0;
+                intensity = (intensity - (imgui.valueMin + halfValueRange)) / halfValueRange;
                 intensity = intensity < 0.0 ? (1 + intensity) : intensity;
-                currentColor += intensity * vec3(0.01);
-            }*/
-            //HirnFenster
-            /*if(intensity > 0.25 && intensity <= 0.26953125){
-                intensity = ((intensity - 0.259765625) / 0.009765625);
-                intensity = intensity < 0.0 ? (1 + intensity) : intensity;
-                if(intensity > 0.9)
-                    currentColor += intensity * vec3(0.01);
-            }*/
-            //Weichteilfenster
-            /*if(intensity > 0.221 && intensity <= 0.308){
-                intensity = ((intensity - 0.2646) / 0.087593);
-                intensity = intensity < 0.0 ? (1 + intensity) : intensity;
-                currentColor += intensity * vec3(0, 0, 0.005);
-            }*/
+                currentColor += intensity * vec3(imgui.sampleIntensity);
+            }
         }
         color += currentColor;
     }else{

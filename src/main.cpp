@@ -123,7 +123,8 @@ struct UniformBufferObjectImgui
     float valueMin = 0.0f;
     glm::vec3 renderBoxMax = glm::vec3(0.5);
     float valueMax = 1.0f;
-    float color[4] = {1.0f,1.0f,1.0f,1.0f};
+    int samplesPerRay = 512;
+    float sampleIntensity = 0.01f;
 };
 
 static void check_vk_result(VkResult err)
@@ -929,7 +930,7 @@ private:
     {
         std::string DICOMDIR_directory_path = ASSET_PATH "/DICOM/Schaedel_Weiser_Kurt/";
         std::string DICOMDIR_file_name = "DICOMDIR";
-        uint32_t seriesIndex = 1;
+        uint32_t seriesIndex = 2;
         dicomfile = new DICOM_Series(DICOMDIR_directory_path, DICOMDIR_file_name, seriesIndex);
         dicomfile->Read();
         glm::vec3 absoluteDimensions = dicomfile->GetDimensionsAbsolute();
@@ -1379,8 +1380,8 @@ private:
                 ImGui::SliderFloat("Top", &uboImgui.renderBoxMax.z , -0.5f, 0.5f);
                 ImGui::SliderFloat("Value Min", &uboImgui.valueMin , -0.0f, 1.0f);
                 ImGui::SliderFloat("Value Max", &uboImgui.valueMax , -0.0f, 1.0f);
-                //ImGui::Text("Color");
-                //ImGui::ColorEdit3("color", uboImgui.color);
+                ImGui::SliderInt("Samples Per Ray", &uboImgui.samplesPerRay, 0, 1024);
+                ImGui::SliderFloat("Sample Intensity", &uboImgui.sampleIntensity , -0.0f, 0.05);
             ImGui::End();
             ImGui::Render();
 
