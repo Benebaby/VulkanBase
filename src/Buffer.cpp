@@ -1,5 +1,5 @@
 
-#include "Buffer.hpp"
+#include "Buffer.hpp" 
 
 VmaAllocator* Buffer::allocator;
 vk::Device* Buffer::device;
