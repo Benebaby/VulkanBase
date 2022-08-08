@@ -9,7 +9,7 @@ IF(APPLE)
 ENDIF()
 
 
-add_compile_definitions(SHADER_PATH="${PROJECT_SOURCE_DIR}/src/shaders" TEXTURE_PATH="${PROJECT_SOURCE_DIR}/src/textures" MODEL_PATH="${PROJECT_SOURCE_DIR}/src/models")
+add_compile_definitions(SHADER_PATH="${PROJECT_SOURCE_DIR}/src/shaders" TEXTURE_PATH="${PROJECT_SOURCE_DIR}/assets/textures" MODEL_PATH="${PROJECT_SOURCE_DIR}/assets/models")
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
