@@ -1,3 +1,5 @@
+#pragma once
+
 #define TINYGLTF_USE_CPP14
 
 #include "globalDefs.hpp"
@@ -16,6 +18,7 @@
 #include "CommandBuffer.hpp"
 #include "Image.hpp"
 #include "Allocator.hpp"
+
 
 
 const uint32_t WIDTH = 1600;
@@ -142,7 +145,7 @@ private:
     vk::SwapchainKHR swapChain;
     vk::Format swapChainImageFormat;
     vk::Extent2D swapChainExtent;
-
+    //VBF::SwapChain* swapChain;
     std::vector<Image*> swapChainImages;
     std::vector<vk::Framebuffer> swapChainFramebuffers;
     
@@ -208,6 +211,7 @@ private:
         //createAllocator();
         createSwapChain();
         createImageViews();
+        //swapChain = new VBF::SwapChain(surface, gpu, device);
         createRenderPass();
         createDescriptorSetLayout();
         readAndCompileShaders();
@@ -431,7 +435,8 @@ private:
             return actualExtent;
         }
     }
-    /*
+    
+    
     SwapChainSupportDetails querySwapChainSupport(vk::PhysicalDevice pDevice) {
         SwapChainSupportDetails details;
         details.capabilities = pDevice.getSurfaceCapabilitiesKHR(*surface->getSurfaceKHR());
@@ -439,7 +444,7 @@ private:
         details.presentModes = pDevice.getSurfacePresentModesKHR(*surface->getSurfaceKHR());
         return details;
     }
-    */
+    
     void createSwapChain() {
         SwapChainSupportDetails swapChainSupport = gpu->querySwapChainSupport();
 
@@ -492,13 +497,13 @@ private:
             swapChainImages[i] = new Image(swapChainImagesKHR[i],swapChainImageFormat,swapChainExtent);
         }
     }
-
+    
     void createImageViews(){
         for (size_t i = 0; i < swapChainImages.size(); i++) {
             swapChainImages[i]->createView(vk::ImageAspectFlagBits::eColor);
         }
     }
-
+    
     vk::ShaderModule createShaderModule(const std::vector<uint32_t> code) {
         vk::ShaderModuleCreateInfo createInfo({}, code);
         vk::ShaderModule shaderModule;
@@ -898,13 +903,16 @@ private:
         device->getVkDevice()->destroyPipeline(graphicsPipeline);
         device->getVkDevice()->destroyPipelineLayout(pipelineLayout);
         device->getVkDevice()->destroyRenderPass(renderPass);
+        
         for (Image* image : swapChainImages) {
             image->destroyView();
         }
+
         device->getVkDevice()->destroySwapchainKHR(swapChain);
         for (size_t i = 0; i < swapChainImages.size(); i++) {
             delete uniformBuffers[i];
         }
+        
         device->getVkDevice()->destroyDescriptorPool(descriptorPool);
     }
 

@@ -1,4 +1,3 @@
-
 #include "Buffer.hpp"
 
 VmaAllocator* Buffer::allocator;

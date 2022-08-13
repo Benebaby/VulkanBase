@@ -1,3 +1,4 @@
+#pragma once
 #include "globalDefs.hpp"
 #include "globalIncludes.hpp"
 #include "Surface.hpp"
